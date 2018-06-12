@@ -1,0 +1,48 @@
+/* Pour pouvoir utiliser une hauteur (height) ou une hauteur minimale
+   (min-height) sur un bloc, il faut que son parent direct ait lui-même une
+   hauteur déterminée (donc toute valeur de height sauf "auto": hauteur en
+   pixels, em, autres unités...).
+   Si la hauteur du parent est en pourcentage, elle se réfère alors à la
+   hauteur du «grand-père», et ainsi de suite.
+   Pour pouvoir utiliser un "min-height: 100%" sur div#global, il nous faut:
+   - un parent (body) en "height: 100%";
+   - le parent de body également en "height: 100%". */
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #fcfbf9;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: Georgia, Arial, Verdana, sans-serif;
+    font-size: 15px;
+    overflow-x: hidden;
+}
+
+
+h1 {
+    color: black;
+}
+
+.titreBillet {
+    margin-bottom : 0px;
+}
+
+
+#contenu {
+    margin-bottom : 30px;
+}
+
+#titreBlog {
+    height: 500px;
+    min-height: 100px;
+    background: #0e0c08;
+    box-shadow: 3px 3px 10px 5px #000;
+    display: block;
+}
+
+footer {
+    background-color: #343a40;
+}

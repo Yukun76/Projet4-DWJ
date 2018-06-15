@@ -6,10 +6,8 @@ require_once 'Vue.php';
 /**
  * Classe abstraite Controleur
  * Fournit des services communs aux classes Controleur dérivées
- * 
- * @version 1.0
- * @author Baptiste Pesquet
  */
+
 abstract class Controleur {
 
     /** Action à réaliser */

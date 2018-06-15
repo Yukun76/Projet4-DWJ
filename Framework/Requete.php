@@ -2,10 +2,8 @@
 
 /*
  * Classe modélisant une requête HTTP entrante
- * 
- * @version 1.0
- * @author Baptiste Pesquet
  */
+
 class Requete {
 
     /** Tableau des paramètres de la requête */

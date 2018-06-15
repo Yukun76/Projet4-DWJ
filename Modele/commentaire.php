@@ -24,4 +24,17 @@ class Commentaire extends Modele {
         $date = date(DATE_W3C);
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
     }
+    
+    /**
+     * Renvoie le nombre total de commentaires
+     * 
+     * @return int Le nombre de commentaires
+     */
+    public function getNombreCommentaires()
+    {
+        $sql = 'select count(*) as nbCommentaires from T_COMMENTAIRE';
+        $resultat = $this->executerRequete($sql);
+        $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
+        return $ligne['nbCommentaires'];
+    }
 }

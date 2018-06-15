@@ -1,6 +1,7 @@
 <?php
 
-require_once 'Modele/Modele.php';
+require_once 'Framework/Modele.php';
+
 /**
  * Fournit les services d'accès aux genres musicaux 
  * 
@@ -17,11 +18,10 @@ class Commentaire extends Modele {
         return $commentaires;
     }
 
-    // Ajoute un commentaire dans la base
     public function ajouterCommentaire($auteur, $contenu, $idBillet) {
         $sql = 'insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID)'
             . ' values(?, ?, ?, ?)';
-        $date = date(DATE_W3C);  // Récupère la date courante
+        $date = date(DATE_W3C);
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
     }
 }

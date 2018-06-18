@@ -7,8 +7,11 @@
    Pour pouvoir utiliser un "min-height: 100%" sur div#global, il nous faut:
    - un parent (body) en "height: 100%";
    - le parent de body également en "height: 100%". */
-html, body {
+
+html,
+body {
     height: 100%;
+    width: 100%;
 }
 
 body {
@@ -21,18 +24,35 @@ body {
     overflow-x: hidden;
 }
 
-
 h1 {
     color: black;
 }
 
 .titreBillet {
-    margin-bottom : 0px;
+    margin-bottom: 0px;
 }
 
 
 #contenu {
-    margin-bottom : 30px;
+    margin-bottom: 30px;
+}
+
+.Alaska_banner {
+    height: 250px;
+    background: url("https://www.goodfreephotos.com/albums/united-states/alaska/other-alaska/final2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2600px;
+    margin-bottom: 30px;
+}
+
+#Alaska_text {
+    font-size: 300%;
+    margin-top: 100px;
+    text-align: center;
+    background-image: linear-gradient( to right, blue, #f06d06);
+    color: white;
+    font-family: Roboto, sans-sherif;
 }
 
 .banner {
@@ -43,14 +63,11 @@ h1 {
     display: block;
     margin-bottom: 100px;
 }
+
 footer {
     background-color: #343a40;
     text-align: center;
     color: white;
-}
-
-#titreReponses {
-    font-size : 100%;
 }
 
 #logo_text {
@@ -66,7 +83,6 @@ footer {
     margin-top: 50px;
     width: 40%;
 }
-
 
 .col-sm-9 p {
     font-family: Indie Flower, sans-serif;
@@ -88,12 +104,40 @@ footer {
     width: 100%;
 }
 
-#contenu>h2 {
+#last_chap > h2 {
     font-size: 2.5em;
     margin-bottom: 50px;
     margin-top: 50px;
     color: #046380;
     box-shadow: 3px 3px 10px 5px #000;
     padding: 10px;
+    width: 150%;
     background: url("http://www.fondecranmagique.com/divers/livre/1345622663.jpg");
+}
+
+.form-control {
+    width: 70%;
+}
+
+.All_billet {
+    margin-left: 100px;
+}
+
+.Chap_com {
+    margin-left: 40px;
+}
+
+hr {
+    height: 2px;
+    border: 0;
+    color: black;
+    background-color: black;
+}
+
+.Chapitre {
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }

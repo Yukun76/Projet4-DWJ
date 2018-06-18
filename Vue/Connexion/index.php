@@ -1,4 +1,15 @@
+<header class="header banner" id="header-perso">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <a href=""><img src="vue/img/logo.png" alt="Jean ForteRoche" id="logo"></a>
+            </div>
+        </div>
+    </div>
+</header>
+
 <?php $this->titre = "Mon Blog - Connexion" ?>
+
 
 <p>Vous devez être connecté pour accéder à cette zone.</p>
 

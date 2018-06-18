@@ -18,16 +18,7 @@
 
 <body>
     <div id="global">
-        <header class="header banner" id="header-perso">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <a href=""><img src="vue/img/logo.png" alt="Jean ForteRoche" id="logo"></a>
-                        <p id="logo_text"> Bienvenue sur le blog, en vous souhaitant une agréable lecture.</p>
-                    </div>
-                </div>
-            </div>
-        </header>
+
         <div id="header-perso">
             <div class="top-header">
                 <div class="container">
@@ -38,7 +29,7 @@
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                                 <a class="nav-item nav-link" href="index.php"><i class="fas fa-home"></i> Accueil</a>
-                                <a class="nav-item nav-link" href=""><i class="fas fa-book"></i> Chapitre</a>
+                                <a class="nav-item nav-link" href="./vue/chapitre/index.php"><i class="fas fa-book"></i> Chapitre</a>
                                 <?php
                                         if (!isset($_SESSION['auth'])) {
                                         echo '<a class="nav-item nav-link custom-link" href="vue/connexion/index.php"> <i class="fas fa-sign-in-alt"></i> Connexion</a>';
@@ -50,36 +41,20 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 mt-4">
-                    <h2 class="test center" id="who-title">A Propos</h2>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <img src="vue/img/photojean.jpg" alt="Jean ForteRoche" id="jean">
-                        </div>
-                        <div class="col-sm-9">
-                            <h3>Jean Forteroche, écrivain de roman d'aventure.</h3>
-                            <p>" Né en 1961 à Paris. Après une carrière réussie en tant que vice-président International dans des grands groupes informatiques, j’ai décidé de poser mes valises pour me consacrer à l’écriture, ma passion depuis toujours. Mon goût de la lecture, acquis dès le plus jeune âge, ne m’a jamais quitté. Lecteur compulsif, j’ai d’abord dévoré les Jules Verne, puis des auteurs tels que Connelly, Mankel, Deon Meyer, Grisham, Kellermann, ou encore Adler-Holsen ou Indridasson. "</p>
-                            <p></p>
-                            <p>- Jean Forteroche -</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="contenu">
-                    <h2>Derniers chapitres</h2>
-                    <?= $contenu ?>
-                </div>
-                <!-- #contenu -->
-            </div>
-            <!-- #global -->
-            <footer id="piedBlog">
-                Yukun©2018 Tous droits réservés.
-            </footer>
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-            <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+        <div id="contenu">
+            <?= $contenu ?>
+        </div>
+        <!-- #contenu -->
+    </div>
+    <!-- #global -->
+    <footer id="piedBlog">
+        Yukun©2018 Tous droits réservés.
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </body>
 
 </html>

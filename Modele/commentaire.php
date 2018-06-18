@@ -18,6 +18,8 @@ class Commentaire extends Modele {
         return $commentaires;
     }
 
+    
+
     public function ajouterCommentaire($auteur, $contenu, $idBillet) {
         $sql = 'insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID)'
             . ' values(?, ?, ?, ?)';

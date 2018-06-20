@@ -2,7 +2,7 @@
 <header class="Alaska_banner" id="header-perso2">
 </header>
 
-<h1 id="Titre_Episode"> Un Billet pour l'Alaska </h1>
+<h1 id="Titre_Episode"> Billet simple pour l'Alaska </h1>
 
 <?php $this->titre = "Mon Blog"; ?>
 <?php foreach ($billets as $billet):

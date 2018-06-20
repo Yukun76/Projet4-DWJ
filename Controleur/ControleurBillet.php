@@ -5,8 +5,6 @@ require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
 /**
  * Contrôleur des actions liées aux billets
- *
- * @author Baptiste Pesquet
  */
 class ControleurBillet extends Controleur {
 
@@ -41,6 +39,28 @@ class ControleurBillet extends Controleur {
         
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executerAction("index");
+    }
+
+      
+     // Signale un comment
+    public function reportComment()
+    {
+        if (!isset($_SESSION['report'])) {
+            $_SESSION['report'] = [];
+        }
+        // Limite le reporting à 5 par session et 1 par commentaire
+        if (count($_SESSION['report']) < 5 && !in_array($_GET['id'], $_SESSION['report'])) {
+            $countObject = $this->Comment->findCount($_GET['id']);
+        
+            $count = (int)$countObject->signal_count;
+            $result = $this->Comment->update($_GET['id'], ['signal_count' => $count + 1]);
+            if ($result) {
+                array_push($_SESSION['report'], $_GET['id']);
+            }
+        } else {
+            // Ne rien faire
+        }        
+        header('Location: index.php?p=Billet.index&id=' . $_GET['id']);
     }
 }
 

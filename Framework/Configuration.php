@@ -2,10 +2,6 @@
 
 /**
  * Classe de gestion des paramètres de configuration.
- * Inspirée du SimpleFramework de Frédéric Guillot
- * (https://github.com/fguillot/simpleFramework)
- *
- * @author Baptiste Pesquet
  */
 class Configuration
 {

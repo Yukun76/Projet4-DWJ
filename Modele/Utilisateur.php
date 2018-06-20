@@ -2,11 +2,6 @@
 
 require_once 'Framework/Modele.php';
 
-/**
- * Modélise un utilisateur du blog
- *
- * @author Baptiste Pesquet
- */
 class Utilisateur extends Modele {
 
     /**

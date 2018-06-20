@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div id="last_chap">
-                <h2>Derniers chapitres</h2>
+                <h2>Derniers Episodes</h2>
             </div>
         </div>
         <?php $this->titre = "Mon Blog"; ?>

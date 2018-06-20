@@ -3,8 +3,6 @@
 /**
  * Classe modélisant la session.
  * Encapsule la superglobale PHP $_SESSION.
- * 
- * @author Baptiste Pesquet
  */
 class Session
 {

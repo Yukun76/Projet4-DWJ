@@ -4,8 +4,6 @@ require_once 'Session.php';
 
 /**
  * Classe modélisant une requête HTTP entrante.
- * 
- * @author Baptiste Pesquet
  */
 class Requete
 {

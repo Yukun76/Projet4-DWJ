@@ -21,11 +21,11 @@
 </article>
 <hr />
 <header>
-    <h2 id="titreReponses">Commentaires <i class="fas fa-comment"></i></h2>
+    <h3 id="titreReponses">Commentaires <i class="fas fa-comment"></i></h3>
 </header>
 <div class="Chap_com">
 <?php foreach ($commentaires as $commentaire): ?>
-    <p><em><?= $this->nettoyer($commentaire['auteur'])  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire['date']) ?> :<br/>
+    <p><strong><em><?= $this->nettoyer($commentaire['auteur'])  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire['date']) ?> :<br/></strong>
     <?= nl2br($commentaire['contenu']) ?></p></em>
 <?php endforeach; ?>
 </div>

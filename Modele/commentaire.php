@@ -2,11 +2,6 @@
 
 require_once 'Framework/Modele.php';
 
-/**
- * Fournit les services d'accès aux genres musicaux 
- * 
- * @author Baptiste Pesquet
- */
 class Commentaire extends Modele {
 
 // Renvoie la liste des commentaires associés à un billet

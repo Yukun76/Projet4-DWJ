@@ -29,12 +29,12 @@
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                                 <a class="nav-item nav-link" href="index.php"><i class="fas fa-home"></i> Accueil</a>
-                                <a class="nav-item nav-link" href="./vue/chapitre/index.php"><i class="fas fa-book"></i> Chapitre</a>
+                                <a class="nav-item nav-link" href="Episode"><i class="fas fa-book"></i> Episodes</a>
                                 <?php
-                                        if (!isset($_SESSION['auth'])) {
-                                        echo '<a class="nav-item nav-link custom-link" href="vue/connexion/index.php"> <i class="fas fa-sign-in-alt"></i> Connexion</a>';
+                                        if (!isset($_SESSION[''])) {
+                                        echo '<a class="nav-item nav-link custom-link" href="connexion"> <i class="fas fa-sign-in-alt"></i> Connexion</a>';
                                         } else {
-                                        echo '<a class="nav-item nav-link custom-link" href=""><i class="fas fa-cogs"></i> Admin</a>'; } ?>
+                                        echo '<a class="nav-item nav-link custom-link" href="admin"><i class="fas fa-cogs"></i> Admin</a>'; } ?>
                             </div>
                         </div>
                     </nav>

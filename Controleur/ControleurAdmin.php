@@ -6,8 +6,6 @@ require_once 'Modele/Commentaire.php';
 
 /**
  * Contrôleur des actions d'administration
- *
- * @author Baptiste Pesquet
  */
 class ControleurAdmin extends ControleurSecurise
 {

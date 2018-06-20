@@ -5,8 +5,6 @@ require_once 'Modele/Utilisateur.php';
 
 /**
  * Contrôleur gérant la connexion au site
- *
- * @author Baptiste Pesquet
  */
 class ControleurConnexion extends Controleur
 {

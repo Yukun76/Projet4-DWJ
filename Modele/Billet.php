@@ -2,11 +2,6 @@
 
 require_once 'Framework/Modele.php';
 
-/**
- * Fournit les services d'accès aux genres musicaux 
- * 
- * @author Baptiste Pesquet
- */
 class Billet extends Modele {
 
     /** Renvoie la liste des billets du blog
@@ -16,7 +11,15 @@ class Billet extends Modele {
     public function getBillets() {
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' order by BIL_ID desc';
+                . ' order by BIL_ID desc LIMIT 2';
+        $billets = $this->executerRequete($sql);
+        return $billets;
+    }
+
+        public function getEpisode() {
+        $sql = 'select BIL_ID as id, BIL_DATE as date,'
+                . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
+                . ' order by BIL_ID asc';
         $billets = $this->executerRequete($sql);
         return $billets;
     }

@@ -24,6 +24,12 @@ body {
     overflow-x: hidden;
 }
 
+#allbody {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+
 h1 {
     color: black;
 }
@@ -44,6 +50,18 @@ h1 {
     background-position: center;
     background-size: 2600px;
     margin-bottom: 30px;
+}
+
+#header-perso3 { 
+    height: 200px;
+}
+
+#logo2 { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 20%;
 }
 
 #Alaska_text {
@@ -140,4 +158,54 @@ hr {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+}
+
+h2 { text-align: center; }
+
+.sidenav {
+    height: 100%;
+    width: 180px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    overflow-x: hidden;
+    margin-top: 37px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    display: block;
+    transition: 1s;
+}
+
+
+.sidenav a:hover {
+    background-color: #222222;
+    transition: 1s;
+}
+
+#form_connexion { 
+    margin-left: 50px;
+}
+
+.title-id {
+    color: #046380;
+}
+
+#Titre_Episode {
+    margin-bottom: 50px;
+    width: 50%;
+    color: red;
+    font-family: Cormorant Garamond, sans-serif;
+    font-size: 4em;
+    box-shadow: 3px 3px 10px 5px #000;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    height: 100px;
 }

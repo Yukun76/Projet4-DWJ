@@ -11,7 +11,7 @@ class Billet extends Modele {
     public function getBillets() {
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' order by BIL_ID desc LIMIT 2';
+                . ' order by BIL_TITRE desc LIMIT 2';
         $billets = $this->executerRequete($sql);
         return $billets;
     }
@@ -19,7 +19,7 @@ class Billet extends Modele {
         public function getEpisode() {
         $sql = 'select BIL_ID as id, BIL_DATE as date,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' order by BIL_ID asc';
+                . ' order by BIL_TITRE asc';
         $billets = $this->executerRequete($sql);
         return $billets;
     }

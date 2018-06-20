@@ -200,12 +200,31 @@ h2 { text-align: center; }
 #Titre_Episode {
     margin-bottom: 50px;
     width: 50%;
-    color: red;
     font-family: Cormorant Garamond, sans-serif;
+    background: url(http://www.vieux-monthey.ch/wp-content/uploads/2014/07/vieux-papier.jpg);
+    background-size: 120%;
+    background-position: -20px;
     font-size: 4em;
     box-shadow: 3px 3px 10px 5px #000;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
     height: 100px;
+}
+
+.HR_EPISODE {
+display: none;
+}
+
+#all_episode {
+    box-shadow: 3px 3px 10px 5px grey;
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    background: url(https://www.edition-originale.com/upload/images/japon2%20.jpg);
+}
+
+#Body_episode {
+    background: url(https://i.pinimg.com/originals/9f/8c/9b/9f8c9b4f1cb220277f8dcace57aa0e26.jpg);
 }

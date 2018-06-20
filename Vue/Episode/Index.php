@@ -9,14 +9,14 @@
 ?>
 <div class="Chapitre">
     <article>
-        <header>
-            <hr>
+        <header id="all_episode">
+            <hr class="HR_EPISODE">
             <a href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>">
                 <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
             </a>
             <time><?= $this->nettoyer($billet['date']) ?></time>
         </header>
-        <hr>        
+        <hr class="HR_EPISODE">     
     </article>
 </div>
 <br/>

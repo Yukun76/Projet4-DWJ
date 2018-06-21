@@ -26,7 +26,7 @@
 <div class="Chap_com">
 <?php foreach ($commentaires as $commentaire): ?>
     <p><strong><em><?= $this->nettoyer($commentaire['auteur'])  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire['date']) ?> :<br/></strong>
-    <?= nl2br($commentaire['contenu']) ?></p></em>
+    <?= nl2br(htmlspecialchars($commentaire['contenu'])) ?></p></em>
 <?php endforeach; ?>
 </div>
 <hr />

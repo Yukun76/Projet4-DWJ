@@ -2,6 +2,7 @@
 <header class="Alaska_banner" id="header-perso2">
 </header>
 
+<div id="entourage_episode">
 <h1 id="Titre_Episode"> Billet simple pour l'Alaska </h1>
 
 <?php $this->titre = "Mon Blog"; ?>
@@ -21,3 +22,4 @@
 </div>
 <br/>
 <?php endforeach; ?>
+</div>

@@ -228,3 +228,14 @@ display: none;
 #Body_episode {
     background: url(https://i.pinimg.com/originals/9f/8c/9b/9f8c9b4f1cb220277f8dcace57aa0e26.jpg);
 }
+
+
+.erreur_404 {
+    text-align: center; 
+}
+
+.alert-danger { 
+    width: 100%; 
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -16,7 +16,7 @@
 									<hr>
 									<a class="nav-item nav-link" href="#"><i class="fas fa-book"></i> Chapitres</a>
 									<hr>
-									<a class="nav-item nav-link" href="#"><i class="far fa-comment"></i> Commentaires</a>
+									<a class="nav-item nav-link" href="vue/admin/admin/comments/index.php"><i class="far fa-comment"></i> Commentaires</a>
 									<hr>
 									<a class="nav-item nav-link" href="connexion/deconnecter"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
 									<hr>

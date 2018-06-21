@@ -1,6 +1,6 @@
 <?php
 
-require_once 'ControleurSecurise.php';
+require_once 'Framework/ControleurSecurise.php';
 require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
 

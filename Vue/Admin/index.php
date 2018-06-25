@@ -1,5 +1,22 @@
-<?php $this->titre = "Mon Blog - Administration" ?>
-
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Bootstrap core CSS -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+		<?php $this->titre = "Mon Blog - Administration" ?>
+	</head>
+	<header class="header banner" id="header-perso3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <a href=""><img src="vue/img/logo.png" alt="Jean ForteRoche" id="logo2"></a>
+            </div>
+        </div>
+    </div>
+</header>
 	<div id="allbody">
 		<body>
 			<div class="header" id="header-perso">
@@ -12,11 +29,9 @@
 							<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 								<div class="sidenav">
 									<hr>
-									<a class="nav-item nav-link" href="index.php"><i class="fas fa-home"></i> Accueil</a>
+									<a class="nav-item nav-link" href="#"><i class="fas fa-book"></i> Episodes</a>
 									<hr>
-									<a class="nav-item nav-link" href="#"><i class="fas fa-book"></i> Chapitres</a>
-									<hr>
-									<a class="nav-item nav-link" href="vue/admin/admin/comments/index.php"><i class="far fa-comment"></i> Commentaires</a>
+									<a class="nav-item nav-link" href=""><i class="far fa-comment"></i> Commentaires</a>
 									<hr>
 									<a class="nav-item nav-link" href="connexion/deconnecter"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
 									<hr>
@@ -26,6 +41,15 @@
 					</div>
 				</div>
 			</div>
-		</body>
-	</div>
-</html>
+			<div class="container" id="left_contain">
+				<h2>Administration</h2>
+				<br/>
+				<hr>
+				<br/>
+				<h3>Bienvenue, <?= $this->nettoyer($login) ?> ! </h3><br />
+				<p>Nombre de billet : <?= $this->nettoyer($nbBillets) ?> billet(s) <br /> Nombre de commentaire : <?= $this->nettoyer($nbCommentaires) ?> commentaire(s).<p>
+			</div><!-- /.container -->
+			</body>
+		</div>
+	</html>
+

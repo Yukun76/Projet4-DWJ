@@ -50,10 +50,10 @@ class ControleurBillet extends Controleur {
         }
         // Limite le reporting à 5 par session et 1 par commentaire
         if (count($_SESSION['report']) < 5 && !in_array($_GET['id'], $_SESSION['report'])) {
-            $countObject = $this->Comment->findCount($_GET['id']);
+            $countObject = $this->Commentaire->findCount($_GET['id']);
         
             $count = (int)$countObject->signal_count;
-            $result = $this->Comment->update($_GET['id'], ['signal_count' => $count + 1]);
+            $result = $this->Commentaire->update($_GET['id'], ['signal_count' => $count + 1]);
             if ($result) {
                 array_push($_SESSION['report'], $_GET['id']);
             }

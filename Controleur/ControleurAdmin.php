@@ -29,5 +29,37 @@ class ControleurAdmin extends ControleurSecurise
         $this->genererVue(array('nbBillets' => $nbBillets, 'nbCommentaires' => $nbCommentaires, 'login' => $login));
     }
 
+    public function comment() {
+        $nbCommentaires = $this->commentaire->getNombreCommentaires();
+        $this->genererVue(array('nbCommentaires' => $nbCommentaires));
+    }
+
+    public function Episode() {
+        $billets = $this->billet->getEpisode();
+        $this->genererVue(array('billets' => $billets));
+    }
+
+
+    public function add()
+    {
+
+    }
+
+    /**
+     * Modifie un post
+     * @param string $succes
+     */
+    public function edit()
+    {
+
+    }
+
+    /**
+     * Supprime un post
+     */
+    public function delete()
+    {
+
+        }
 }
 

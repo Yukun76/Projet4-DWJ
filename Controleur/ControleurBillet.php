@@ -45,22 +45,7 @@ class ControleurBillet extends Controleur {
      // Signale un comment
     public function reportComment()
     {
-        if (!isset($_SESSION['report'])) {
-            $_SESSION['report'] = [];
-        }
-        // Limite le reporting à 5 par session et 1 par commentaire
-        if (count($_SESSION['report']) < 5 && !in_array($_GET['id'], $_SESSION['report'])) {
-            $countObject = $this->Commentaire->findCount($_GET['id']);
-        
-            $count = (int)$countObject->signal_count;
-            $result = $this->Commentaire->update($_GET['id'], ['signal_count' => $count + 1]);
-            if ($result) {
-                array_push($_SESSION['report'], $_GET['id']);
-            }
-        } else {
-            // Ne rien faire
-        }        
-        header('Location: index.php?p=Billet.index&id=' . $_GET['id']);
+
     }
 }
 

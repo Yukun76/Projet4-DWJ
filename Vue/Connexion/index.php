@@ -20,11 +20,5 @@
 </div>
 <?php if (isset($msgErreur)): ?>
 <p><?= $msgErreur ?></p>
-    public function getNombreCommentaires()
-    {
-        $sql = 'select count(*) as nbCommentaires from T_COMMENTAIRE';
-        $resultat = $this->executerRequete($sql);
-        $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
-        return $ligne['nbCommentaires'];
-    }
+
 <?php endif; ?>

@@ -39,7 +39,9 @@ class ControleurAdmin extends ControleurSecurise
         $this->genererVue(array('billets' => $billets));
     }
 
-
+    /**
+     * Ajoute un post
+    */
     public function add()
     {
 
@@ -47,8 +49,7 @@ class ControleurAdmin extends ControleurSecurise
 
     /**
      * Modifie un post
-     * @param string $succes
-     */
+    */
     public function edit()
     {
 

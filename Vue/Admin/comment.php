@@ -34,7 +34,10 @@
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
+        <td>
+          <a class="btn btn-secondary"><i class="fas fa-eye"></i>  Afficher</a>
+          <a class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
+        </td>
       </tr>
     </tbody>
   </table>

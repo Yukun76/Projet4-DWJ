@@ -27,7 +27,7 @@
 			<div class="container" id="left_contain">
 				<hr id="adminHR">
 				<br/>
-				<h2>Tableau de bord</h2>
+				<h1 class="title-id" id="board_title"><i class="fas fa-bars"></i> Tableau de bord</h1>
 				<br/>
 				<hr id="adminHR">
 				<br/>

@@ -1,14 +1,13 @@
 <?php
-
 require_once 'Framework/ControleurSecurise.php';
 require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
 
+
 /**
  * Contrôleur des actions d'administration
  */
-class ControleurAdmin extends ControleurSecurise
-{
+class ControleurAdmin extends ControleurSecurise  {
     private $billet;
     private $commentaire;
 
@@ -30,8 +29,10 @@ class ControleurAdmin extends ControleurSecurise
     }
 
     public function comment() {
-        $nbCommentaires = $this->commentaire->getNombreCommentaires();
-        $this->genererVue(array('nbCommentaires' => $nbCommentaires));
+        $idBillet = $this->requete->getParametre("id");        
+        $billet = $this->billet->getBillet($idBillet);
+        $commentaires = $this->commentaire->getCommentaires($idBillet);        
+        $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
     }
 
     public function Episode() {
@@ -60,7 +61,6 @@ class ControleurAdmin extends ControleurSecurise
      */
     public function delete()
     {
-
-        }
+    }
 }
 

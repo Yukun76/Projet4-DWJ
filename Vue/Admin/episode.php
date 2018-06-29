@@ -18,24 +18,38 @@
   </div>
 </div>
 <div class="allbody">
+  <h1 class="title-id" id="post_title"><i class="fas fa-book"></i> Administrer les episodes</h1>
+  <p>
+    <a href="" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter</a>
+  </p>
   <table class="table">
     <thead>
       <tr>
-        <td class="title-id">Roman</td>
         <td class="title-id">Titre</td>
+        <td class="title-id">Contenu</td>
         <td class="title-id">Actions</td>
       </tr>
     </thead>
     <tbody>
+      <?php foreach ($billets as $billet):?>
       <tr>
-        <td></td>
-        <td></td>
+        <td><?= $this->nettoyer($billet['titre']) ?></td>
         <td>
-          <a class="btn btn-secondary"><i class="fas fa-eye"></i>  Afficher</a>
+          <?php
+          if(strlen($billet['contenu'])>=33)
+          {
+          $billet['contenu']=substr($billet['contenu'],0,46) . "..." ;
+          }
+          echo $billet['contenu'];
+          ?>
+        </td>
+        <td>
+          <a class="btn btn-secondary" href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>"><i class="fas fa-eye"></i>  Afficher</a>
           <a class="btn btn-primary" href="./admin/edit/"><i class="fas fa-edit"></i> Editer</a>
           <a class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
         </td>
       </tr>
+      <?php endforeach; ?>
     </tbody>
   </table>
 </div>

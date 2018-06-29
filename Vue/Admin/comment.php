@@ -18,27 +18,37 @@
   </div>
 </div>
 <div class="allbody">
+  <h1 class="title-id" id="comment_title"><i class="far fa-comment"></i> Administrer les commentaires</h1>
   <table class="table">
     <thead>
       <tr>
         <td class="title-id">Source</td>
         <td class="title-id">Pseudo</td>
-        <td class="title-id">commentaire</td>
+        <td class="title-id">Commentaire</td>
         <td class="title-id">Signalement</td>
         <td class="title-id">Actions</td>
       </tr>
     </thead>
-    <tbody>
+    <tbody>      
+      <?php foreach ($commentaires as $commentaire):?>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><?= $this->nettoyer($commentaire['titre']) ?></td>
+        <td><?= $this->nettoyer($commentaire['auteur'])  ?></td>
+        <td>
+          <?php
+          if(strlen($nbCommentaire['contenu'])>=33)
+          {
+          $nbCommentaire['contenu']=substr($nbCommentaire['contenu'],0,46) . "..." ;
+          }
+          echo $nbCommentaire['contenu'];
+          ?>          
+        </td>
         <td></td>
         <td>
-          <a class="btn btn-secondary"><i class="fas fa-eye"></i>  Afficher</a>
           <a class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
         </td>
       </tr>
+      <?php endforeach; ?>
     </tbody>
   </table>
 </div>

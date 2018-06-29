@@ -11,6 +11,8 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <base href="<?= $racineWeb ?>">
     <link rel="stylesheet" href="Contenu/style.css" />
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'' });</script>
     <title>
         <?= $titre ?>
     </title>

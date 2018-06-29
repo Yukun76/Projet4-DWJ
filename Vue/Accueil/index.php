@@ -28,8 +28,7 @@
             </div>
         </div>
         <?php $this->titre = "Mon Blog"; ?>
-        <?php foreach ($billets as $billet):
-        ?>
+        <?php foreach ($billets as $billet):?>
         <div class="Chapitre">
             <article>
                 <header>

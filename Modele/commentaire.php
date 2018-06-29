@@ -34,4 +34,9 @@ class Commentaire extends Modele {
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbCommentaires'];
     }
+
+    public function Count($id)
+    {
+        return $this->query("SELECT signal_count FROM T_COMMENTAIRE WHERE id = ?", [$id], true);
+    }
 }

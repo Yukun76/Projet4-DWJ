@@ -1,3 +1,7 @@
+<head>
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+</head>
 <header class="header banner" id="header-perso3">
 	<div class="container">
 		<div class="row">
@@ -15,8 +19,8 @@
 <?php endif; ?>
 
 <form method="post">
-    <?= $form->input('title', 'Titre du chapitre'); ?>
-    <?= $form->input('content', 'Contenu', ['type' => 'textarea']); ?>
+    <?= $form->input('titre', 'Titre du chapitre'); ?>
+    <?= $form->input('contenu', 'Contenu', 'id="text"' ['type' => 'textarea']); ?>
     <button class="btn btn-primary">Sauvegarder</button>
 </form>
 <br>

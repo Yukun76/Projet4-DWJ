@@ -24,7 +24,7 @@ body {
     /*overflow-x: hidden;*/
 }
 
-.allbody { height: 1000px; }
+.allbody { height: 1000px; background: #fcfbf9; }
 
 h1 {
     color: black;
@@ -33,7 +33,6 @@ h1 {
 .titreBillet {
     margin-bottom: 0px;
 }
-
 
 #contenu {
     margin-bottom: 30px;

@@ -29,10 +29,9 @@ class ControleurAdmin extends ControleurSecurise  {
     }
 
     public function comment() {
-        $idBillet = $this->requete->getParametre("id");        
-        $billet = $this->billet->getBillet($idBillet);
-        $commentaires = $this->commentaire->getCommentaires($idBillet);        
-        $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
+        $billets = $this->billet->getEpisode();
+        $commentaires = $this->commentaire->getComments();
+        $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
     }
 
     public function Episode() {

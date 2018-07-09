@@ -29,21 +29,22 @@
         <td class="title-id">Actions</td>
       </tr>
     </thead>
-    <tbody>      
+    <tbody>
       <?php foreach ($commentaires as $commentaire):?>
       <tr>
-        <td><?= $this->nettoyer($commentaire['titre']) ?></td>
+        
+        <td><?= $this->nettoyer($commentaire['id']) ?></td>
         <td><?= $this->nettoyer($commentaire['auteur'])  ?></td>
         <td>
           <?php
-          if(strlen($nbCommentaire['contenu'])>=33)
+          if(strlen($commentaire['contenu'])>=33)
           {
-          $nbCommentaire['contenu']=substr($nbCommentaire['contenu'],0,46) . "..." ;
+          $commentaire['contenu']=substr($commentaire['contenu'],0,46) . "..." ;
           }
-          echo $nbCommentaire['contenu'];
-          ?>          
+          echo htmlspecialchars($commentaire['contenu']);
+          ?>
         </td>
-        <td></td>
+        <td><?= $this->nettoyer($commentaire['SIGNAL_COUNT']) ?></td>
         <td>
           <a class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
         </td>

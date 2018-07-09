@@ -20,7 +20,7 @@
 <div class="allbody">
   <h1 class="title-id" id="post_title"><i class="fas fa-book"></i> Administrer les episodes</h1>
   <p>
-    <a href="" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter</a>
+    <a href="./admin/billetCreer/" class="btn btn-success" id="btn-success"><i class="fas fa-plus"></i> Ajouter</a>
   </p>
   <table class="table">
     <thead>
@@ -45,7 +45,7 @@
         </td>
         <td>
           <a class="btn btn-secondary" href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>"><i class="fas fa-eye"></i>  Afficher</a>
-          <a class="btn btn-primary" href="./admin/edit/"><i class="fas fa-edit"></i> Editer</a>
+          <a class="btn btn-primary" href="./admin/billetModifier/"><i class="fas fa-edit"></i> Editer</a>
           <a class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
         </td>
       </tr>

@@ -13,6 +13,13 @@ class Commentaire extends Modele {
         return $commentaires;
     }
 
+    public function getComments() {
+        $sql = 'select BIL_ID as id, SIGNAL_COUNT,'
+                . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
+                . ' order by BIL_ID asc';        
+        $commentaires = $this->executerRequete($sql);
+        return $commentaires;
+    }
     
 
     public function ajouterCommentaire($auteur, $contenu, $idBillet) {
@@ -35,8 +42,51 @@ class Commentaire extends Modele {
         return $ligne['nbCommentaires'];
     }
 
-    public function Count($id)
+
+    public function getCommentaire($idCommentaire)
     {
-        return $this->query("SELECT signal_count FROM T_COMMENTAIRE WHERE id = ?", [$id], true);
+        $sql = 'select COM_ID as id, COM_DATE as date, BIL_ID as bil_id,'
+            . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
+            . ' where COM_ID=:id';
+        $commentaire = $this->executerRequete($sql, array('id' => $idCommentaire))->fetch();
+        return $commentaire;
+    }
+
+    public function countCommentaires()
+    {
+        $sql = 'SELECT COUNT(COM_ID) AS cpt FROM T_COMMENTAIRE';
+        $nombreCommentaire = $this->executerRequete($sql)->fetch();
+        return $nombreCommentaire['cpt'];
+    }
+
+    public function countCommentaire($idBillet) {
+        $sql = 'SELECT COUNT(COM_ID) AS cpt FROM T_COMMENTAIRE WHERE BIL_ID = :idBillet';
+        $nombreCommentairesPerBillet = $this->executerRequete($sql, array('idBillet' => $idBillet))->fetch();
+        return $nombreCommentairesPerBillet['cpt'];
+    }
+
+
+    public function commentaireSupprimer($idCommentaire){
+        $sql = 'DELETE FROM T_COMMENTAIRE WHERE COM_ID = :idCommentaire';
+
+        return $this->executerRequete($sql, array(
+                'idCommentaire' => $idCommentaire,
+            ))->rowCount() == 1;
+    }
+
+
+    public function ajouterUnSignalement($id)
+    {
+        $sql = 'UPDATE T_COMMENTAIRE SET SIGNAL_COUNT  = SIGNAL_COUNT  + 1 WHERE COM_ID = :id';
+        $this->executerRequete($sql, array('id' => $id));
+    }
+
+
+    public function getNombreSignalements()
+    {
+        $sql = 'SELECT count(*) AS nbSignalements FROM T_COMMENTAIRE WHERE SIGNAL_COUNT  != 0';
+        $reponse = $this->executerRequete($sql);
+        $ligne = $reponse->fetch();
+        return $ligne['nbSignalements'];
     }
 }

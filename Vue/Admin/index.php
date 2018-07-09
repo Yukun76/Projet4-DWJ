@@ -21,9 +21,6 @@
 					</div>
 				</div>
 			</div>
-			<script>
-
-</script>
 			<div class="container" id="left_contain">
 				<hr id="adminHR">
 				<br/>

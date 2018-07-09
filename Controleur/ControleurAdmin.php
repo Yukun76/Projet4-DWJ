@@ -29,10 +29,9 @@ class ControleurAdmin extends ControleurSecurise  {
     }
 
     public function comment() {
-        $idBillet = $this->requete->getParametre("id");        
-        $billet = $this->billet->getBillet($idBillet);
-        $commentaires = $this->commentaire->getCommentaires($idBillet);        
-        $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
+        $billets = $this->billet->getEpisode();
+        $commentaires = $this->commentaire->getComments();
+        $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
     }
 
     public function Episode() {
@@ -40,27 +39,49 @@ class ControleurAdmin extends ControleurSecurise  {
         $this->genererVue(array('billets' => $billets));
     }
 
-    /**
-     * Ajoute un post
-    */
-    public function add()
-    {
 
+    public function billetCreer()
+    {
+        if ($this->requete->existeParametre("dateBillet") && $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("contenuBillet")) {
+            $dateBillet = $this->requete->getParametre('dateBillet');
+            $titreBillet = $this->requete->getParametre('titreBillet');
+            $contenuBillet = $this->requete->getParametre('contenuBillet');
+            $this->billet->BilletCreer($dateBillet, $titreBillet, $contenuBillet);
+            $this->rediriger("admin");
+        }
+        $billet = array('title' => "Mon titre", 'description' => '<p>Le contenu de mon article</p>');
+        $this->genererVue(array('billet' => $billet));
     }
 
-    /**
-     * Modifie un post
-    */
-    public function edit()
+    public function billetModifier()
     {
+        $id = $this->requete->getParametre('id');
+        if ($this->requete->existeParametre("dateBillet") && $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("contenuBillet")) {
+            $dateBillet = $this->requete->getParametre('dateBillet');
+            $titreBillet = $this->requete->getParametre('titreBillet');
+            $contenuBillet = $this->requete->getParametre('contenuBillet');
+            $this->billet->billetModifier($id, $dateBillet, $titreBillet, $contenuBillet);
+            $this->rediriger("admin");
+        }
 
+        $billet = $this->billet->getBillet($id);
+        $this->genererVue(array('billet' => $billet));
     }
 
-    /**
-     * Supprime un post
-     */
-    public function delete()
+    public function billetSupprimer()
     {
+        $id = $this->requete->getParametre('id');
+        $this->billet->billetSupprimer($id);
+        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet supprimé");
+        $this->rediriger("admin");
+    }
+
+    public function commentaireSupprimer()
+    {
+        $id = $this->requete->getParametre('id');
+        $this->commentaire->commentaireSupprimer($id);
+        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
+        $this->rediriger("admin");
     }
 }
 

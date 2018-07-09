@@ -24,7 +24,7 @@ body {
     /*overflow-x: hidden;*/
 }
 
-.allbody { height: 1000px; }
+.allbody { height: 1000px; background: #fcfbf9; }
 
 h1 {
     color: black;
@@ -33,7 +33,6 @@ h1 {
 .titreBillet {
     margin-bottom: 0px;
 }
-
 
 #contenu {
     margin-bottom: 30px;
@@ -241,7 +240,7 @@ background-color: #9994c1;}
     text-align: center;
 }
 
-.btn-success{
+#btn-success{
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -362,4 +361,10 @@ tbody tr {
     -moz-transition: background-color 0.5s ease-out;
     -o-transition: background-color 0.5s ease-out;
     transition: background-color 0.5s ease-out;
+}
+
+#contenu {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

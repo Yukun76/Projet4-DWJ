@@ -53,4 +53,39 @@ class Billet extends Modele {
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbBillets'];
     }
+
+    public function billetCreer($dateBillet, $titreBillet, $contenuBillet)
+    {
+        $sql = 'INSERT INTO T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet, BIL_CONTENU= :contenuBillet';
+        return $this->executerRequete($sql, array(
+                'dateBillet' => $dateBillet,
+                'titreBillet' => $titreBillet,
+                'contenuBillet' => $contenuBillet
+            ))->rowCount() == 1;
+    }
+
+    public function billetModifier($idBillet, $dateBillet, $titreBillet, $contenuBillet)
+    {
+        $sql = 'UPDATE T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet, BIL_CONTENU= :contenuBillet WHERE BIL_ID=:id';
+        return $this->executerRequete($sql, array(
+                'dateBillet' => $dateBillet,
+                'titreBillet' => $titreBillet,
+                'contenuBillet' => $contenuBillet,
+                'id' => $idBillet
+            ))->rowCount() == 1;
+    }
+
+    public function billetSupprimer($idBillet)
+    {
+        $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = :numeroBillet';
+
+        return $this->executerRequete($sql, array(
+                'numeroBillet' => $idBillet,
+            ))->rowCount() == 1;
+    }
+
+    public function formatDate($billet){
+        $dateModifie = IntlDateFormatter::formatObject(new DateTime($billet['date']),IntlDateFormatter::LONG);
+    return $dateModifie;
+    }
 }

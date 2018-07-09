@@ -8,14 +8,12 @@
     </div>
 </header>
 
-<?php $this->menuActif = "Administration";
-?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1 class="page-header"></h1>
     <div class="row placeholders">
         <div id="contenu">
             <?php $this->titre = "Mon Blog - Ajouter un nouveau billet" ?>
-            <h2>Création d'un nouveau billet</h2>
+            <h1>Création d'un nouveau billet</h1>
             <br>
             <hr>
             <form method="post" class="crud-box">
@@ -35,8 +33,12 @@
                     </div>
                     <button class="btn btn-success" type="submit">Ajouter le nouveau billet</button>
                 </form>
-                <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-                <script>tinymce.init({ selector:'textarea' });</script>
+            <script>
+                tinymce.init({
+                    selector: '#tiny',
+                    language: 'fr_FR'
+                });
+            </script>
                 <hr> <!-- Barre séparateur -->
             </div>
         </div>

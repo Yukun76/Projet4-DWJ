@@ -34,9 +34,6 @@ h1 {
     margin-bottom: 0px;
 }
 
-#contenu {
-    margin-bottom: 30px;
-}
 
 .Alaska_banner {
     height: 250px;
@@ -367,4 +364,18 @@ tbody tr {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 30px;
 }
+
+#contenu h1 {
+    color: #046380;
+}
+
+
+#modifierBillet {
+    height: 1000px;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+}
+

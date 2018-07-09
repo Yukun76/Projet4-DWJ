@@ -45,7 +45,7 @@
         </td>
         <td>
           <a class="btn btn-secondary" href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>"><i class="fas fa-eye"></i>  Afficher</a>
-          <a class="btn btn-primary" href="./admin/billetModifier/"><i class="fas fa-edit"></i> Editer</a>
+          <a class="btn btn-primary" href="./admin/billetModifier/<?= $billet['id'] ?>"><i class="fas fa-edit"></i> Editer</a>
           <a class="btn btn-danger"><i class="fas fa-trash"></i> Supprimer</a>
         </td>
       </tr>

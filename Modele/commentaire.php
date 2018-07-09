@@ -16,7 +16,7 @@ class Commentaire extends Modele {
     public function getComments() {
         $sql = 'select BIL_ID as id, SIGNAL_COUNT,'
                 . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-                . ' order by BIL_ID asc';        
+                . ' order by SIGNAL_COUNT DESC';        
         $commentaires = $this->executerRequete($sql);
         return $commentaires;
     }

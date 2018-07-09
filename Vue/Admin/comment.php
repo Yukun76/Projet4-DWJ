@@ -30,9 +30,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($commentaires as $commentaire):?>
-      <tr>
-        
+      <?php foreach ($commentaires as $commentaire):?> 
         <td><?= $this->nettoyer($commentaire['id']) ?></td>
         <td><?= $this->nettoyer($commentaire['auteur'])  ?></td>
         <td>

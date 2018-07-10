@@ -47,7 +47,7 @@ class ControleurAdmin extends ControleurSecurise  {
             $titreBillet = $this->requete->getParametre('titreBillet');
             $contenuBillet = $this->requete->getParametre('contenuBillet');
             $this->billet->BilletCreer($dateBillet, $titreBillet, $contenuBillet);
-            $this->rediriger("admin");
+            $this->rediriger("admin/Episode/");
         }
         $billet = array('title' => "Mon titre", 'description' => '<p>Le contenu de mon article</p>');
         $this->genererVue(array('billet' => $billet));
@@ -61,7 +61,7 @@ class ControleurAdmin extends ControleurSecurise  {
             $titreBillet = $this->requete->getParametre('titreBillet');
             $contenuBillet = $this->requete->getParametre('contenuBillet');
             $this->billet->billetModifier($id, $dateBillet, $titreBillet, $contenuBillet);
-            $this->rediriger("admin");
+            $this->rediriger("admin/Episode/");
         }
 
         $billet = $this->billet->getBillet($id);
@@ -72,16 +72,23 @@ class ControleurAdmin extends ControleurSecurise  {
     {
         $id = $this->requete->getParametre('id');
         $this->billet->billetSupprimer($id);
-        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet supprimé");
-        $this->rediriger("admin");
+        //$this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet supprimé");
+        $this->rediriger("admin/Episode/");
     }
 
     public function commentaireSupprimer()
     {
         $id = $this->requete->getParametre('id');
         $this->commentaire->commentaireSupprimer($id);
-        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
-        $this->rediriger("admin");
+       // $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
+        $this->rediriger("admin/comment/");
+    }
+
+    public function supprimerSignalement()    {
+        $id = $this->requete->getParametre('id');
+        $this->commentaire->supprimerSignalement($id);
+        //$this->setFlash(Session::FLASH_TYPE_SUCCESS, "Signalement(s) supprimé(s)");
+        $this->rediriger("admin/comment/");
     }
 }
 

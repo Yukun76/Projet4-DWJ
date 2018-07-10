@@ -40,12 +40,5 @@ class ControleurBillet extends Controleur {
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executerAction("index");
     }
-
-      
-     // Signale un comment
-    public function reportComment()
-    {
-
-    }
 }
 

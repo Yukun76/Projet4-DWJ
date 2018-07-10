@@ -40,8 +40,6 @@
 											<form action="/action_page.php">
 												<div align="center"><img alt="User Pic" src="vue/img/photojean.jpg" id="profile-image1" class="img-circle img-responsive">
 												</div>
-												<input type="file" name="pic" accept="image/*">
-												<input type="submit">
 											</form>
 										</div>
 										<br>

@@ -52,19 +52,6 @@ class Commentaire extends Modele {
         return $commentaire;
     }
 
-    public function countCommentaires()
-    {
-        $sql = 'SELECT COUNT(COM_ID) AS cpt FROM T_COMMENTAIRE';
-        $nombreCommentaire = $this->executerRequete($sql)->fetch();
-        return $nombreCommentaire['cpt'];
-    }
-
-    public function countCommentaire($idBillet) {
-        $sql = 'SELECT COUNT(COM_ID) AS cpt FROM T_COMMENTAIRE WHERE BIL_ID = :idBillet';
-        $nombreCommentairesPerBillet = $this->executerRequete($sql, array('idBillet' => $idBillet))->fetch();
-        return $nombreCommentairesPerBillet['cpt'];
-    }
-
 
     public function commentaireSupprimer($idCommentaire){
         $sql = 'DELETE FROM T_COMMENTAIRE WHERE COM_ID = :idCommentaire';
@@ -88,5 +75,11 @@ class Commentaire extends Modele {
         $reponse = $this->executerRequete($sql);
         $ligne = $reponse->fetch();
         return $ligne['nbSignalements'];
+    }
+
+    public function supprimerSignalement($id)
+    {
+        $sql = 'UPDATE T_COMMENTAIRE SET SIGNAL_COUNT = 0 WHERE COM_ID = :id';
+        $this->executerRequete($sql, array('id' => $id));
     }
 }

@@ -60,7 +60,7 @@ class Commentaire extends Modele {
             ))->rowCount() == 1;
     }
 
-    public function getCommentairesTronques()
+    public function getComments()
     {
          $sql = 'SELECT T_BILLET.BIL_ID AS id, T_BILLET.BIL_TITRE AS titre, T_COMMENTAIRE.COM_ID AS idc, T_COMMENTAIRE.COM_CONTENU AS contenu, COM_AUTEUR as auteur, T_COMMENTAIRE.SIGNAL_COUNT AS signalement FROM T_COMMENTAIRE, T_BILLET WHERE T_BILLET.BIL_ID = T_COMMENTAIRE.BIL_ID order by SIGNAL_COUNT DESC';
         $CommentairesTronques = $this->executerRequete($sql, array());

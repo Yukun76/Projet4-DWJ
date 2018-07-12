@@ -40,7 +40,7 @@
                     <?php
                     if(strlen($billet['contenu'])>=33)
                     {
-                    $billet['contenu']=substr($billet['contenu'],0,46) . "..." ;
+                    $billet['contenu']=substr($billet['contenu'],0,54) . "..." ;
                     }
                     echo $billet['contenu'];
                     ?>
@@ -79,7 +79,7 @@
         $('a.btn-danger').on('click',function(e){
             e.preventDefault();
             $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
-            $modal.find('.modal-body p').text("Etes vous sur de vouloir supprimer " + $(this).data('billetTitle'));
+            $modal.find('.modal-body p').text("Êtes-vous sur de vouloir supprimer " + $(this).data('billetTitle'));
             $modal.modal("show");
         })
     });

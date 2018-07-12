@@ -30,7 +30,7 @@ class ControleurAdmin extends ControleurSecurise  {
 
     public function comment() {
         $billets = $this->billet->getEpisode();
-        $commentaires = $this->commentaire->getCommentairesTronques();
+        $commentaires = $this->commentaire->getComments();
         $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
     }
 

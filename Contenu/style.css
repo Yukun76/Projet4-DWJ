@@ -360,15 +360,29 @@ tbody tr {
     transition: background-color 0.5s ease-out;
 }
 
-#contenu {
+#contenu_form {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
+    margin-left: 20%;
 }
 
 #contenu h1 {
     color: #046380;
+}
+
+#btn_newbillet {
+    margin-left: 2%;
+}
+
+
+#contenu_modif {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+
 }
 
 

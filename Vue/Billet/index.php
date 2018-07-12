@@ -26,7 +26,7 @@
     <h3 id="titreReponses">Commentaires <i class="fas fa-comment"></i></h3>
     <div class="Chap_com">
         <?php foreach ($commentaires as $commentaire): ?>
-        <p><strong><em><?= $this->nettoyer($commentaire['auteur'])  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire['date']) ?> : <a href="<?= "commentaire/signaler/" . $this->nettoyer($commentaire['id']) ?>">Signaler !</a><br/></strong>             
+        <p><strong><em><?= $this->nettoyer($commentaire['auteur'])  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire['date']) ?> : <a id="signal_comment" href=" <?= "commentaire/signaler/" . $this->nettoyer($commentaire['id']) ?>">Signaler !</a><br/></strong>             
         <?= nl2br(htmlspecialchars($commentaire['contenu'])) ?></p></em>
         <?php endforeach; ?>
     </div>
@@ -41,3 +41,8 @@
         <button class="btn btn-primary">Envoyer</button>
     </form>
 </div>
+<script>
+ $("#signal_comment").click(function(){
+    $("#signal_comment").css("display" , "none");
+});
+</script>

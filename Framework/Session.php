@@ -7,9 +7,6 @@
 class Session
 {
 
-    const FLASH_TYPE_WARNING = 'warning';
-    const FLASH_TYPE_SUCCESS = 'success';
-
     /**
      * Constructeur.
      * Démarre ou restaure la session
@@ -49,24 +46,6 @@ class Session
     public function existeAttribut($nom)
     {
         return (isset($_SESSION[$nom]) && $_SESSION[$nom] != "");
-    }
-
-
-    public function setMessageFlash($type, $mess)
-    {
-        $this->setAttribut('flash_type', $type);
-        $this->setAttribut('flash_message', $mess);
-    }
-
-
-    public function getMessageFlash()
-    {
-        $flash = [];
-        if ($this->existeAttribut("flash_type")) {
-            $flash['message'] = $this->deleteAttribut('flash_message');
-            $flash['type'] = $this->deleteAttribut('flash_type');
-        }
-        return $flash;
     }
 
 

@@ -1,3 +1,12 @@
+   <div class="alert alert-success fade in">
+
+        <a href="./admin/billetSupprimer/<?= $billet['id'] ?>" class="close" data-dismiss="alert">&times;</a>
+
+        <strong>Success!</strong> Your message has been sent successfully.
+
+    </div>
+
+
 <div class="header" id="header-perso">
     <div class="top-header">
         <div class="container">

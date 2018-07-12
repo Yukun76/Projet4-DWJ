@@ -11,7 +11,7 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1 class="page-header"></h1>
     <div class="row placeholders">
-        <div id="contenu">
+        <div id="contenu_form">
             <?php $this->titre = "Mon Blog - Ajouter un nouveau billet" ?>
             <h1>Création d'un nouveau billet</h1>
             <br>
@@ -31,7 +31,7 @@
                         <label>Texte</label>
                         <textarea rows="20" id="tiny" name="contenuBillet" placeholder="Le texte"></textarea>
                     </div>
-                    <button class="btn btn-success" type="submit">Ajouter le nouveau billet</button>
+                    <button class="btn btn-success" id="btn_newbillet"type="submit">Ajouter le nouveau billet</button>
                 </form>
             <script>
                 tinymce.init({

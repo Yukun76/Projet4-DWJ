@@ -79,7 +79,7 @@
                 <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>
             </div>
             <div class="modal-body">
-                <p>Etes-vous sur de vouloir supprimer le billet concerné ?</p>
+                <p>Etes-vous sur de vouloir supprimer le commentaire concerné ?</p>
             </div>
             <div class="modal-footer">
                 <a href="" id="btnYes" class="btn btn-default">Oui, je confirme</a>

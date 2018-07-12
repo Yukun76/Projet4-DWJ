@@ -94,7 +94,7 @@ class ControleurAdmin extends ControleurSecurise  {
     {
         $id = $this->requete->getParametre('id');
         $this->commentaire->commentaireSupprimer($id);
-       // $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
+        //$this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
         $this->rediriger("admin/comment/");
     }
 

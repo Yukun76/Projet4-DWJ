@@ -33,7 +33,7 @@
                     </div>
                     <label>Contenu du billet</label>
                     <textarea class="form-control" rows="20" id="tiny" name="contenuBillet" placeholder="Le texte">
-                        <?= $billet['contenu'] ?>
+                        <?= nl2br($billet['contenu']) ?>
                     </textarea>
                     <br/>
                     <div class="row">
@@ -45,7 +45,8 @@
             <script>
                 tinymce.init({
                     selector: '#tiny',
-                    language: 'fr_FR'
+                    language: 'fr_FR',                        
+                    extended_valid_elements:"*[*]"
                 });
             </script>
 

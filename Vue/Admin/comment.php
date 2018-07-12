@@ -33,15 +33,16 @@
             <?php if ($commentaires == null) { ?>
                 <tr>
                     <th>-</th>
-                    <th>Aucun commentaire à afficher</th>
                     <th>-</th>
+                    <th>Aucun commentaire à afficher</th>
                     <th>-</th>
                 </tr>
                 <?php } else { ?>
                 <?php foreach ($commentaires as $commentaire):?>
                 <td>
-                    <?= $this->nettoyer($commentaire['id']) ?>
+                    <a href="<?= "billet/index/" . $this->nettoyer($commentaire['id']) ?>"><?= $this->nettoyer($commentaire['titre']) ?></a>
                 </td>
+                
                 <td>
                     <?= $this->nettoyer($commentaire['auteur'])  ?>
                 </td>
@@ -55,15 +56,17 @@
                     ?>
                     </td>
                 <td>
-                    <?= $this->nettoyer($commentaire['SIGNAL_COUNT']) ?>
+                    <?= $this->nettoyer($commentaire['signalement']) ?>
                 </td>
                 <td>
-                    <a class="btn btn-danger" href="./admin/commentaireSupprimer/<?= $commentaire['id'] ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
-                    <a class="btn btn-secondary" href="./admin/supprimerSignalement/<?= $commentaire['id'] ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
+                    <a class="btn btn-danger" href="./admin/commentaireSupprimer/<?= $commentaire['idc'] ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
+                    <?php if ($commentaire['signalement'] > 0) : ?>
+                    <a class="btn btn-secondary" href="./admin/supprimerSignalement/<?= $commentaire['idc'] ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
+                    <?php endif; ?>
                 </td>
                 </tr>
                 <?php endforeach; ?>
             <?php } ?>
         </tbody>
-    </table>
+    </table> 
 </div>

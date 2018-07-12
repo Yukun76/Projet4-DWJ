@@ -30,7 +30,7 @@ class ControleurAdmin extends ControleurSecurise  {
 
     public function comment() {
         $billets = $this->billet->getEpisode();
-        $commentaires = $this->commentaire->getComments();
+        $commentaires = $this->commentaire->getCommentairesTronques();
         $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
     }
 
@@ -74,6 +74,20 @@ class ControleurAdmin extends ControleurSecurise  {
         $this->billet->billetSupprimer($id);
         //$this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet supprimé");
         $this->rediriger("admin/Episode/");
+    }
+
+        public function commentaireEditer()
+    {
+        $this->needModeratorRole();
+        $id = $this->requete->getParametre('id');
+        if ($this->requete->existeParametre("contenuCommentaire")) {
+            $contenuCommentaire = $this->requete->getParametre('contenuCommentaire');
+            $this->commentaire->commentaireEditer($contenuCommentaire, $id);
+            $this->rediriger("admin/comment/");
+        }
+        $commmentaire = $this->commentaire->getCommentaire($id);
+        $this->genererVueAdmin(array('commentaire' => $commmentaire));
+
     }
 
     public function commentaireSupprimer()

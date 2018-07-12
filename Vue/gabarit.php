@@ -6,11 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Roboto|Roboto+Slab|Ubuntu" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <base href="<?= $racineWeb ?>">
     <link rel="stylesheet" href="Contenu/style.css" />
+    <script src='Contenu/js/tinymce/tinymce.min.js'></script>
+    <script src="Contenu/js/jquery.js"></script>
+    <script src="Contenu/js/bootstrap.min.js"></script>
     <script src='Contenu/js/tinymce/tinymce.min.js'></script>
     <title>
         <?= $titre ?>

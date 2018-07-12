@@ -15,7 +15,12 @@
             <time><?= $this->nettoyer($billet['date']) ?></time>
         </header>
         <br />
-        <p><?= $this->nettoyer($billet['contenu']) ?></p>
+        <p><?= $billet['contenu'] ?></p>
+
+        <?php if (isset($_SESSION['login'])): ?>
+            <a class="btn btn-warning back-btn" href="./admin/episode"><i class="fas fa-cog"></i> Panneau d'administration</a>
+         <?php endif; ?>
+
         <hr />
     </article>
     <h3 id="titreReponses">Commentaires <i class="fas fa-comment"></i></h3>

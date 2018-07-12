@@ -373,9 +373,12 @@ tbody tr {
 
 
 #modifierBillet {
-    height: 1000px;
-    width: 100%;
+    width: 175%;
     z-index: 1;
-    left: 0;
 }
 
+
+
+.modal {
+    margin-top: 200px;
+}

@@ -3,8 +3,8 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+                <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="sidenav">
                         <a class="nav-item nav-link" href="admin"><i class="fas fa-bars"></i> Tableau de bord</a>
@@ -46,11 +46,41 @@
                     ?>
                 </td>
                 <td>
-                    <a class="btn btn-secondary" <a href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>"><i class="fas fa-eye"></i>  Afficher</a>
+                    <a class="btn btn-secondary" href="<?="billet/index/" . $this->nettoyer($billet['id']) ?>"><i class="fas fa-eye"></i>  Afficher</a>
                     <a class="btn btn-primary" href="./admin/billetModifier/<?= $billet['id'] ?>"><i class="fas fa-edit"></i> Editer</a>
-                    <a class="btn btn-danger" id="del-billet" href="./admin/billetSupprimer/<?= $billet['id'] ?>"><i class="fas fa-trash"></i> Supprimer</a>
+                    <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="<?= $this->nettoyer($billet['titre']) ?>" data-modal-confirm-url="./admin/billetSupprimer/<?= $billet['id'] ?>"><i class="fas fa-trash"></i> Supprimer</a>
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Demande de confirmation</h3>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="close">×</a>                    
+                </div>
+                <div class="modal-body">
+                    <p>Etes-vous sur de vouloir supprimer le billet concerné ?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="" id="btnYes" class="btn btn-default">Oui, je confirme</a>
+                    <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">Non, j'annule</a>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <script>
+    $(function(){
+        $modal = $('.modal');
+        $('a.btn-danger').on('click',function(e){
+            e.preventDefault();
+            $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
+            $modal.find('.modal-body p').text("Etes vous sur de vouloir supprimer " + $(this).data('billetTitle'));
+            $modal.modal("show");
+        })
+    });
+    </script>

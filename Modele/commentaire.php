@@ -13,14 +13,6 @@ class Commentaire extends Modele {
         return $commentaires;
     }
 
-    public function getComments() {
-        $sql = 'select BIL_ID as id, SIGNAL_COUNT,'
-                . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-                . ' order by SIGNAL_COUNT DESC';        
-        $commentaires = $this->executerRequete($sql);
-        return $commentaires;
-    }
-    
 
     public function ajouterCommentaire($auteur, $contenu, $idBillet) {
         $sql = 'insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID)'
@@ -53,6 +45,13 @@ class Commentaire extends Modele {
     }
 
 
+
+    public function commentaireEditer ($contenu, $idCommentaire) {
+        $sql = 'UPDATE T_COMMENTAIRE SET COM_CONTENU = :contenu WHERE COM_ID = :idc';
+        $this->executerRequete($sql, array('contenu' => $contenu, 'idc' => $idCommentaire));
+    }
+
+
     public function commentaireSupprimer($idCommentaire){
         $sql = 'DELETE FROM T_COMMENTAIRE WHERE COM_ID = :idCommentaire';
 
@@ -60,6 +59,14 @@ class Commentaire extends Modele {
                 'idCommentaire' => $idCommentaire,
             ))->rowCount() == 1;
     }
+
+    public function getCommentairesTronques()
+    {
+         $sql = 'SELECT T_BILLET.BIL_ID AS id, T_BILLET.BIL_TITRE AS titre, T_COMMENTAIRE.COM_ID AS idc, T_COMMENTAIRE.COM_CONTENU AS contenu, COM_AUTEUR as auteur, T_COMMENTAIRE.SIGNAL_COUNT AS signalement FROM T_COMMENTAIRE, T_BILLET WHERE T_BILLET.BIL_ID = T_COMMENTAIRE.BIL_ID order by SIGNAL_COUNT DESC';
+        $CommentairesTronques = $this->executerRequete($sql, array());
+        return $CommentairesTronques->fetchall();
+    }
+
 
 
     public function ajouterUnSignalement($id)

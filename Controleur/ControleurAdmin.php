@@ -2,6 +2,7 @@
 require_once 'Framework/ControleurSecurise.php';
 require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
+require_once 'Modele/histoire.php';
 
 
 /**
@@ -10,6 +11,7 @@ require_once 'Modele/Commentaire.php';
 class ControleurAdmin extends ControleurSecurise  {
     private $billet;
     private $commentaire;
+    private $histoire;
 
     /**
      * Constructeur 
@@ -18,6 +20,7 @@ class ControleurAdmin extends ControleurSecurise  {
     {
         $this->billet = new Billet();
         $this->commentaire = new Commentaire();
+        $this->histoire = new Histoire();
     }
 
     public function index()
@@ -37,6 +40,12 @@ class ControleurAdmin extends ControleurSecurise  {
     public function Episode() {
         $billets = $this->billet->getEpisode();
         $this->genererVue(array('billets' => $billets));
+    }
+
+
+    public function histoire() {
+        $auteur = $this->histoire->auteur();
+        $this->genererVue(array('auteur' => $auteur));
     }
 
 
@@ -103,6 +112,21 @@ class ControleurAdmin extends ControleurSecurise  {
         $this->commentaire->supprimerSignalement($id);
         //$this->setFlash(Session::FLASH_TYPE_SUCCESS, "Signalement(s) supprimé(s)");
         $this->rediriger("admin/comment/");
+    }
+
+
+    public function  histoireEditer ()
+    {
+        $auteur = $this->histoire->auteur();
+        if ($this->requete->existeParametre("histoirePhoto")) {
+            $photo = $this->requete->getParametre('histoirePhoto');
+            $titre = $this->requete->getParametre('histoireTitre');
+            $texte = $this->requete->getParametre('histoireTexte');
+            $citation = $this->requete->getParametre('histoireCitation');
+            $auteur = $this->histoire->editerAuteur($photo,$titre, $texte, $citation);
+            $this->rediriger("admin", "administration");
+        }
+        $this->genererVue(array('auteur' => $auteur));
     }
 }
 

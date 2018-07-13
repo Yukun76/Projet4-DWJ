@@ -14,8 +14,8 @@
         <div id="contenu_form">
             <?php $this->titre = "Mon Blog - Ajouter un nouveau billet" ?>
             <h1>Création d'un nouveau billet</h1>
-            <br>
             <hr>
+            <br />
             <form method="post" class="crud-box">
                 <div class="row">
                     <div class="col-xs-4 col-md-4 form-group">

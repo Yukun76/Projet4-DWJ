@@ -1,11 +1,3 @@
-   <div class="alert alert-success fade in">
-
-        <a href="./admin/billetSupprimer/<?= $billet['id'] ?>" class="close" data-dismiss="alert">&times;</a>
-
-        <strong>Success!</strong> Your message has been sent successfully.
-
-    </div>
-
 
 <div class="header" id="header-perso">
     <div class="top-header">
@@ -19,6 +11,7 @@
                         <a class="nav-item nav-link" href="admin"><i class="fas fa-bars"></i> Tableau de bord</a>
                         <a class="nav-item nav-link" href="./admin/episode/"><i class="fas fa-book"></i> Episodes</a>
                         <a class="nav-item nav-link" href="./admin/comment/"><i class="far fa-comment"></i> Commentaires</a>
+                        <a class="nav-item nav-link" href="./admin/histoire/"><i class="fa fa-address-book"></i> Histoire</a>
                         <a class="nav-item nav-link" href="connexion/deconnecter"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
                     </div>
                 </div>
@@ -49,7 +42,7 @@
                     <?php
                     if(strlen($billet['contenu'])>=33)
                     {
-                    $billet['contenu']=substr($billet['contenu'],0,54) . "..." ;
+                    $billet['contenu']=substr($billet['contenu'],0,50) . "..." ;
                     }
                     echo $billet['contenu'];
                     ?>
@@ -92,4 +85,10 @@
             $modal.modal("show");
         })
     });
+
+    $(document).ready(function(){
+    $('a#btnYes').click(function(){
+        $('.alert').show()
+    }) 
+});
     </script>

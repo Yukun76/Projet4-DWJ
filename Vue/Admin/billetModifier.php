@@ -14,7 +14,7 @@
 
             <h1>Modifier un billet existant</h1>
             <hr>
-
+            <br />
             <div class="col-sm-12 contact-form">
                 <form id="modifierBillet" method="post" class="form" role="form">
                     <div class="row">
@@ -45,7 +45,8 @@
             <script>
                 tinymce.init({
                     selector: '#tiny',
-                    language: 'fr_FR',                        
+                    language: 'fr_FR',  
+                    width : "840",                      
                     extended_valid_elements:"*[*]"
                 });
             </script>

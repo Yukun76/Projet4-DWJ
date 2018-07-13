@@ -17,10 +17,8 @@
                     <img src="vue/img/photojean.jpg" alt="Jean ForteRoche" id="jean">
                 </div>
                 <div class="col-sm-9">
-                    <h3>Jean Forteroche, écrivain de roman d'aventure.</h3>
-                    <p>" Né en 1961 à Paris. Après une carrière réussie en tant que vice-président International dans des grands groupes informatiques, j’ai décidé de poser mes valises pour me consacrer à l’écriture, ma passion depuis toujours. Mon goût de la lecture, acquis dès le plus jeune âge, ne m’a jamais quitté. Lecteur compulsif, j’ai d’abord dévoré les Jules Verne, puis des auteurs tels que Connelly, Mankel, Deon Meyer, Grisham, Kellermann, ou encore Adler-Holsen ou Indridasson. "</p>
-                    <p></p>
-                    <p>- Jean Forteroche -</p>
+                    <h3><span><?= $this->nettoyer($auteur['titre']) ?></span></h3><br>
+                    <p><?= nl2br($auteur['texte']) ?></p>
                 </div>
             </div>
             <div id="last_chap">
@@ -42,12 +40,13 @@
                 
                 if(strlen($billet['contenu'])>=33)
                 {
-                $billet['contenu']=substr($billet['contenu'],0,100) . "..." ;
+                $billet['contenu']=substr($billet['contenu'],0,108) . "..." ;
                 }
                 
                 echo $billet['contenu'];
                 
                 ?>
+                <a href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>">Lire la suite</a>
                 <hr>
                 
             </article>

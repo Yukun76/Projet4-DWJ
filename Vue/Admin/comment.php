@@ -8,9 +8,9 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="sidenav">
                         <a class="nav-item nav-link" href="admin"><i class="fas fa-bars"></i> Tableau de bord</a>
+                        <a class="nav-item nav-link" href="./admin/histoire/"><i class="fa fa-address-book"></i> Histoire</a>
                         <a class="nav-item nav-link" href="./admin/episode/"><i class="fas fa-book"></i> Episodes</a>
                         <a class="nav-item nav-link" href="./admin/comment/"><i class="far fa-comment"></i> Commentaires</a>
-                        <a class="nav-item nav-link" href="./admin/histoire/"><i class="fa fa-address-book"></i> Histoire</a>
                         <a class="nav-item nav-link" href="connexion/deconnecter"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
                     </div>
                 </div>
@@ -95,9 +95,10 @@
         $('a.btn-danger').on('click', function(e) {
             e.preventDefault();
             $modal.find('a#btnYes').attr('href', $(this).data('modalConfirmUrl'));
-            $modal.find('.modal-body p').text("Êtes-vous sur de vouloir supprimer le commentaire de " + $(this).data('comTitle'));
+            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer le commentaire de " + $(this).data('comTitle'))  ;
             $modal.modal("show");
         })
     });
 
 </script>
+

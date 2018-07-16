@@ -7,7 +7,6 @@
         </div>
     </div>
 </header>
-
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1 class="page-header"></h1>
     <div class="row placeholders">
@@ -32,14 +31,14 @@
                         <textarea rows="20" id="tiny" name="contenuBillet" placeholder="Le texte"></textarea>
                     </div>
                     <button class="btn btn-success" id="btn_newbillet"type="submit">Ajouter le nouveau billet</button>
-                </form>
-            <script>
-                tinymce.init({
+                </div>
+            </form>
+                <script>
+                    tinymce.init({
                     selector: '#tiny',
                     language: 'fr_FR'
-                });
-            </script>
-                <hr> <!-- Barre séparateur -->
-            </div>
+                    });
+                </script>
         </div>
     </div>
+</div>

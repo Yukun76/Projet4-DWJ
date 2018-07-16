@@ -26,12 +26,19 @@ class ControleurAdmin extends ControleurSecurise  {
     public function index()
     {
         $nbBillets = $this->billet->getNombreBillets();
+        $auteur = $this->histoire->auteur();
         $nbCommentaires = $this->commentaire->getNombreCommentaires();
         $login = $this->requete->getSession()->getAttribut("login");
-        $this->genererVue(array('nbBillets' => $nbBillets, 'nbCommentaires' => $nbCommentaires, 'login' => $login));
+        $this->genererVue(array('nbBillets' => $nbBillets, 'nbCommentaires' => $nbCommentaires, 'auteur' => $auteur, 'login' => $login));
     }
 
     public function comment() {
+        $billets = $this->billet->getEpisode();
+        $commentaires = $this->commentaire->getComments();
+        $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
+    }
+
+        public function commentLu() {
         $billets = $this->billet->getEpisode();
         $commentaires = $this->commentaire->getComments();
         $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
@@ -49,7 +56,7 @@ class ControleurAdmin extends ControleurSecurise  {
     }
 
 
-    public function billetCreer()
+    public function episodeCreer()
     {
         if ($this->requete->existeParametre("dateBillet") && $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("contenuBillet")) {
             $dateBillet = $this->requete->getParametre('dateBillet');
@@ -62,7 +69,7 @@ class ControleurAdmin extends ControleurSecurise  {
         $this->genererVue(array('billet' => $billet));
     }
 
-    public function billetModifier()
+    public function episodeModifier()
     {
         $id = $this->requete->getParametre('id');
         if ($this->requete->existeParametre("dateBillet") && $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("contenuBillet")) {
@@ -77,7 +84,7 @@ class ControleurAdmin extends ControleurSecurise  {
         $this->genererVue(array('billet' => $billet));
     }
 
-    public function billetSupprimer()
+    public function episodeSupprimer()
     {
         $id = $this->requete->getParametre('id');
         $this->billet->billetSupprimer($id);
@@ -122,11 +129,11 @@ class ControleurAdmin extends ControleurSecurise  {
             $photo = $this->requete->getParametre('histoirePhoto');
             $titre = $this->requete->getParametre('histoireTitre');
             $texte = $this->requete->getParametre('histoireTexte');
-            $citation = $this->requete->getParametre('histoireCitation');
-            $auteur = $this->histoire->editerAuteur($photo,$titre, $texte, $citation);
-            $this->rediriger("admin", "administration");
+            $auteur = $this->histoire->editerAuteur($photo,$titre, $texte);
+            $this->rediriger("admin/histoire/");
         }
         $this->genererVue(array('auteur' => $auteur));
     }
+
 }
 

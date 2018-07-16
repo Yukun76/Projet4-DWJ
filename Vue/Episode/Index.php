@@ -19,5 +19,7 @@
         </article>
     </div>
     <br/>
+    <hr id="adminHR">
+    <br/>
     <?php endforeach; ?>
 </div>

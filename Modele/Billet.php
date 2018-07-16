@@ -88,4 +88,5 @@ class Billet extends Modele {
         $dateModifie = IntlDateFormatter::formatObject(new DateTime($billet['date']),IntlDateFormatter::LONG);
     return $dateModifie;
     }
+
 }

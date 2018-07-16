@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 13 juil. 2018 à 11:27
+-- Généré le :  lun. 16 juil. 2018 à 13:13
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `t_billet` (
   `BIL_TITRE` varchar(100) NOT NULL,
   `BIL_CONTENU` text NOT NULL,
   PRIMARY KEY (`BIL_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `t_billet`
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `t_commentaire` (
   `COM_ID` int(11) NOT NULL AUTO_INCREMENT,
   `COM_DATE` datetime NOT NULL,
   `COM_AUTEUR` varchar(100) NOT NULL,
-  `COM_CONTENU` varchar(200) NOT NULL,
+  `COM_CONTENU` varchar(400) NOT NULL,
   `BIL_ID` int(11) NOT NULL,
   `SIGNAL_COUNT` int(11) NOT NULL,
   PRIMARY KEY (`COM_ID`),
@@ -84,7 +84,7 @@ DROP TABLE IF EXISTS `t_histoire`;
 CREATE TABLE IF NOT EXISTS `t_histoire` (
   `histoire_id` int(11) NOT NULL,
   `histoire_photo` varchar(100) NOT NULL,
-  `histoire_texte` varchar(500) NOT NULL,
+  `histoire_texte` text NOT NULL,
   `histoire_titre` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `t_histoire` (
 --
 
 INSERT INTO `t_histoire` (`histoire_id`, `histoire_photo`, `histoire_texte`, `histoire_titre`) VALUES
-(1, '', '\" Né en 1961 à Paris. Après une carrière réussie en tant que vice-président International dans des grands groupes informatiques, j’ai décidé de poser mes valises pour me consacrer à l’écriture, ma passion depuis toujours. Mon goût de la lecture, acquis dès le plus jeune âge, ne m’a jamais quitté. Lecteur compulsif, j’ai d’abord dévoré les Jules Verne, puis des auteurs tels que Connelly, Mankel, Deon Meyer, Grisham, Kellermann, ou encore Adler-Holsen ou Indridasson. \"\r\n\r\n- Jean Forteroche -', 'Jean Forteroche, écrivain de roman d\'aventure.');
+(1, 'photojean.jpg', '<p>\" N&eacute; en 1961 &agrave; Paris. Apr&egrave;s une carri&egrave;re r&eacute;ussie en tant que vice-pr&eacute;sident International dans des grands groupes informatiques, j&rsquo;ai d&eacute;cid&eacute; de poser mes valises pour me consacrer &agrave; l&rsquo;&eacute;criture, ma passion depuis toujours. Mon go&ucirc;t de la lecture, acquis d&egrave;s le plus jeune &acirc;ge, ne m&rsquo;a jamais quitt&eacute;. Lecteur compulsif, j&rsquo;ai d&rsquo;abord d&eacute;vor&eacute; les Jules Verne, puis des auteurs tels que Connelly, Mankel, Deon Meyer, Grisham, Kellermann, ou encore Adler-Holsen ou Indridasson. \"</p>\r\n<p>- Jean Forteroche -</p>', 'Jean Forteroche, écrivain de roman d\'aventure.');
 
 -- --------------------------------------------------------
 

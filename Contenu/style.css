@@ -31,8 +31,9 @@ h1 {
 }
 
 .titreBillet {
-    margin-bottom: 0px;
+    margin-bottom: 0px;    
 }
+
 
 
 .Alaska_banner {
@@ -76,10 +77,11 @@ h1 {
 
 footer {
     position: relative;
-    background-color: #343a40;
+    background-color:  #17202a;
     text-align: center;
     color: white;
     z-index: 9999;
+    margin-top: 50px;
 }
 
 #logo_text {
@@ -111,8 +113,15 @@ footer {
     background: url("http://www.fondecranmagique.com/divers/livre/1345622663.jpg");
 }
 
+#Propos_edit {
+    font-size: 1em;
+    color: grey;
+    font-family: Indie Flower, sans-serif;
+}
+
 #jean {
     border-radius: 20%;
+    height: 150px;
     width: 100%;
 }
 
@@ -262,7 +271,7 @@ display: none;
 }
 
 #all_episode {
-    width: 30%;
+    width: 25%;
     margin-right: auto;
     margin-left: auto;
     text-align: center;    
@@ -275,6 +284,7 @@ display: none;
 
 .erreur_404 {
     text-align: center; 
+    height: 230px;
 }
 
 .alert-danger { 
@@ -404,4 +414,8 @@ tbody tr {
 #histoireTitre {
     max-width: 100%;
 
+}
+
+#photo_profil {
+    margin-top: 20px;
 }

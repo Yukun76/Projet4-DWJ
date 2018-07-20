@@ -1,3 +1,4 @@
+<?php $this->titre = "Mon Blog"; ?>
 <header class="header banner" id="header-perso">
     <div class="container">
         <div class="row">
@@ -22,19 +23,17 @@
                     <h3><span><?= $this->nettoyer($auteur['titre']) ?></span></h3>
                     <p><?= nl2br($auteur['texte']) ?></p>
                     <?php if (isset($_SESSION['login'])): ?>
-            <a id="Propos_edit" href="./admin/histoireEditer/"><i class="fas fa-cog"></i>Editer</a>
-         <?php endif; ?>
+                    <a id="Propos_edit" href="./admin/histoireEditer/"><i class="fas fa-cog"></i>Editer</a>
+                    <?php endif; ?>
                 </div>
-            </div>
-
-            <div id="last_chap">
-                <h2>Derniers Episodes</h2>
             </div>
         </div>
     </div>
-    <?php $this->titre = "Mon Blog"; ?>
-    <?php foreach ($billets as $billet):?>
     <div class="Chapitre">
+        <div id="last_chap">
+            <h2>Derniers Episodes</h2>
+        </div>
+        <?php foreach ($billets as $billet):?>
         <article>
             <header>
                 <hr>
@@ -58,6 +57,6 @@
             <br />
             
         </article>
+        <?php endforeach; ?>
     </div>
-    <?php endforeach; ?>
 </div>

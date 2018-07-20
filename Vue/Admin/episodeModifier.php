@@ -1,12 +1,4 @@
-<header class="header banner" id="header-perso3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <a href=""><img src="vue/img/logo.png" alt="Jean ForteRoche" id="logo2"></a>
-            </div>
-        </div>
-    </div>
-</header>
+<header class="Alaska_banner" id="header-perso2"></header>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1 class="page-header"></h1>
     <div class="row placeholders">

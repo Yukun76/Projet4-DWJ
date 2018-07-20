@@ -44,6 +44,15 @@ class Commentaire extends Modele {
         return $commentaire;
     }
 
+    public function commentView($idCommentaire)
+    {
+        $sql = 'select COM_ID as id, COM_DATE as date, BIL_ID as bil_id,'
+            . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
+            . ' where COM_ID=:id';
+        $commentaire = $this->executerRequete($sql, array('id' => $idCommentaire))->fetch();
+        return $commentaire;
+    }
+
 
 
     public function commentaireEditer ($contenu, $idCommentaire) {

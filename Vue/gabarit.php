@@ -32,7 +32,7 @@
                                 </button>
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-item nav-link" href="index.php"><i class="fas fa-home"></i> Accueil</a>
+                                <a class="nav-item nav-link" href="Accueil"><i class="fas fa-home"></i> Accueil</a>
                                 <a class="nav-item nav-link" href="Episode"><i class="fas fa-book"></i> Episodes</a>
                                 <?php
                                         if (!isset($_SESSION['login'])) {

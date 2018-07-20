@@ -37,7 +37,7 @@
                 </td>
 
                 <td>
-                    <?= $this->nettoyer($auteur['titre']) ?></a>
+                    <?= $this->nettoyer($auteur['titre']) ?>
                 </td>
                 <td>
                     <?= $auteur['texte'] ?>

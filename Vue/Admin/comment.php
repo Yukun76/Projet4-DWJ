@@ -59,6 +59,7 @@
                 <?= $this->nettoyer($commentaire['signalement']) ?>
             </td>
             <td>
+                <a class="btn btn-secondary" href="<?="./admin/commentView/" . $this->nettoyer($commentaire['idc']) ?>"><i class="fas fa-eye"></i></a> 
                 <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" data-com-title="<?=$this->nettoyer($commentaire['auteur']) ?>" data-modal-confirm-url="./admin/commentaireSupprimer/<?= $commentaire['idc'] ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
                 <?php if ($commentaire['signalement'] > 0) : ?>
                 <a class="btn btn-secondary" href="./admin/supprimerSignalement/<?= $commentaire['idc'] ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
@@ -95,10 +96,9 @@
         $('a.btn-danger').on('click', function(e) {
             e.preventDefault();
             $modal.find('a#btnYes').attr('href', $(this).data('modalConfirmUrl'));
-            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer le commentaire de " + $(this).data('comTitle'))  ;
+            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer le commentaire de " + $(this).data('comTitle'));
             $modal.modal("show");
         })
     });
-
 </script>
 

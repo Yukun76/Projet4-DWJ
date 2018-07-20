@@ -46,16 +46,14 @@ class Billet extends Modele {
      * 
      * @return int Le nombre de billets
      */
-    public function getNombreBillets()
-    {
+    public function getNombreBillets() {
         $sql = 'select count(*) as nbBillets from T_BILLET';
         $resultat = $this->executerRequete($sql);
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbBillets'];
     }
 
-    public function billetCreer($dateBillet, $titreBillet, $contenuBillet)
-    {
+    public function billetCreer($dateBillet, $titreBillet, $contenuBillet) {
         $sql = 'INSERT INTO T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet, BIL_CONTENU= :contenuBillet';
         return $this->executerRequete($sql, array(
                 'dateBillet' => $dateBillet,
@@ -64,8 +62,7 @@ class Billet extends Modele {
             ))->rowCount() == 1;
     }
 
-    public function billetModifier($idBillet, $dateBillet, $titreBillet, $contenuBillet)
-    {
+    public function billetModifier($idBillet, $dateBillet, $titreBillet, $contenuBillet) {
         $sql = 'UPDATE T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet, BIL_CONTENU= :contenuBillet WHERE BIL_ID=:id';
         return $this->executerRequete($sql, array(
                 'dateBillet' => $dateBillet,
@@ -75,8 +72,7 @@ class Billet extends Modele {
             ))->rowCount() == 1;
     }
 
-    public function billetSupprimer($idBillet)
-    {
+    public function billetSupprimer($idBillet) {
         $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = :numeroBillet';
 
         return $this->executerRequete($sql, array(
@@ -84,9 +80,17 @@ class Billet extends Modele {
             ))->rowCount() == 1;
     }
 
-    public function formatDate($billet){
-        $dateModifie = IntlDateFormatter::formatObject(new DateTime($billet['date']),IntlDateFormatter::LONG);
-    return $dateModifie;
+    public function getPrecedent($id) {
+    //Previous row
+         $sql = 'SELECT MAX(id) FROM T_BILLET WHERE id < :id Order By id DESC LIMIT 1';
+         $previous = $this->executerRequete($sql);
+        return $previous;
     }
 
+    public function getSuivant($id) {
+    //next row
+        $sql = 'SELECT MIN(id) FROM T_BILLET WHERE id < :id Order By id ASC LIMIT 1';
+        $next = $this->executerRequete($sql);
+        return $next;
+    }
 }

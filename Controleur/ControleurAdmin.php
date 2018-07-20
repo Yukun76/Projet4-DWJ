@@ -14,7 +14,7 @@ class ControleurAdmin extends ControleurSecurise  {
     private $histoire;
 
     /**
-     * Constructeur 
+     * Constructeur
      */
     public function __construct()
     {
@@ -38,10 +38,10 @@ class ControleurAdmin extends ControleurSecurise  {
         $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
     }
 
-        public function commentLu() {
-        $billets = $this->billet->getEpisode();
-        $commentaires = $this->commentaire->getComments();
-        $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
+    public function commentView() {
+        $idCommentaire = $this->requete->getParametre('id');
+        $commentaire = $this->commentaire->commentView($idCommentaire);
+        $this->genererVue(array('commentaire' => $commentaire));
     }
 
     public function Episode() {
@@ -134,6 +134,7 @@ class ControleurAdmin extends ControleurSecurise  {
         }
         $this->genererVue(array('auteur' => $auteur));
     }
+
 
 }
 

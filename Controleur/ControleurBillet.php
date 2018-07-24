@@ -21,11 +21,9 @@ class ControleurBillet extends Controleur {
 
     // Affiche les détails sur un billet
     public function index() {
-        $idBillet = $this->requete->getParametre("id");
-        
+        $idBillet = $this->requete->getParametre("id");        
         $billet = $this->billet->getBillet($idBillet);
-        $commentaires = $this->commentaire->getCommentaires($idBillet);
-        
+        $commentaires = $this->commentaire->getCommentaires($idBillet);        
         $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
     }
 
@@ -40,26 +38,5 @@ class ControleurBillet extends Controleur {
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executerAction("index");
     }
-
-    public function previous() {
-        $idBillet = $this->requete->getParametre("id"); 
-        $id = $this->requete->getParametre("id");
-        $previous = $this->billet->getPrecedent($id);          
-        $billet = $this->billet->getBillet($idBillet); 
-        $commentaires = $this->commentaire->getCommentaires($idBillet);            
-        $this->genererVue(array('billet' => $billet, 'precedent' => $previous, 'commentaires' => $commentaires));
-
-    }
-
-    public function next() {
-        $idBillet = $this->requete->getParametre("id"); 
-        $id = $this->requete->getParametre("id"); 
-        $next = $this->billet->getSuivant($id);       
-        $billet = $this->billet->getBillet($idBillet); 
-        $commentaires = $this->commentaire->getCommentaires($idBillet);
-              
-        $this->genererVue(array('billet' => $billet, 'suivant' => $next, 'commentaires' => $commentaires));
-    }
-
 }
 

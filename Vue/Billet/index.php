@@ -1,12 +1,6 @@
 <header
  class="Alaska_banner" id="header-perso2">
 </header>
-<!--
-<a id="previous"  href="<?= "billet/index/" . $this->nettoyer($billet['id']-1) ?>"><i class="fa fa-arrow-left"></i> Precedent 
-</a>
-<a id ="next" href="<?= "billet/index/" . $this->nettoyer($billet['id']+1) ?>"> Suivant <i class="fa fa-arrow-right"></i>
-</a> 
--->
 <h1 id="Titre_Episode" class="border-bottom"> Billet simple pour l'Alaska </h1>
 <?php $this->titre = "Mon Blog - " . $this->nettoyer($billet['titre']); ?>
 <div class="All_billet">

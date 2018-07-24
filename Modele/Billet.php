@@ -79,18 +79,4 @@ class Billet extends Modele {
                 'numeroBillet' => $idBillet,
             ))->rowCount() == 1;
     }
-
-    public function getPrecedent($id) {
-    //Previous row
-         $sql = 'SELECT MAX(id) FROM T_BILLET WHERE id < :id Order By id DESC LIMIT 1';
-         $previous = $this->executerRequete($sql);
-        return $previous;
-    }
-
-    public function getSuivant($id) {
-    //next row
-        $sql = 'SELECT MIN(id) FROM T_BILLET WHERE id < :id Order By id ASC LIMIT 1';
-        $next = $this->executerRequete($sql);
-        return $next;
-    }
 }

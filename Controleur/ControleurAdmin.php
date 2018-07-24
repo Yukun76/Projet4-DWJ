@@ -78,6 +78,7 @@ class ControleurAdmin extends ControleurSecurise  {
             $contenuBillet = $this->requete->getParametre('contenuBillet');
             $this->billet->billetModifier($id, $dateBillet, $titreBillet, $contenuBillet);
             $this->rediriger("admin/Episode/");
+            $this->Flash->success('C\'était un succès');
         }
 
         $billet = $this->billet->getBillet($id);
@@ -88,7 +89,6 @@ class ControleurAdmin extends ControleurSecurise  {
     {
         $id = $this->requete->getParametre('id');
         $this->billet->billetSupprimer($id);
-        //$this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet supprimé");
         $this->rediriger("admin/Episode/");
     }
 
@@ -110,14 +110,12 @@ class ControleurAdmin extends ControleurSecurise  {
     {
         $id = $this->requete->getParametre('id');
         $this->commentaire->commentaireSupprimer($id);
-        //$this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
         $this->rediriger("admin/comment/");
     }
 
     public function supprimerSignalement()    {
         $id = $this->requete->getParametre('id');
         $this->commentaire->supprimerSignalement($id);
-        //$this->setFlash(Session::FLASH_TYPE_SUCCESS, "Signalement(s) supprimé(s)");
         $this->rediriger("admin/comment/");
     }
 

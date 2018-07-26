@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <a href=""><img src="vue/img/logo.png" alt="Jean ForteRoche" id="logo2"></a>
+                <a href=""><img src="Public/img/logo.png" alt="Jean ForteRoche" id="logo2"></a>
             </div>
         </div>
     </div>
@@ -19,19 +19,19 @@
                     <div class="row">
                         <div class="col-xs-4 col-md-4 form-group">
                             <label>Photo</label>
-                            <input class="form-control" id="histoirePhoto" name="histoirePhoto"
+                            <input class="form-control" id="auteurPhoto" name="auteurPhoto"
                             placeholder="Editer le nom exacte de la photo" type="text" value="<?= $auteur['photo'] ?>"
                             required autofocus/>
                         </div>
                         <div class="col-xs-4 col-md-4 form-group">
                             <label>Titre</label>
-                            <input class="form-control" id="histoireTitre" name="histoireTitre"
+                            <input class="form-control" id="auteurTitre" name="auteurTitre"
                             placeholder="Editer votre titre" type="text" value="<?= $auteur['titre'] ?>"
                             required/>
                         </div>
                     </div>
                     <label>Edition de l'histoire</label>
-                    <textarea class="form-control" rows="20" id="tiny" name="histoireTexte" placeholder="Le texte">
+                    <textarea class="form-control" rows="20" id="tiny" name="auteurTexte" placeholder="Le texte">
                     <?= $auteur['texte'] ?>
                     </textarea>
                     <br/>
@@ -40,7 +40,7 @@
                             <button class="btn btn-primary pull-right" type="submit">Modifier l'histoire</button>
                         </div>
                     </div>
-                    <a href="./admin/histoire/" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Retour</a>
+                    <a href="./admin/auteur/" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Retour</a>
                 </form>
                 <script>
                 tinymce.init({

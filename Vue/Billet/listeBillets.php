@@ -10,7 +10,7 @@
                 <a href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>">
                     <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
                 </a>
-                <img src="vue/img/ChugachMountains.jpg" alt="Mountains" id="Mountains">
+                <img src="Public/img/ChugachMountains.jpg" alt="Mountains" id="Mountains">
             </header>            
         </article>
     </div>

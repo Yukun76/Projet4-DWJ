@@ -2,7 +2,7 @@
 require_once 'Framework/ControleurSecurise.php';
 require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
-require_once 'Modele/histoire.php';
+require_once 'Modele\Auteur.php';
 
 
 /**
@@ -11,7 +11,7 @@ require_once 'Modele/histoire.php';
 class ControleurAdmin extends ControleurSecurise  {
     private $billet;
     private $commentaire;
-    private $histoire;
+    private $auteur;
 
     /**
      * Constructeur
@@ -20,20 +20,20 @@ class ControleurAdmin extends ControleurSecurise  {
     {
         $this->billet = new Billet();
         $this->commentaire = new Commentaire();
-        $this->histoire = new Histoire();
+        $this->auteur = new Auteur();
     }
 
     public function index()
     {
         $nbBillets = $this->billet->getNombreBillets();
-        $auteur = $this->histoire->auteur();
+        $auteur = $this->auteur->getAuteur();
         $nbCommentaires = $this->commentaire->getNombreCommentaires();
         $login = $this->requete->getSession()->getAttribut("login");
         $this->genererVue(array('nbBillets' => $nbBillets, 'nbCommentaires' => $nbCommentaires, 'auteur' => $auteur, 'login' => $login));
     }
 
     public function comment() {
-        $billets = $this->billet->getEpisode();
+        $billets = $this->billet->getAllBillet();
         $commentaires = $this->commentaire->getComments();
         $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
     }
@@ -44,40 +44,42 @@ class ControleurAdmin extends ControleurSecurise  {
         $this->genererVue(array('commentaire' => $commentaire));
     }
 
-    public function Episode() {
-        $billets = $this->billet->getEpisode();
+    public function Billet() {
+        $billets = $this->billet->getAllBillet();
         $this->genererVue(array('billets' => $billets));
     }
 
 
-    public function histoire() {
-        $auteur = $this->histoire->auteur();
+    public function auteur() {
+        $auteur = $this->auteur->getAuteur();
         $this->genererVue(array('auteur' => $auteur));
     }
 
 
-    public function episodeCreer()
+    public function billetCreer()
     {
-        if ($this->requete->existeParametre("dateBillet") && $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("contenuBillet")) {
+        if ($this->requete->existeParametre("dateBillet") &&  $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("ordreBillet") && $this->requete->existeParametre("contenuBillet")) {
             $dateBillet = $this->requete->getParametre('dateBillet');
-            $titreBillet = $this->requete->getParametre('titreBillet');
-            $contenuBillet = $this->requete->getParametre('contenuBillet');
-            $this->billet->BilletCreer($dateBillet, $titreBillet, $contenuBillet);
-            $this->rediriger("admin/Episode/");
+             $titreBillet = $this->requete->getParametre('titreBillet');
+             $ordreBillet = $this->requete->getParametre('ordreBillet');
+            $contenuBillet = $this->requete->getParametre('contenuBillet');            
+            $this->billet->BilletCreer($dateBillet, $titreBillet, $ordreBillet, $contenuBillet);
+            $this->rediriger("admin/billet/");
         }
         $billet = array('title' => "Mon titre", 'description' => '<p>Le contenu de mon article</p>');
         $this->genererVue(array('billet' => $billet));
     }
 
-    public function episodeModifier()
+    public function billetModifier()
     {
         $id = $this->requete->getParametre('id');
-        if ($this->requete->existeParametre("dateBillet") && $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("contenuBillet")) {
+        if ($this->requete->existeParametre("dateBillet") && $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("ordreBillet") && $this->requete->existeParametre("contenuBillet")) {
             $dateBillet = $this->requete->getParametre('dateBillet');
             $titreBillet = $this->requete->getParametre('titreBillet');
+            $ordreBillet = $this->requete->getParametre('ordreBillet');
             $contenuBillet = $this->requete->getParametre('contenuBillet');
-            $this->billet->billetModifier($id, $dateBillet, $titreBillet, $contenuBillet);
-            $this->rediriger("admin/Episode/");
+            $this->billet->billetModifier($id, $dateBillet, $titreBillet, $ordreBillet, $contenuBillet);
+            $this->rediriger("admin/billet/");
             $this->Flash->success('C\'était un succès');
         }
 
@@ -85,11 +87,11 @@ class ControleurAdmin extends ControleurSecurise  {
         $this->genererVue(array('billet' => $billet));
     }
 
-    public function episodeSupprimer()
+    public function billetSupprimer()
     {
         $id = $this->requete->getParametre('id');
         $this->billet->billetSupprimer($id);
-        $this->rediriger("admin/Episode/");
+        $this->rediriger("admin/billet/");
     }
 
         public function commentaireEditer()
@@ -120,15 +122,15 @@ class ControleurAdmin extends ControleurSecurise  {
     }
 
 
-    public function  histoireEditer ()
+    public function  auteurEditer ()
     {
-        $auteur = $this->histoire->auteur();
-        if ($this->requete->existeParametre("histoirePhoto")) {
-            $photo = $this->requete->getParametre('histoirePhoto');
-            $titre = $this->requete->getParametre('histoireTitre');
-            $texte = $this->requete->getParametre('histoireTexte');
-            $auteur = $this->histoire->editerAuteur($photo,$titre, $texte);
-            $this->rediriger("admin/histoire/");
+        $auteur = $this->auteur->getAuteur();
+        if ($this->requete->existeParametre("auteurPhoto")) {
+            $photo = $this->requete->getParametre('auteurPhoto');
+            $titre = $this->requete->getParametre('auteurTitre');
+            $texte = $this->requete->getParametre('auteurTexte');
+            $auteur = $this->auteur->editerAuteur($photo,$titre, $texte);
+            $this->rediriger("admin/auteur/");
         }
         $this->genererVue(array('auteur' => $auteur));
     }

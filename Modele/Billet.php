@@ -9,17 +9,17 @@ class Billet extends Modele {
      * @return PDOStatement La liste des billets
      */
     public function getBillets() {
-        $sql = 'select BIL_ID as id, BIL_DATE as date,'
+        $sql = 'select BIL_ID as id, BIL_NUM as ordrer, BIL_DATE as date,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' order by BIL_TITRE desc LIMIT 2';
+                . ' order by BIL_NUM desc LIMIT 2';
         $billets = $this->executerRequete($sql);
         return $billets;
     }
 
-        public function getEpisode() {
-        $sql = 'select BIL_ID as id, BIL_DATE as date,'
+        public function getAllBillet() {
+        $sql = 'select BIL_ID as id, BIL_NUM as ordrer, BIL_DATE as date,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' order by BIL_TITRE asc';
+                . ' order by BIL_NUM asc';
         $billets = $this->executerRequete($sql);
         return $billets;
     }
@@ -31,7 +31,7 @@ class Billet extends Modele {
      * @throws Exception Si l'identifiant du billet est inconnu
      */
     public function getBillet($idBillet) {
-        $sql = 'select BIL_ID as id, BIL_DATE as date,'
+        $sql = 'select BIL_ID as id, BIL_NUM as ordrer, BIL_DATE as date,'
                 . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
                 . ' where BIL_ID=?';
         $billet = $this->executerRequete($sql, array($idBillet));
@@ -53,20 +53,22 @@ class Billet extends Modele {
         return $ligne['nbBillets'];
     }
 
-    public function billetCreer($dateBillet, $titreBillet, $contenuBillet) {
-        $sql = 'INSERT INTO T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet, BIL_CONTENU= :contenuBillet';
+    public function billetCreer($dateBillet, $titreBillet, $ordreBillet, $contenuBillet) {
+        $sql = 'INSERT INTO T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet,  BIL_NUM= :ordreBillet, BIL_CONTENU= :contenuBillet';
         return $this->executerRequete($sql, array(
                 'dateBillet' => $dateBillet,
                 'titreBillet' => $titreBillet,
+                'ordreBillet' => $ordreBillet,
                 'contenuBillet' => $contenuBillet
             ))->rowCount() == 1;
     }
 
-    public function billetModifier($idBillet, $dateBillet, $titreBillet, $contenuBillet) {
-        $sql = 'UPDATE T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet, BIL_CONTENU= :contenuBillet WHERE BIL_ID=:id';
+    public function billetModifier($idBillet, $dateBillet, $titreBillet, $ordreBillet, $contenuBillet) {
+        $sql = 'UPDATE T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet, BIL_NUM= :ordreBillet, BIL_CONTENU= :contenuBillet WHERE BIL_ID=:id';
         return $this->executerRequete($sql, array(
                 'dateBillet' => $dateBillet,
                 'titreBillet' => $titreBillet,
+                'ordreBillet' => $ordreBillet,
                 'contenuBillet' => $contenuBillet,
                 'id' => $idBillet
             ))->rowCount() == 1;

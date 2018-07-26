@@ -38,5 +38,10 @@ class ControleurBillet extends Controleur {
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executerAction("index");
     }
+
+        public function listeBillets() {
+        $billets = $this->billet->getAllBillet();
+        $this->genererVue(array('billets' => $billets));
+    }
 }
 

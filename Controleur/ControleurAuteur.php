@@ -1,20 +1,20 @@
 <?php
 require_once 'Framework\Controleur.php';
-require_once 'Modele\Histoire.php';
+require_once 'Modele\Auteur.php';
 
 
 class ControleurHistoire extends Controleur
 {
-    private $histoire;
+    private $auteur;
 
     public function __construct()
     {
-        $this->histoire = new histoire();
+        $this->auteur = new auteur();
     }
 
     public function index()
     {
-        $auteur = $this->histoire->auteur();
+        $auteur = $this->auteur->getAuteur();
         $this->genererVue(array('auteur' => $auteur));
     }
 

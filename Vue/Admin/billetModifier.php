@@ -21,6 +21,12 @@
                             placeholder="Entrez votre titre" class= "form-control" type="text" value="<?= $billet['titre'] ?>"
                             required/>
                         </div>
+                        <div class="col-xs-4 col-md-4 form-group">
+                            <label>Ordre d'affichage (ex: 1,2..)</label>
+                            <input class="form-control" id="ordreBillet" name="ordreBillet"
+                            placeholder="Ordre d'affichage" type="text" value="<?= $billet['ordrer'] ?>"
+                            required/>
+                        </div>
                     </div>
                     <label>Contenu du billet</label>
                     <textarea class="form-control" rows="20" id="tiny" name="contenuBillet" placeholder="Le texte">
@@ -33,7 +39,7 @@
                         </div>
 
                     </div>
-                    <a href="./admin/Episode/" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Retour</a>
+                    <a href="./admin/billet/" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Retour</a>
                 </form>
                 <script>
                     tinymce.init({

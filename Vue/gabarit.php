@@ -10,11 +10,10 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Roboto|Roboto+Slab|Ubuntu" rel="stylesheet">
     <link rel="shortcut icon" href="vue/img/favicon.ico" type="image/x-icon">
     <base href="<?= $racineWeb ?>">
-    <link rel="stylesheet" href="Contenu/style.css" />
-    <script src='Contenu/js/tinymce/tinymce.min.js'></script>
-    <script src="Contenu/js/jquery.js"></script>
-    <script src="Contenu/js/bootstrap.min.js"></script>
-    <script src='Contenu/js/tinymce/tinymce.min.js'></script>
+    <link rel="stylesheet" href="Public/css/style.css" />
+    <script src='Public/js/tinymce/tinymce.min.js'></script>
+    <script src="Public/js/jquery.js"></script>
+    <script src="Public/js/bootstrap.min.js"></script>
     <title>
         <?= $titre ?>
     </title>
@@ -33,7 +32,7 @@
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
                                 <a class="nav-item nav-link" href="Accueil"><i class="fas fa-home"></i> Accueil</a>
-                                <a class="nav-item nav-link" href="Episode"><i class="fas fa-book"></i> Episodes</a>
+                                <a class="nav-item nav-link" href="Billet/listeBillets"><i class="fas fa-book"></i> Episodes</a>
                                 <?php
                                         if (!isset($_SESSION['login'])) {
                                         echo '<a class="nav-item nav-link custom-link" href="connexion"> <i class="fas fa-sign-in-alt"></i> Connexion</a>';

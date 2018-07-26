@@ -13,8 +13,8 @@
 								<div class="sidenav">	
 									<a class="nav-item nav-link" id="retour_acceuil" href="Accueil"><i class="fas fa-home"></i>Accueil</a>
 									<a class="nav-item nav-link" href="admin"><i class="fas fa-bars"></i> Tableau de bord</a>
-									<a class="nav-item nav-link" href="./admin/histoire/"><i class="fa fa-address-book"></i> Histoire</a>
-									<a class="nav-item nav-link" href="./admin/Episode/"><i class="fas fa-book"></i> Episodes</a>
+									<a class="nav-item nav-link" href="./admin/auteur/"><i class="fa fa-address-book"></i> Auteur</a>
+									<a class="nav-item nav-link" href="./admin/Billet/"><i class="fas fa-book"></i> Billets</a>
 									<a class="nav-item nav-link" href="./admin/comment/"><i class="far fa-comment"></i> Commentaires</a>
 									<a class="nav-item nav-link" href="connexion/deconnecter"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
 								</div>
@@ -41,7 +41,7 @@
 								<div class="box-body">
 									<div class="col-sm-4">
 										<form action="/action_page.php">
-											<img alt="User Pic"src="vue/img/<?= $this->nettoyer($auteur['photo']) ?>"
+											<img alt="User Pic"src="Public/img/<?= $this->nettoyer($auteur['photo']) ?>"
                          					class="img-thumbnail img-responsive" id="photo_profil">					
 										</form>
 									</div>

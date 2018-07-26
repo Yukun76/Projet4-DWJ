@@ -234,7 +234,7 @@ background-color: #9994c1;}
     margin-top: 120px;
 }
 
-#Histoire_title {
+#auteur_title {
     margin-right: auto;
     margin-left: auto;
     text-align: center;
@@ -488,9 +488,22 @@ display: none;
     .Episode img {
         display: none;
     }
+
+    .All_billet {
+        margin-left: 5%;
+    }
     
+    .Chap_com { 
+        margin-left: 5%;
+    }
+
     #all_episode{
         border: none;
+    }
+
+       #all_episode h1 {
+        width: 200%;
+        margin-left: -50%;
     }
 
     #photo_afficher {
@@ -544,18 +557,20 @@ display: none;
     }
 
     #post_title {
-    margin-top: 40px;
-}
+        margin-top: 40px;
+    }
 
-#comment_title {
-    margin-top: 40px;
-}
+    #comment_title {
+        margin-top: 40px;
+    }
 
-#Histoire_title {
-    margin-top: 40px;
-}
+    #auteur_title {
+        margin-top: 40px;
+    }
 
-
+    h1 {
+        font-size: 2em;
+    }
 }
 
 @media all and (max-width: 680px) {
@@ -564,6 +579,14 @@ display: none;
         margin-left: 10%;
     }
 
+
+    .col-sm-9 p {
+        font-size: 1.1em;
+    }
+
+    .col-sm-9 h3 {
+        font-size: 1.5em;
+    }
 
 }
 
@@ -584,6 +607,7 @@ display: none;
 
     .col-sm-9 p {
         font-size: 1em;
+
     }
 
     .col-sm-9 h3 {
@@ -631,16 +655,24 @@ display: none;
         width: 30%;
     }
 
-    .chapitre {
+    .Chapitre article {
         font-size: 0.8em;
     }
 
+    article h1 {
+        font-size: 2em;
+    }
+
     #all_episode h1 {
-        font-size: 1.5em;
+        font-size: 1.1em;
+        border : solid 2px;
+        width: 200%;
+        padding: 10px;
+        margin-left: -50%;
     }
 
     #all_episode {
-        margin-top: -30px;
+        margin-top: -20px;
     }
 
     #adminHR { display: none; }
@@ -654,4 +686,11 @@ display: none;
         height: 100%;
         margin-top: -100px;
     }
+
+
+    .All_billet p {
+       font-size: 0.9em;;
+    }
+
+    #titreReponses { font-size: 1.5em; }
 }

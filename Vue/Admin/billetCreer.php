@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <a href=""><img src="vue/img/logo.png" alt="Jean ForteRoche" id="logo2"></a>
+                <a href=""><img src="Public/img/logo.png" alt="Jean ForteRoche" id="logo2"></a>
             </div>
         </div>
     </div>
@@ -26,20 +26,25 @@
                         <label>Titre du billet</label><br>
                         <input name="titreBillet" class= "form-control"  placeholder="Entrez le titre" required>
                     </div>
-                    <div class="col-xs-12 col-md-12 form-group">
-                        <label>Texte</label>
-                        <textarea rows="20" id="tiny" name="contenuBillet" placeholder="Le texte"></textarea>
+                    <div class="col-xs-4 col-md-4 form-group">
+                        <label>Ordre d'affichage (ex: 1,2..)</label><br>
+                        <input name="ordreBillet" class="form-control"  placeholder="Ordre d'affichage" required/>
                     </div>
-                    <button class="btn btn-success" id="btn_newbillet"type="submit">Ajouter le nouveau billet</button>
                 </div>
-            </form>
-                <script>
-                    tinymce.init({
-                    selector: '#tiny',
-                    language: 'fr_FR',
-                    extended_valid_elements:"*[*]"
-                    });
-                </script>
-        </div>
+                <div class="col-xs-12 col-md-12 form-group">
+                    <label>Texte</label>
+                    <textarea rows="20" id="tiny" name="contenuBillet" placeholder="Le texte"></textarea>
+                </div>
+                <button class="btn btn-success" id="btn_newbillet"type="submit">Ajouter le nouveau billet</button>
+            </div>
+        </form>
+        <script>
+        tinymce.init({
+        selector: '#tiny',
+        language: 'fr_FR',
+        extended_valid_elements:"*[*]"
+        });
+        </script>
     </div>
+</div>
 </div>

@@ -14,7 +14,7 @@
         <p><?= $billet['contenu'] ?></p>
 
         <?php if (isset($_SESSION['login'])): ?>
-            <a class="btn btn-warning back-btn" href="./admin/episode"><i class="fas fa-cog"></i> Panneau d'administration</a>
+            <a class="btn btn-warning back-btn" href="./admin/billet"><i class="fas fa-cog"></i> Panneau d'administration</a>
          <?php endif; ?>
 
         <hr />

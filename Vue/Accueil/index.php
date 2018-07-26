@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <a href=""><img src="vue/img/logo.png" alt="Jean ForteRoche" id="logo"></a>
+                <a href=""><img src="Public/img/logo.png" alt="Jean ForteRoche" id="logo"></a>
                 <p id="logo_text"> Bienvenue sur le blog, en vous souhaitant une agréable lecture.</p>
             </div>
         </div>
@@ -16,14 +16,14 @@
             <div class="row">
                 <div class="col-sm-3">
                     <img alt="User Pic"
-                    src="vue/img/<?= $this->nettoyer($auteur['photo']) ?>"
+                    src="Public/img/<?= $this->nettoyer($auteur['photo']) ?>"
                     id="jean" class="img-thumbnail img-responsive"></img>
                 </div>
                 <div class="col-sm-9">
                     <h3><span><?= $this->nettoyer($auteur['titre']) ?></span></h3>
                     <p><?= nl2br($auteur['texte']) ?></p>
                     <?php if (isset($_SESSION['login'])): ?>
-                    <a id="Propos_edit" href="./admin/histoireEditer/"><i class="fas fa-cog"></i>Editer</a>
+                    <a id="Propos_edit" href="./admin/auteurEditer/"><i class="fas fa-cog"></i>Editer</a>
                     <?php endif; ?>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 <header class="Alaska_banner" id="header-perso2"></header>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="episode_modif">
     <h1 class="page-header"></h1>
     <div class="row placeholders">
         <div id="contenu_modif">
-            <h1>Modifier un billet existant</h1>
+            <h1 class="title-id">Modifier un billet existant</h1>
             <hr>
             <br />
             <div class="col-sm-12 contact-form">
@@ -39,7 +39,7 @@
                     tinymce.init({
                         selector: '#tiny',
                         language: 'fr_FR',
-                        width : "840",
+                        width : "100%",
                         extended_valid_elements:"*[*]"
                     });
                 </script>

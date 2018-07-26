@@ -1,4 +1,4 @@
-<?php $this->titre = "Mon Blog"; ?>
+<?php $this->titre = "Jean ForteRoche : Blog"; ?>
 <header class="header banner" id="header-perso">
     <div class="container">
         <div class="row">

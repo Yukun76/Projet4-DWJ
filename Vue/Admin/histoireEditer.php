@@ -11,7 +11,7 @@
     <h1 class="page-header"></h1>
     <div class="row placeholders">
         <div id="contenu_histoire">
-            <h1>Editer la section "A propos"</h1>
+            <h1 class="title-id">Editer la section "A propos"</h1>
             <hr>
             <br />
             <div class="col-sm-12 contact-form">
@@ -46,7 +46,7 @@
                 tinymce.init({
                 selector: '#tiny',
                 language: 'fr_FR',
-                width : "840"
+                width : "100%"
                 });
                 </script>
             </div>

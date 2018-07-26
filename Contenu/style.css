@@ -26,9 +26,6 @@ body {
 
 .allbody { height: 1000px; background: #fcfbf9; }
 
-h1 {
-    color: black;
-}
 
 .titreBillet {
     margin-bottom: 0px;    
@@ -237,6 +234,13 @@ background-color: #9994c1;}
     margin-top: 120px;
 }
 
+#Histoire_title {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    margin-top: 120px;
+}
+
 #board_title {
     margin-right: auto;
     margin-left: auto;
@@ -263,15 +267,12 @@ background-color: #9994c1;}
     height: 100px;
 }
 
-.HR_EPISODE {
-display: none;
-}
-
 #all_episode {
     width: 25%;
     margin-right: auto;
     margin-left: auto;
-    text-align: center;    
+    text-align: center;  
+    border: solid 1px #e0e0e0;
 }
 
 #Body_episode {
@@ -367,7 +368,7 @@ tbody tr {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
-    margin-left: 20%;
+    padding-left: 30px;
 }
 
 #contenu h1 {
@@ -403,7 +404,9 @@ tbody tr {
 
 #contenu_histoire {
     display: block;
-    margin-left: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
     margin-bottom: 30px;
 }
 
@@ -416,21 +419,6 @@ tbody tr {
     margin-top: 20px;
 }
 
-#next
-{
-    float: right;
-    margin-right: 20px;
-    font-size: 1em;
-    color: #046380;
-}
-
-#previous
-{
-    margin-left: 20px;
-    font-size: 1em;
-    color: #046380;
-}
-
 .commentaire_view {
     margin-left: 5%;
     height: 100%;
@@ -438,4 +426,232 @@ tbody tr {
     padding: 15px;
     border: solid 3px #e0e0e0;
     width: 90%;
+}
+
+#retour_acceuil{
+display: none;
+}
+
+
+
+@media all and (max-width: 980px) {
+
+    .allbody { height: 100%; background: #fcfbf9; }
+
+    .sidenav {
+        position: relative;
+        margin-top: 0px;
+    }
+    thead {
+        display: none;
+    }
+
+    #jean {
+        display: none;    }
+
+    #logo_text {
+        margin-top: -10px;
+    }
+
+    .table { 
+        margin-left: 10%;
+    }
+
+    #Titre_Episode {
+        font-size: 3em;
+    }
+
+    tr,
+    td {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+
+    #left_contain {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body {
+        padding-top: 56px;
+    }
+
+    .banner {
+        height: 300px;
+    }
+
+    .Episode img {
+        display: none;
+    }
+    
+    #all_episode{
+        border: none;
+    }
+
+    #photo_afficher {
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #nav_admin { 
+        z-index: 9999;
+        width: 100%;
+        top: 0;
+        left: 0;
+        line-height: 50px;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+    }
+
+    .sidenav a {
+        color: #f0f0f0;
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 1em;
+        line-height: 10px;
+    }
+
+    .sidenav a:hover {
+        color: #000;
+    }
+
+    #retour_acceuil {
+        display: block;
+    }
+
+    #left_contain{
+        font-size: .8em;
+        height: 100%;
+        margin-top: -50px;
+    }
+
+    #left_contain p {
+        line-height: 20px;
+    }
+
+    .panel-default {
+        margin-left: 20%;
+    }
+
+    #post_title {
+    margin-top: 40px;
+}
+
+#comment_title {
+    margin-top: 40px;
+}
+
+#Histoire_title {
+    margin-top: 40px;
+}
+
+
+}
+
+@media all and (max-width: 680px) {
+
+    .panel-default {
+        margin-left: 10%;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+    #jean {
+        display: none;
+    }
+
+    .banner {
+        height: 210px;
+    }
+
+    #logo_text {
+        font-size: 1em;
+        margin-top: -10px;
+    }
+
+    .col-sm-9 p {
+        font-size: 1em;
+    }
+
+    .col-sm-9 h3 {
+        font-size: 1.3em;
+    }
+
+    #chap_title {
+        font-size: 1em;
+    }
+
+    .title-id {
+        font-size: 1.5em;
+    }
+
+    #Titre_Episode {
+        font-size: 2em;
+        width: 100%;
+    }
+
+
+    #who-title {
+        font-size: 1em;
+        background: url("http://www.fondecranmagique.com/divers/livre/1345622663.jpg");
+        background-size: 280%;
+        margin-top: -20px;
+    }
+
+    #last_chap>h2 {
+        font-size: 1em;
+        background: url("http://www.fondecranmagique.com/divers/livre/1345622663.jpg");
+        background-size: 280%;
+        margin-top: 20px;
+    }
+
+    .chapitre {
+         font-size: 1em;
+    }
+
+    #header-perso2 {
+        height: 100px;
+    }
+
+    #header-pers2 img {
+        margin-top: 20px;
+        width: 30%;
+    }
+
+    .chapitre {
+        font-size: 0.8em;
+    }
+
+    #all_episode h1 {
+        font-size: 1.5em;
+    }
+
+    #all_episode {
+        margin-top: -30px;
+    }
+
+    #adminHR { display: none; }
+
+    .panel-default {
+        margin-left: -10px;
+    }
+
+    #left_contain{
+        font-size: .8em;
+        height: 100%;
+        margin-top: -100px;
+    }
 }

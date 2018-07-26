@@ -12,7 +12,7 @@
     <div class="row placeholders">
         <div id="contenu_form">
             <?php $this->titre = "Mon Blog - Ajouter un nouveau billet" ?>
-            <h1>Création d'un nouveau billet</h1>
+            <h1 class="title-id">Création d'un nouveau billet</h1>
             <hr>
             <br />
             <form method="post" class="crud-box">
@@ -36,7 +36,8 @@
                 <script>
                     tinymce.init({
                     selector: '#tiny',
-                    language: 'fr_FR'
+                    language: 'fr_FR',
+                    extended_valid_elements:"*[*]"
                     });
                 </script>
         </div>

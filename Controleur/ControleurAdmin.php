@@ -1,4 +1,5 @@
 <?php
+require_once 'Framework/Session.php';
 require_once 'Framework/ControleurSecurise.php';
 require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
@@ -79,8 +80,9 @@ class ControleurAdmin extends ControleurSecurise  {
             $ordreBillet = $this->requete->getParametre('ordreBillet');
             $contenuBillet = $this->requete->getParametre('contenuBillet');
             $this->billet->billetModifier($id, $dateBillet, $titreBillet, $ordreBillet, $contenuBillet);
+            $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet modifié");
             $this->rediriger("admin/billet/");
-            $this->Flash->success('C\'était un succès');
+
         }
 
         $billet = $this->billet->getBillet($id);
@@ -91,33 +93,24 @@ class ControleurAdmin extends ControleurSecurise  {
     {
         $id = $this->requete->getParametre('id');
         $this->billet->billetSupprimer($id);
+        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet supprimé");
         $this->rediriger("admin/billet/");
     }
 
-        public function commentaireEditer()
-    {
-        $this->needModeratorRole();
-        $id = $this->requete->getParametre('id');
-        if ($this->requete->existeParametre("contenuCommentaire")) {
-            $contenuCommentaire = $this->requete->getParametre('contenuCommentaire');
-            $this->commentaire->commentaireEditer($contenuCommentaire, $id);
-            $this->rediriger("admin/comment/");
-        }
-        $commmentaire = $this->commentaire->getCommentaire($id);
-        $this->genererVueAdmin(array('commentaire' => $commmentaire));
 
-    }
 
     public function commentaireSupprimer()
     {
         $id = $this->requete->getParametre('id');
         $this->commentaire->commentaireSupprimer($id);
+        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
         $this->rediriger("admin/comment/");
     }
 
     public function supprimerSignalement()    {
         $id = $this->requete->getParametre('id');
         $this->commentaire->supprimerSignalement($id);
+         $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Signalement(s) supprimé(s)");
         $this->rediriger("admin/comment/");
     }
 

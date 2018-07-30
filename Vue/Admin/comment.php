@@ -1,3 +1,4 @@
+<?php $this->titre = "Mon Blog - Administration des commentaires "?>
 <div class="header" id="header-perso5">
     <div class="top-header">
         <div class="container">

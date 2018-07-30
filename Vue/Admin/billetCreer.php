@@ -1,3 +1,4 @@
+<?php $this->titre = "Mon Blog - Ajouter un nouveau billet" ?>
 <header class="header banner" id="header-perso3">
     <div class="container">
         <div class="row">
@@ -11,7 +12,6 @@
     <h1 class="page-header"></h1>
     <div class="row placeholders">
         <div id="contenu_form">
-            <?php $this->titre = "Mon Blog - Ajouter un nouveau billet" ?>
             <h1 class="title-id">Création d'un nouveau billet</h1>
             <hr>
             <br />

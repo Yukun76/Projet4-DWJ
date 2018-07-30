@@ -1,14 +1,11 @@
-<header
- class="Alaska_banner" id="header-perso2">
-</header>
-<h1 id="Titre_Episode" class="border-bottom"> Billet simple pour l'Alaska </h1>
 <?php $this->titre = "Mon Blog - " . $this->nettoyer($billet['titre']); ?>
+<header class="Alaska_banner" id="header-perso2"></header>
+<h1 id="Titre_Episode" class="border-bottom"> Billet simple pour l'Alaska </h1>
 <div class="All_billet">
     <article>
         <header>
             <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
-            <time><?= $this->nettoyer($billet['date']) ?></time><br />
-            
+            <time><?= $this->nettoyer($billet['date']) ?></time><br />            
         </header>
         <br />
         <p><?= $billet['contenu'] ?></p>

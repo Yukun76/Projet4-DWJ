@@ -1,3 +1,4 @@
+<?php $this->titre = "Mon Blog - Administration de l'histoire"?>
 <div class="header" id="header-perso5">
     <div class="top-header">
         <div class="container">

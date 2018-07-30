@@ -1,3 +1,4 @@
+<?php $this->titre = "Mon Blog - Commentaire de " . $this->nettoyer($commentaire['auteur']); ?>
 <header class="Alaska_banner" id="header-perso2"></header>
 <div class="commentaire_view">
 	<h1><?= $this->nettoyer($commentaire['auteur']); ?></h1>

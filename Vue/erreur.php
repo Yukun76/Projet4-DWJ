@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<a href=""><img src="vue/img/logo.png" alt="Jean ForteRoche" id="logo2"></a>
+				<a href=""><img src="Public/img/logo.png" alt="Jean ForteRoche" id="logo2"></a>
 			</div>
 		</div>
 	</div>

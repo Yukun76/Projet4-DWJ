@@ -2,7 +2,7 @@
 
 require_once 'Framework/Controleur.php';
 require_once 'Modele/Billet.php';
-require_once 'Modele\Auteur.php';
+require_once 'Modele/Auteur.php';
 require_once 'Modele/commentaire.php';
 
 class ControleurAccueil extends Controleur {

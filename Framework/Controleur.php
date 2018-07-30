@@ -70,8 +70,14 @@ abstract class Controleur
 
         // Instanciation et génération de la vue
         $vue = new Vue($actionVue, $controleurVue);
-        $vue->generer($donneesVue);
+        $vue->generer(array_merge($donneesVue, ['flash' => $this->requete->getSession()->getMessageFlash()]));
     }
+
+        protected function setFlash($type, $message)
+    {
+        $this->requete->getSession()->setMessageFlash($type, $message);
+    }
+
 
     /**
      * Effectue une redirection vers un contrôleur et une action spécifiques

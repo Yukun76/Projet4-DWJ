@@ -7,6 +7,9 @@
 class Session
 {
 
+    const FLASH_TYPE_WARNING = 'warning';
+    const FLASH_TYPE_SUCCESS = 'success';
+
     /**
      * Constructeur.
      * Démarre ou restaure la session
@@ -24,6 +27,12 @@ class Session
         session_destroy();
     }
 
+
+ public function setMessageFlash($type, $mess)
+    {
+        $this->setAttribut('flash_type', $type);
+        $this->setAttribut('flash_message', $mess);
+    }
     /**
      * Ajoute un attribut à la session
      * 
@@ -35,6 +44,15 @@ class Session
         $_SESSION[$nom] = $valeur;
     }
 
+    public function getMessageFlash()
+    {
+        $flash = [];
+        if ($this->existeAttribut("flash_type")) {
+            $flash['message'] = $this->deleteAttribut('flash_message');
+            $flash['type'] = $this->deleteAttribut('flash_type');
+        }
+        return $flash;
+    }
     /**
      * Renvoie vrai si l'attribut existe dans la session
      * 
@@ -64,6 +82,17 @@ class Session
         else {
             throw new Exception("Attribut '$nom' absent de la session");
         }
+    }
+
+        public function deleteAttribut($nom)
+    {
+        $attr = null;
+
+        if ($this->existeAttribut($nom)) {
+            $attr = $_SESSION[$nom];
+            unset($_SESSION[$nom]);
+        }
+        return $attr;
     }
 
 }

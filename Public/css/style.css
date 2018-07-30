@@ -260,7 +260,7 @@ background-color: #9994c1;}
     font-family: Cormorant Garamond, sans-serif;
     background-size: 120%;
     background-position: -20px;
-    font-size: 4em;
+    font-size: 3em;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
@@ -273,6 +273,11 @@ background-color: #9994c1;}
     margin-left: auto;
     text-align: center;  
     border: solid 1px #e0e0e0;
+}
+
+#all_episode h1 {
+    font-size: 2em;
+    padding: 10px;
 }
 
 #Body_episode {
@@ -429,19 +434,38 @@ tbody tr {
 }
 
 #retour_acceuil{
-display: none;
+    display: none;
+}
+
+#next {
+    float: right;
+    padding: 10px;
+}
+
+#previous {
+    padding: 10px;
+}
+
+#message_flash{
+    margin-left: 18%;
+    margin-top: 80px;
+    width: 80%;
 }
 
 
 
 @media all and (max-width: 980px) {
 
-    .allbody { height: 100%; background: #fcfbf9; }
+    .allbody { 
+    height: 100%; 
+    background: #fcfbf9; 
+    }
 
     .sidenav {
         position: relative;
         margin-top: 0px;
     }
+
     thead {
         display: none;
     }
@@ -460,6 +484,7 @@ display: none;
     #Titre_Episode {
         font-size: 3em;
     }
+
 
     tr,
     td {
@@ -501,7 +526,7 @@ display: none;
         border: none;
     }
 
-       #all_episode h1 {
+    #all_episode h1 {
         width: 200%;
         margin-left: -50%;
     }
@@ -571,6 +596,11 @@ display: none;
     h1 {
         font-size: 2em;
     }
+
+    #message_flash{
+        margin-left: 10%;
+        width: 80%;
+    }
 }
 
 @media all and (max-width: 680px) {
@@ -595,6 +625,8 @@ display: none;
     #jean {
         display: none;
     }
+
+    #logo2 { width: 50%; }
 
     .banner {
         height: 210px;
@@ -623,10 +655,9 @@ display: none;
     }
 
     #Titre_Episode {
-        font-size: 2em;
+        font-size: 2.5em;
         width: 100%;
     }
-
 
     #who-title {
         font-size: 1em;
@@ -681,7 +712,7 @@ display: none;
         margin-left: -10px;
     }
 
-    #left_contain{
+    #left_contain {
         font-size: .8em;
         height: 100%;
         margin-top: -100px;
@@ -693,4 +724,8 @@ display: none;
     }
 
     #titreReponses { font-size: 1.5em; }
+
+    #message_flash {
+        font-size: 0.7em;
+    }
 }

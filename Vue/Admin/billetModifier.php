@@ -1,3 +1,4 @@
+<?php $this->titre = "Mon Blog - Modification " . $billet['titre']?>
 <header class="Alaska_banner" id="header-perso2"></header>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="episode_modif">
     <h1 class="page-header"></h1>
@@ -24,7 +25,7 @@
                         <div class="col-xs-4 col-md-4 form-group">
                             <label>Ordre d'affichage (ex: 1,2..)</label>
                             <input class="form-control" id="ordreBillet" name="ordreBillet"
-                            placeholder="Ordre d'affichage" type="text" value="<?= $billet['ordrer'] ?>"
+                            placeholder="Ordre d'affichage" type="text" value="<?= $billet['ordre'] ?>"
                             required/>
                         </div>
                     </div>

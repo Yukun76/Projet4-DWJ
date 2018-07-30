@@ -1,3 +1,4 @@
+<?php $this->titre = "Mon Blog - Tableau de bord "?>
 <!DOCTYPE html>
 <html lang="fr">
 	<div class="allbody">

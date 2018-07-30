@@ -1,3 +1,4 @@
+<?php $this->titre = "Mon Blog - Modification 'A propos' " ?>
 <header class="header banner" id="header-perso3">
     <div class="container">
         <div class="row">

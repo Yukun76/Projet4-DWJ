@@ -9,7 +9,7 @@ require_once 'Vue.php';
  */
 class Routeur
 {
-
+    private $requete;
     /**
      * Méthode principale appelée par le contrôleur frontal
      * Examine la requête et exécute l'action appropriée
@@ -19,10 +19,10 @@ class Routeur
         try {
             // Fusion des paramètres GET et POST de la requête
             // Permet de gérer uniformément ces deux types de requête HTTP
-            $requete = new Requete(array_merge($_GET, $_POST));
+            $this->requete = new Requete(array_merge($_GET, $_POST));
 
-            $controleur = $this->creerControleur($requete);
-            $action = $this->creerAction($requete);
+            $controleur = $this->creerControleur($this->requete);
+            $action = $this->creerAction($this->requete);
 
             $controleur->executerAction($action);
         }
@@ -88,7 +88,8 @@ class Routeur
     private function gererErreur(Exception $exception)
     {
         $vue = new Vue('erreur');
-        $vue->generer(array('msgErreur' => $exception->getMessage()));
+        $donnees = ['msgErreur' => $exception->getMessage(), 'flash' => $this->requete->getSession()->getMessageFlash()];
+        $vue->generer($donnees);
     }
 
 }

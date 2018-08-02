@@ -1,12 +1,12 @@
 <?php
 
-require_once 'Configuration.php';
+require_once '/Modele/Configuration.php';
 
 /**
  * Classe modélisant une vue.
  */
-class Vue
-{
+class Vue {
+    
     /** Nom du fichier associé à la vue */
     private $fichier;
 
@@ -19,8 +19,7 @@ class Vue
      * @param string $action Action à laquelle la vue est associée
      * @param string $controleur Nom du contrôleur auquel la vue est associée
      */
-    public function __construct($action, $controleur = "")
-    {
+    public function __construct($action, $controleur = "") {
         // Détermination du nom du fichier vue à partir de l'action et du constructeur
         // La convention de nommage des fichiers vues est : Vue/<$controleur>/<$action>.php
         $fichier = "Vue/";
@@ -35,9 +34,8 @@ class Vue
      * 
      * @param array $donnees Données nécessaires à la génération de la vue
      */
-    public function generer($donnees)
-    {
-         $flash = $donnees['flash'];
+    public function generer($donnees) {
+        $flash = $donnees['flash'];
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // On définit une variable locale accessible par la vue pour la racine Web
@@ -59,8 +57,7 @@ class Vue
      * @return string Résultat de la génération de la vue
      * @throws Exception Si le fichier vue est introuvable
      */
-    private function genererFichier($fichier, $donnees)
-    {
+    private function genererFichier($fichier, $donnees) {
         if (file_exists($fichier)) {
             // Rend les éléments du tableau $donnees accessibles dans la vue
             extract($donnees);
@@ -85,8 +82,7 @@ class Vue
      * @param string $valeur Valeur à nettoyer
      * @return string Valeur nettoyée
      */
-    private function nettoyer($valeur)
-    {
+    private function nettoyer($valeur) {
         // Convertit les caractères spéciaux en entités HTML
         return htmlspecialchars($valeur, ENT_QUOTES, 'UTF-8', false);
     }

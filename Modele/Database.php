@@ -7,7 +7,7 @@ require_once 'Configuration.php';
  * Centralise les services d'accès à une base de données.
  * Utilise l'API PDO de PHP.
  */
-abstract class Modele
+abstract class Database
 {
     /** Objet PDO d'accès à la BD 
       Statique donc partagé par toutes les instances des classes dérivées */

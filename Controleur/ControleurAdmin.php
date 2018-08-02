@@ -10,6 +10,7 @@ require_once 'Modele\Auteur.php';
  * Contrôleur des actions d'administration
  */
 class ControleurAdmin extends ControleurSecurise  {
+
     private $billet;
     private $commentaire;
     private $auteur;
@@ -17,15 +18,14 @@ class ControleurAdmin extends ControleurSecurise  {
     /**
      * Constructeur
      */
-    public function __construct()
-    {
+
+    public function __construct() {
         $this->billet = new Billet();
         $this->commentaire = new Commentaire();
         $this->auteur = new Auteur();
     }
 
-    public function index()
-    {
+    public function index() {
         $nbBillets = $this->billet->getNombreBillets();
         $auteur = $this->auteur->getAuteur();
         $nbCommentaires = $this->commentaire->getNombreCommentaires();
@@ -57,8 +57,7 @@ class ControleurAdmin extends ControleurSecurise  {
     }
 
 
-    public function billetCreer()
-    {
+    public function billetCreer() {
         if ($this->requete->existeParametre("dateBillet") &&  $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("ordreBillet") && $this->requete->existeParametre("contenuBillet")) {
             $dateBillet = $this->requete->getParametre('dateBillet');
              $titreBillet = $this->requete->getParametre('titreBillet');
@@ -67,12 +66,12 @@ class ControleurAdmin extends ControleurSecurise  {
             $this->billet->BilletCreer($dateBillet, $titreBillet, $ordreBillet, $contenuBillet);
             $this->rediriger("admin/billet/");
         }
+        
         $billet = array('title' => "Mon titre", 'description' => '<p>Le contenu de mon article</p>');
         $this->genererVue(array('billet' => $billet));
     }
 
-    public function billetModifier()
-    {
+    public function billetModifier() {
         $id = $this->requete->getParametre('id');
         if ($this->requete->existeParametre("dateBillet") && $this->requete->existeParametre("titreBillet") && $this->requete->existeParametre("ordreBillet") && $this->requete->existeParametre("contenuBillet")) {
             $dateBillet = $this->requete->getParametre('dateBillet');
@@ -80,17 +79,14 @@ class ControleurAdmin extends ControleurSecurise  {
             $ordreBillet = $this->requete->getParametre('ordreBillet');
             $contenuBillet = $this->requete->getParametre('contenuBillet');
             $this->billet->billetModifier($id, $dateBillet, $titreBillet, $ordreBillet, $contenuBillet);
-            $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet modifié");
             $this->rediriger("admin/billet/");
-
         }
 
         $billet = $this->billet->getBillet($id);
         $this->genererVue(array('billet' => $billet));
     }
 
-    public function billetSupprimer()
-    {
+    public function billetSupprimer() {
         $id = $this->requete->getParametre('id');
         $this->billet->billetSupprimer($id);
         $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Billet supprimé");
@@ -99,24 +95,22 @@ class ControleurAdmin extends ControleurSecurise  {
 
 
 
-    public function commentaireSupprimer()
-    {
+    public function commentaireSupprimer() {
         $id = $this->requete->getParametre('id');
         $this->commentaire->commentaireSupprimer($id);
         $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
         $this->rediriger("admin/comment/");
     }
 
-    public function supprimerSignalement()    {
+    public function supprimerSignalement() {
         $id = $this->requete->getParametre('id');
         $this->commentaire->supprimerSignalement($id);
-         $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Signalement(s) supprimé(s)");
+        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Signalement(s) supprimé(s)");
         $this->rediriger("admin/comment/");
     }
 
 
-    public function  auteurEditer ()
-    {
+    public function  auteurEditer () {
         $auteur = $this->auteur->getAuteur();
         if ($this->requete->existeParametre("auteurPhoto")) {
             $photo = $this->requete->getParametre('auteurPhoto');
@@ -125,6 +119,7 @@ class ControleurAdmin extends ControleurSecurise  {
             $auteur = $this->auteur->editerAuteur($photo,$titre, $texte);
             $this->rediriger("admin/auteur/");
         }
+
         $this->genererVue(array('auteur' => $auteur));
     }
 

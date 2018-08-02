@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Framework/Modele.php';
+require_once 'Database.php';
 
-class Auteur extends Modele {
+class Auteur extends Database {
 
     public function getAuteur () {
         $sql = 'SELECT auteur_photo AS photo, auteur_titre AS titre, auteur_texte AS texte FROM T_auteur';

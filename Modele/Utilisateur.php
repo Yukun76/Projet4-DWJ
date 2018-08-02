@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Framework/Modele.php';
+require_once 'Database.php';
 
-class Utilisateur extends Modele {
+class Utilisateur extends Database {
 
     /**
      * Vérifie qu'un utilisateur existe dans la BD

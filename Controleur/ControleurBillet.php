@@ -39,7 +39,7 @@ class ControleurBillet extends Controleur {
         $this->executerAction("index");
     }
 
-        public function listeBillets() {
+    public function listeBillets() {
         $billets = $this->billet->getAllBillet();
         $this->genererVue(array('billets' => $billets));
     }

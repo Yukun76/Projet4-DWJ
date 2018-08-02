@@ -4,8 +4,7 @@
  * Classe modélisant la session.
  * Encapsule la superglobale PHP $_SESSION.
  */
-class Session
-{
+class Session {
 
     const FLASH_TYPE_WARNING = 'warning';
     const FLASH_TYPE_SUCCESS = 'success';
@@ -14,38 +13,35 @@ class Session
      * Constructeur.
      * Démarre ou restaure la session
      */
-    public function __construct()
-    {
+    public function __construct() {
         session_start();
     }
 
     /**
      * Détruit la session actuelle
      */
-    public function detruire()
-    {
+    public function detruire() {
         session_destroy();
     }
 
 
- public function setMessageFlash($type, $mess)
-    {
+    public function setMessageFlash($type, $mess) {
         $this->setAttribut('flash_type', $type);
         $this->setAttribut('flash_message', $mess);
     }
+
     /**
      * Ajoute un attribut à la session
      * 
      * @param string $nom Nom de l'attribut
      * @param string $valeur Valeur de l'attribut
      */
-    public function setAttribut($nom, $valeur)
-    {
+
+    public function setAttribut($nom, $valeur) {
         $_SESSION[$nom] = $valeur;
     }
 
-    public function getMessageFlash()
-    {
+    public function getMessageFlash() {
         $flash = [];
         if ($this->existeAttribut("flash_type")) {
             $flash['message'] = $this->deleteAttribut('flash_message');
@@ -53,6 +49,7 @@ class Session
         }
         return $flash;
     }
+    
     /**
      * Renvoie vrai si l'attribut existe dans la session
      * 
@@ -61,8 +58,7 @@ class Session
      */
 
     
-    public function existeAttribut($nom)
-    {
+    public function existeAttribut($nom) {
         return (isset($_SESSION[$nom]) && $_SESSION[$nom] != "");
     }
 
@@ -74,8 +70,8 @@ class Session
      * @return string Valeur de l'attribut
      * @throws Exception Si l'attribut n'existe pas dans la session
      */
-    public function getAttribut($nom)
-    {
+    
+    public function getAttribut($nom) {
         if ($this->existeAttribut($nom)) {
             return $_SESSION[$nom];
         }
@@ -84,8 +80,7 @@ class Session
         }
     }
 
-        public function deleteAttribut($nom)
-    {
+    public function deleteAttribut($nom) {
         $attr = null;
 
         if ($this->existeAttribut($nom)) {

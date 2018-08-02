@@ -48,7 +48,8 @@
         <div id="contenu">
             <?php if (!empty($flash)): ?>
                 <div id="message_flash" class="alert alert-<?= $flash['type'] ?>">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
                     <p><strong><?= ucfirst($flash['type']) ?> !</strong> <?= $flash['message'] ?></p>
                 </div>
             <?php endif; ?>

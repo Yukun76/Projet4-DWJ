@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Framework/Modele.php';
+require_once 'Database.php';
 
-class Billet extends Modele {
+class Billet extends Database {
 
     /** Renvoie la liste des billets du blog
      * 

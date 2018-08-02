@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Framework/Modele.php';
+require_once 'Database.php';
 
-class Commentaire extends Modele {
+class Commentaire extends Database {
 
 // Renvoie la liste des commentaires associés à un billet
     public function getCommentaires($idBillet) {

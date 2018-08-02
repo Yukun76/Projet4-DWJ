@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Configuration.php';
+require_once '/Modele/Configuration.php';
 require_once 'Requete.php';
 require_once 'Vue.php';
 
@@ -8,8 +8,8 @@ require_once 'Vue.php';
  * Classe abstraite contrôleur. 
  * Fournit des services communs aux classes contrôleurs dérivées.
  */
-abstract class Controleur
-{
+abstract class Controleur {
+
     /** Action à réaliser */
     private $action;
 
@@ -21,8 +21,8 @@ abstract class Controleur
      * 
      * @param Requete $requete Requete entrante
      */
-    public function setRequete(Requete $requete)
-    {
+    
+    public function setRequete(Requete $requete) {
         $this->requete = $requete;
     }
 
@@ -32,8 +32,8 @@ abstract class Controleur
      * 
      * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
      */
-    public function executerAction($action)
-    {
+
+    public function executerAction($action) {
         if (method_exists($this, $action)) {
             $this->action = $action;
             $this->{$this->action}();
@@ -48,6 +48,7 @@ abstract class Controleur
      * Méthode abstraite correspondant à l'action par défaut
      * Oblige les classes dérivées à implémenter cette action par défaut
      */
+
     public abstract function index();
 
     /**
@@ -56,8 +57,8 @@ abstract class Controleur
      * @param array $donneesVue Données nécessaires pour la génération de la vue
      * @param string $action Action associée à la vue (permet à un contrôleur de générer une vue pour une action spécifique)
      */
-    protected function genererVue($donneesVue = array(), $action = null)
-    {
+
+    protected function genererVue($donneesVue = array(), $action = null) {
         // Utilisation de l'action actuelle par défaut
         $actionVue = $this->action;
         if ($action != null) {
@@ -73,8 +74,7 @@ abstract class Controleur
         $vue->generer(array_merge($donneesVue, ['flash' => $this->requete->getSession()->getMessageFlash()]));
     }
 
-        protected function setFlash($type, $message)
-    {
+    protected function setFlash($type, $message) {
         $this->requete->getSession()->setMessageFlash($type, $message);
     }
 
@@ -85,8 +85,7 @@ abstract class Controleur
      * @param string $controleur Contrôleur
      * @param type $action Action Action
      */
-    protected function rediriger($controleur, $action = null)
-    {
+    protected function rediriger($controleur, $action = null) {
         $racineWeb = Configuration::get("racineWeb", "/");
         // Redirection vers l'URL /racine_site/controleur/action
         header("Location:" . $racineWeb . $controleur . "/" . $action);

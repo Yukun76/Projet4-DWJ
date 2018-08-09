@@ -9,17 +9,17 @@ class Billet extends Database {
      * @return PDOStatement La liste des billets
      */
     public function getBillets() {
-        $sql = 'select BIL_ID as id, BIL_NUM as ordre, BIL_DATE as date,'
-                . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' order by BIL_NUM desc LIMIT 2';
+        $sql = 'select bil_id as id, bil_num as ordre, bil_date as date,'
+                . ' bil_titre as titre, bil_contenu as contenu from t_billet'
+                . ' order by bil_num desc LIMIT 2';
         $billets = $this->executerRequete($sql);
         return $billets;
     }
 
         public function getAllBillet() {
-        $sql = 'select BIL_ID as id, BIL_NUM as ordre, BIL_DATE as date,'
-                . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' order by BIL_NUM asc';
+        $sql = 'select bil_id as id, bil_num as ordre, bil_date as date,'
+                . ' bil_titre as titre, bil_contenu as contenu from t_billet'
+                . ' order by bil_num asc';
         $billets = $this->executerRequete($sql);
         return $billets;
     }
@@ -32,9 +32,9 @@ class Billet extends Database {
      * @throws Exception Si l'identifiant du billet est inconnu
      */
     public function getBillet($idBillet) {
-        $sql = 'select BIL_ID as id, BIL_NUM as ordre, BIL_DATE as date,'
-                . ' BIL_TITRE as titre, BIL_CONTENU as contenu from T_BILLET'
-                . ' where BIL_ID=?';
+        $sql = 'select bil_id as id, bil_num as ordre, bil_date as date,'
+                . ' bil_titre as titre, bil_contenu as contenu from t_billet'
+                . ' where bil_id=?';
         $billet = $this->executerRequete($sql, array($idBillet));
         if ($billet->rowCount() > 0)
             return $billet->fetch();  // Accès à la première ligne de résultat
@@ -48,14 +48,14 @@ class Billet extends Database {
      * @return int Le nombre de billets
      */
     public function getNombreBillets() {
-        $sql = 'select count(*) as nbBillets from T_BILLET';
+        $sql = 'select count(*) as nbBillets from t_billet';
         $resultat = $this->executerRequete($sql);
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbBillets'];
     }
 
     public function billetCreer($dateBillet, $titreBillet, $ordreBillet, $contenuBillet) {
-        $sql = 'INSERT INTO T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet,  BIL_NUM= :ordreBillet, BIL_CONTENU= :contenuBillet';
+        $sql = 'INSERT INTO t_billet SET bil_date= :dateBillet, bil_titre= :titreBillet,  bil_num= :ordreBillet, bil_contenu= :contenuBillet';
         return $this->executerRequete($sql, array(
                 'dateBillet' => $dateBillet,
                 'titreBillet' => $titreBillet,
@@ -65,7 +65,7 @@ class Billet extends Database {
     }
 
     public function billetModifier($idBillet, $dateBillet, $titreBillet, $ordreBillet, $contenuBillet) {
-        $sql = 'UPDATE T_BILLET SET BIL_DATE= :dateBillet, BIL_TITRE= :titreBillet, BIL_NUM= :ordreBillet, BIL_CONTENU= :contenuBillet WHERE BIL_ID=:id';
+        $sql = 'UPDATE t_billet SET bil_date= :dateBillet, bil_titre= :titreBillet, bil_num= :ordreBillet, bil_contenu= :contenuBillet WHERE bil_id=:id';
         return $this->executerRequete($sql, array(
                 'dateBillet' => $dateBillet,
                 'titreBillet' => $titreBillet,
@@ -76,7 +76,7 @@ class Billet extends Database {
     }
 
     public function billetSupprimer($idBillet) {
-        $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = :numeroBillet';
+        $sql = 'DELETE FROM t_billet WHERE bil_id = :numeroBillet';
 
         return $this->executerRequete($sql, array(
                 'numeroBillet' => $idBillet,

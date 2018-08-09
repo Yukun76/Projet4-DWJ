@@ -49,7 +49,7 @@
                     ?>
                 </td>
                 <td>
-                    <a class="btn btn-secondary" href="<?="billet/index/" . $this->nettoyer($billet['id']) ?>"><i class="fas fa-eye"></i>  Afficher</a>
+                    <a class="btn btn-secondary" href="<?="billet/detail/" . $this->nettoyer($billet['id']) ?>"><i class="fas fa-eye"></i>  Afficher</a>
                     <a class="btn btn-primary" href="./admin/billetModifier/<?= $billet['id'] ?>"><i class="fas fa-edit"></i> Editer</a>
                     <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="<?= $this->nettoyer($billet['titre']) ?>" data-modal-confirm-url="./admin/billetSupprimer/<?= $billet['id'] ?>"><i class="fas fa-trash"></i> Supprimer</a>
                 </td>

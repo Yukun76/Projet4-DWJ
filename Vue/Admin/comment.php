@@ -43,7 +43,7 @@
             <?php } else { ?>
             <?php foreach ($commentaires as $commentaire):?>
             <td>
-                <a href="<?= "billet/index/" . $this->nettoyer($commentaire['id']) ?>"><?= $this->nettoyer($commentaire['titre']) ?></a>
+                <a href="<?= "billet/detail/" . $this->nettoyer($commentaire['id']) ?>"><?= $this->nettoyer($commentaire['titre']) ?></a>
             </td>
             <td>
                 <?= $this->nettoyer($commentaire['auteur'])  ?>

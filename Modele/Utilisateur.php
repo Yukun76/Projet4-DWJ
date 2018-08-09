@@ -13,7 +13,7 @@ class Utilisateur extends Database {
      */
     public function connecter($login, $mdp)
     {
-        $sql = "select UTIL_ID from T_UTILISATEUR where UTIL_LOGIN=? and UTIL_MDP=?";
+        $sql = "select util_id from t_utilisateur where util_login=? and util_mdp=?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
         return ($utilisateur->rowCount() == 1);
     }
@@ -28,8 +28,8 @@ class Utilisateur extends Database {
      */
     public function getUtilisateur($login, $mdp)
     {
-        $sql = "select UTIL_ID as idUtilisateur, UTIL_LOGIN as login, UTIL_MDP as mdp 
-            from T_UTILISATEUR where UTIL_LOGIN=? and UTIL_MDP=?";
+        $sql = "select util_id as idUtilisateur, util_login as login, util_mdp as mdp 
+            from t_utilisateur where util_login=? and util_mdp=?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
         if ($utilisateur->rowCount() == 1)
             return $utilisateur->fetch();  // Accès à la première ligne de résultat

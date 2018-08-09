@@ -3,7 +3,7 @@ require_once 'Framework/Session.php';
 require_once 'Framework/ControleurSecurise.php';
 require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
-require_once 'Modele\Auteur.php';
+require_once 'Modele/Auteur.php';
 
 
 /**

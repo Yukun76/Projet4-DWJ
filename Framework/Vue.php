@@ -1,6 +1,6 @@
 <?php
 
-require_once '/Modele/Configuration.php';
+require_once 'Modele/Configuration.php';
 
 /**
  * Classe modélisant une vue.

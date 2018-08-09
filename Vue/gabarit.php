@@ -31,8 +31,8 @@
                                 </button>
                         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div class="navbar-nav">
-                                <a class="nav-item nav-link" href="Accueil"><i class="fas fa-home"></i> Accueil</a>
-                                <a class="nav-item nav-link" href="Billet/listeBillets"><i class="fas fa-book"></i> Episodes</a>
+                                <a class="nav-item nav-link" href="accueil"><i class="fas fa-home"></i> Accueil</a>
+                                <a class="nav-item nav-link" href="billet/liste"><i class="fas fa-book"></i> Episodes</a>
                                 <?php
                                         if (!isset($_SESSION['login'])) {
                                         echo '<a class="nav-item nav-link custom-link" href="connexion"> <i class="fas fa-sign-in-alt"></i> Connexion</a>';
@@ -63,7 +63,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="www.yukun.fr"> Yukun.fr</a>
+    <a href="http://yukun.fr/blog"> Yukun.fr</a>
   </div>
   <!-- Copyright -->
 

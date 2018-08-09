@@ -6,16 +6,16 @@ class Commentaire extends Database {
 
 // Renvoie la liste des commentaires associés à un billet
     public function getCommentaires($idBillet) {
-        $sql = 'select COM_ID as id, COM_DATE as date,'
-                . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-                . ' where BIL_ID=?';
+        $sql = 'select com_id as id, com_date as date,'
+                . ' com_auteur as auteur, com_contenu as contenu from t_commentaire'
+                . ' where bil_id=?';
         $commentaires = $this->executerRequete($sql, array($idBillet));
         return $commentaires;
     }
 
 
     public function ajouterCommentaire($auteur, $contenu, $idBillet) {
-        $sql = 'insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID)'
+        $sql = 'insert into t_commentaire(com_date, com_auteur, com_contenu, bil_id)'
             . ' values(?, ?, ?, ?)';
         $date = date(DATE_W3C);
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
@@ -28,7 +28,7 @@ class Commentaire extends Database {
      */
     public function getNombreCommentaires()
     {
-        $sql = 'select count(*) as nbCommentaires from T_COMMENTAIRE';
+        $sql = 'select count(*) as nbCommentaires from t_commentaire';
         $resultat = $this->executerRequete($sql);
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbCommentaires'];
@@ -37,18 +37,18 @@ class Commentaire extends Database {
 
     public function getCommentaire($idCommentaire)
     {
-        $sql = 'select COM_ID as id, COM_DATE as date, BIL_ID as bil_id,'
-            . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-            . ' where COM_ID=:id';
+        $sql = 'select com_id as id, com_date as date, bil_id as bil_id,'
+            . ' com_auteur as auteur, com_contenu as contenu from t_commentaire'
+            . ' where com_id=:id';
         $commentaire = $this->executerRequete($sql, array('id' => $idCommentaire))->fetch();
         return $commentaire;
     }
 
     public function commentView($idCommentaire)
     {
-        $sql = 'select COM_ID as id, COM_DATE as date, BIL_ID as bil_id,'
-            . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-            . ' where COM_ID=:id';
+        $sql = 'select com_id as id, com_date as date, bil_id as bil_id,'
+            . ' com_auteur as auteur, com_contenu as contenu from t_commentaire'
+            . ' where com_id=:id';
         $commentaire = $this->executerRequete($sql, array('id' => $idCommentaire))->fetch();
         return $commentaire;
     }
@@ -56,13 +56,13 @@ class Commentaire extends Database {
 
 
     public function commentaireEditer ($contenu, $idCommentaire) {
-        $sql = 'UPDATE T_COMMENTAIRE SET COM_CONTENU = :contenu WHERE COM_ID = :idc';
+        $sql = 'UPDATE t_commentaire SET com_contenu = :contenu WHERE com_id = :idc';
         $this->executerRequete($sql, array('contenu' => $contenu, 'idc' => $idCommentaire));
     }
 
 
     public function commentaireSupprimer($idCommentaire){
-        $sql = 'DELETE FROM T_COMMENTAIRE WHERE COM_ID = :idCommentaire';
+        $sql = 'DELETE FROM t_commentaire WHERE com_id = :idCommentaire';
 
         return $this->executerRequete($sql, array(
                 'idCommentaire' => $idCommentaire,
@@ -71,7 +71,7 @@ class Commentaire extends Database {
 
     public function getComments()
     {
-         $sql = 'SELECT T_BILLET.BIL_ID AS id, T_BILLET.BIL_TITRE AS titre, T_COMMENTAIRE.COM_ID AS idc, T_COMMENTAIRE.COM_CONTENU AS contenu, COM_AUTEUR as auteur, T_COMMENTAIRE.SIGNAL_COUNT AS signalement FROM T_COMMENTAIRE, T_BILLET WHERE T_BILLET.BIL_ID = T_COMMENTAIRE.BIL_ID order by SIGNAL_COUNT DESC';
+         $sql = 'SELECT t_billet.bil_id AS id, t_billet.bil_titre AS titre, t_commentaire.com_id AS idc, t_commentaire.com_contenu AS contenu, com_auteur as auteur, t_commentaire.signal_count AS signalement FROM t_commentaire, t_billet WHERE t_billet.bil_id = t_commentaire.bil_id order by signal_count DESC';
         $CommentairesTronques = $this->executerRequete($sql, array());
         return $CommentairesTronques->fetchall();
     }
@@ -80,14 +80,14 @@ class Commentaire extends Database {
 
     public function ajouterUnSignalement($id)
     {
-        $sql = 'UPDATE T_COMMENTAIRE SET SIGNAL_COUNT  = SIGNAL_COUNT  + 1 WHERE COM_ID = :id';
+        $sql = 'UPDATE t_commentaire SET signal_count  = signal_count  + 1 WHERE com_id = :id';
         $this->executerRequete($sql, array('id' => $id));
     }
 
 
     public function getNombreSignalements()
     {
-        $sql = 'SELECT count(*) AS nbSignalements FROM T_COMMENTAIRE WHERE SIGNAL_COUNT  != 0';
+        $sql = 'SELECT count(*) AS nbSignalements FROM t_commentaire WHERE signal_count  != 0';
         $reponse = $this->executerRequete($sql);
         $ligne = $reponse->fetch();
         return $ligne['nbSignalements'];
@@ -95,7 +95,7 @@ class Commentaire extends Database {
 
     public function supprimerSignalement($id)
     {
-        $sql = 'UPDATE T_COMMENTAIRE SET SIGNAL_COUNT = 0 WHERE COM_ID = :id';
+        $sql = 'UPDATE t_commentaire SET signal_count = 0 WHERE com_id = :id';
         $this->executerRequete($sql, array('id' => $id));
     }
 }

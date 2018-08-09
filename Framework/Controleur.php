@@ -1,6 +1,6 @@
 <?php
 
-require_once '/Modele/Configuration.php';
+require_once 'Modele/Configuration.php';
 require_once 'Requete.php';
 require_once 'Vue.php';
 
@@ -44,19 +44,6 @@ abstract class Controleur {
         }
     }
 
-    /**
-     * Méthode abstraite correspondant à l'action par défaut
-     * Oblige les classes dérivées à implémenter cette action par défaut
-     */
-
-    public abstract function index();
-
-    /**
-     * Génère la vue associée au contrôleur courant
-     * 
-     * @param array $donneesVue Données nécessaires pour la génération de la vue
-     * @param string $action Action associée à la vue (permet à un contrôleur de générer une vue pour une action spécifique)
-     */
 
     protected function genererVue($donneesVue = array(), $action = null) {
         // Utilisation de l'action actuelle par défaut

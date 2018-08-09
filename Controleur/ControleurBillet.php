@@ -20,7 +20,8 @@ class ControleurBillet extends Controleur {
     }
 
     // Affiche les détails sur un billet
-    public function index() {
+
+    public function detail() {
         $idBillet = $this->requete->getParametre("id");        
         $billet = $this->billet->getBillet($idBillet);
         $commentaires = $this->commentaire->getCommentaires($idBillet);        
@@ -36,10 +37,10 @@ class ControleurBillet extends Controleur {
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
         
         // Exécution de l'action par défaut pour réafficher la liste des billets
-        $this->executerAction("index");
+        $this->executerAction("detail");
     }
 
-    public function listeBillets() {
+    public function liste() {
         $billets = $this->billet->getAllBillet();
         $this->genererVue(array('billets' => $billets));
     }

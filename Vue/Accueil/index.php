@@ -37,7 +37,7 @@
         <article>
             <header>
                 <hr>
-                <a href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>">
+                <a href="<?= "billet/detail/" . $this->nettoyer($billet['id']) ?>">
                     <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
                 </a>
                 <time><?= $this->nettoyer($billet['date']) ?></time>
@@ -52,7 +52,7 @@
             echo $billet['contenu'];
             
             ?>
-            <a href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>">Lire la suite</a>
+            <a href="<?= "billet/detail/" . $this->nettoyer($billet['id']) ?>">Lire la suite</a>
             <hr>
             <br />
             

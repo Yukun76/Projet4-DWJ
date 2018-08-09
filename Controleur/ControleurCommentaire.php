@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Framework\Controleur.php';
-require_once 'Modele\Billet.php';
-require_once 'Modele\Commentaire.php';
+require_once 'Framework/Controleur.php';
+require_once 'Modele/Billet.php';
+require_once 'Modele/Commentaire.php';
 
 /**
  * Contrôleur des actions liées aux billets
@@ -23,6 +23,7 @@ class ControleurCommentaire extends Controleur {
 
     // Affiche les détails sur un billet
     public function index() {
+        $this->genererVue();
     }
 
     // Signalement
@@ -30,7 +31,7 @@ class ControleurCommentaire extends Controleur {
         $idCommentaire = $this->requete->getParametre("id");
         $com = $this->commentaire->getCommentaire($idCommentaire);
         $this->commentaire->ajouterUnSignalement($idCommentaire);
-        $this->rediriger("billet","index/" . $com['bil_id']);
+        $this->rediriger("billet","detail/" . $com['bil_id']);
 
     }
 }

@@ -1,13 +1,15 @@
 <?php
 
 require_once 'Database.php';
+require_once 'Entity/Auteur.php';
 
-class Auteur extends Database {
+class DAOAuteur extends Database {
 
     public function getAuteur () {
-        $sql = 'SELECT auteur_photo AS photo, auteur_titre AS titre, auteur_texte AS texte FROM t_auteur';
+        $sql = 'SELECT * FROM t_auteur';
         $photo = $this->executerRequete($sql, array());
-        return $photo->fetch();
+        $result = $photo->fetch();
+        return new Auteur($result['auteur_photo'], $result['auteur_titre'], $result['auteur_texte']);
     }
 
     public function editerAuteur ($photo, $titre, $texte) {

@@ -7,8 +7,8 @@
     <div class="Episode">
         <article>            
             <header id="all_episode">
-                <a href="<?= "billet/detail/" . $this->nettoyer($billet['id']) ?>">
-                    <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
+                <a href="<?= "billet/detail/" . $this->nettoyer($billet->getID()) ?>">
+                    <h1 class="titreBillet"><?= $this->nettoyer($billet->getTitre()) ?></h1>
                 </a>
                 <img src="Public/img/ChugachMountains.jpg" alt="Mountains" id="Mountains">
             </header>            

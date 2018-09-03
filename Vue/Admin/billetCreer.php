@@ -35,7 +35,8 @@
                     <label>Texte</label>
                     <textarea rows="20" id="tiny" name="contenuBillet" placeholder="Le texte"></textarea>
                 </div>
-                <button class="btn btn-success" id="btn_newbillet"type="submit">Ajouter le nouveau billet</button>
+                <button class="btn btn-success" id="btn_newbillet"type="submit">Ajouter le nouveau billet</button><br/><br/>
+                <a href="./admin/billet/" id="btn_newbillet" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Retour</a>
             </div>
         </form>
         <script>

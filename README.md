@@ -49,3 +49,7 @@ Compétences à valider
     Insérer ou modifier les données d’une base
     Récupérer les données d’une base
 
+
+Admin :
+ID : JeanForteroche
+MDP : 1aF89wXo98eBn#24i

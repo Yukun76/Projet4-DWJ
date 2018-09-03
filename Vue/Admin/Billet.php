@@ -34,27 +34,36 @@
             </tr>
         </thead>
         <tbody>
+            <?php if ($billets == null) { ?>
+            <tr>
+                <th>-</th>
+                <th>Aucun billet à afficher</th>
+                <th>-</th>
+            </tr>
+            <?php } else { ?>
             <?php foreach ($billets as $billet):?>
             <tr>
                 <td>
-                    <?= $this->nettoyer($billet['titre']) ?>
+                    <?= $this->nettoyer($billet->getTitre()) ?>
                 </td>
                 <td>
-                    <?php
-                    if(strlen($billet['contenu'])>=33)
-                    {
-                    $billet['contenu']=substr($billet['contenu'],0,50) . "..." ;
-                    }
-                    echo $billet['contenu'];
-                    ?>
+            <?php  
+            $contenu = $billet->getContenu();
+            if (strlen($contenu)>=33) {                
+                $contenu = substr($contenu,0,49) . "..." ;
+            }
+
+            echo $contenu;            
+            ?>   
                 </td>
                 <td>
-                    <a class="btn btn-secondary" href="<?="billet/detail/" . $this->nettoyer($billet['id']) ?>"><i class="fas fa-eye"></i>  Afficher</a>
-                    <a class="btn btn-primary" href="./admin/billetModifier/<?= $billet['id'] ?>"><i class="fas fa-edit"></i> Editer</a>
-                    <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="<?= $this->nettoyer($billet['titre']) ?>" data-modal-confirm-url="./admin/billetSupprimer/<?= $billet['id'] ?>"><i class="fas fa-trash"></i> Supprimer</a>
+                    <a class="btn btn-secondary" href="<?= "billet/detail/" . $this->nettoyer($billet->getId()) ?>"><i class="fas fa-eye"></i>  Afficher</a>
+                    <a class="btn btn-primary" href="./admin/billetModifier/<?= $billet->getId() ?>"><i class="fas fa-edit"></i> Editer</a>
+                    <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="<?= $this->nettoyer($billet->getTitre()) ?>" data-modal-confirm-url="./admin/billetSupprimer/<?= $billet->getId() ?>"><i class="fas fa-trash"></i> Supprimer</a>
                 </td>
             </tr>
             <?php endforeach; ?>
+            <?php } ?>
         </tbody>
     </table>
     <!-- Modal -->

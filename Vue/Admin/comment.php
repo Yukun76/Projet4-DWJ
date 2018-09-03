@@ -20,6 +20,7 @@
         </div>
     </div>
 </div>
+
 <div class="allbody">
     <h1 class="title-id" id="comment_title"><i class="far fa-comment"></i> Administrer les commentaires</h1>
     <table class="table">
@@ -43,28 +44,32 @@
             <?php } else { ?>
             <?php foreach ($commentaires as $commentaire):?>
             <td>
-                <a href="<?= "billet/detail/" . $this->nettoyer($commentaire['id']) ?>"><?= $this->nettoyer($commentaire['titre']) ?></a>
+                <a href="<?= "billet/detail/" . $this->nettoyer($commentaire->getBillet()->getId()) ?>"><?= $this->nettoyer($commentaire->getBillet()->getTitre()) ?></a>
             </td>
             <td>
-                <?= $this->nettoyer($commentaire['auteur'])  ?>
+                <?= $this->nettoyer($commentaire->getAuteur())  ?>
             </td>
             <td>
                 <?php
-                if(strlen($commentaire['contenu'])>=33)
-                {
-                $commentaire['contenu']=substr($commentaire['contenu'],0,46) . "..." ;
+                $contenu = $commentaire->getContenu();
+                if (strlen($contenu)>=30) {
+                    $contenu = substr($contenu,0,30) . "..." ;
                 }
-                echo htmlspecialchars($commentaire['contenu']);
+                echo $contenu;                
                 ?>
             </td>
             <td>
-                <?= $this->nettoyer($commentaire['signalement']) ?>
+                <?php if ($commentaire->getSignal() == 0) : ?>
+                    <p> Non </p>
+                <?php  else : ?>
+                    <p> Oui </p>
+                <?php endif; ?>
             </td>
             <td>
-                <a class="btn btn-secondary" href="<?="./admin/commentView/" . $this->nettoyer($commentaire['idc']) ?>"><i class="fas fa-eye"></i></a>
-                <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" data-com-title="<?=$this->nettoyer($commentaire['auteur']) ?>" data-modal-confirm-url="./admin/commentaireSupprimer/<?= $commentaire['idc'] ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
-                <?php if ($commentaire['signalement'] > 0) : ?>
-                <a class="btn btn-secondary" href="./admin/supprimerSignalement/<?= $commentaire['idc'] ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
+                <a class="btn btn-secondary" title ="Voir le commentaire" href="<?="./admin/commentView/" . $this->nettoyer($commentaire->getID()) ?>"><i class="fas fa-eye"></i></a>
+                <a href="#" data-toggle="modal" data-target="#myModal" title ="Supprimer le commentaire" class="btn btn-danger" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>" data-modal-confirm-url="./admin/commentaireSupprimer/<?= $commentaire->getID() ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
+                <?php if ($commentaire->getSignal() > 0) : ?>
+                <a class="btn btn-secondary" title ="Supprimer le(s) signalement(s)" href="./admin/supprimerSignalement/<?= $commentaire->getID() ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
                 <?php endif; ?>
             </td>
         </tr>

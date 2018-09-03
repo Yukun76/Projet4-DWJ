@@ -1,8 +1,8 @@
 <?php
 
 require_once 'Framework/Controleur.php';
-require_once 'Modele/Billet.php';
-require_once 'Modele/Commentaire.php';
+require_once 'Modele/DAOBillet.php';
+require_once 'Modele/DAOCommentaire.php';
 
 /**
  * Contrôleur des actions liées aux billets
@@ -18,7 +18,7 @@ class ControleurCommentaire extends Controleur {
      * Constructeur 
      */
     public function __construct() {
-        $this->commentaire = new Commentaire();
+        $this->commentaire = new DAOCommentaire();
     }
 
     // Affiche les détails sur un billet
@@ -31,8 +31,7 @@ class ControleurCommentaire extends Controleur {
         $idCommentaire = $this->requete->getParametre("id");
         $com = $this->commentaire->getCommentaire($idCommentaire);
         $this->commentaire->ajouterUnSignalement($idCommentaire);
-        $this->rediriger("billet","detail/" . $com['bil_id']);
-
+        $this->rediriger("billet","detail/" . $com->getBilId());
     }
 }
 

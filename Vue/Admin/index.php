@@ -42,21 +42,15 @@
 								<div class="box-body">
 									<div class="col-sm-4">
 										<form action="/action_page.php">
-											<img alt="User Pic"src="Public/img/<?= $this->nettoyer($auteur['photo']) ?>"
+											<img alt="User Pic"src="Public/img/<?= $this->nettoyer($auteur->getPhoto()) ?>"
                          					class="img-thumbnail img-responsive" id="photo_profil">					
 										</form>
 									</div>
 									<br>
 								</div>
 								<div class="clearfix"></div>
-								<hr class="HRprofil" style="margin:5px 0 5px 0;">
-								<div class="col-sm-5 col-xs-6 tital ">Nom:  </div>
-								<div class="col-sm-5 col-xs-6 tital ">Prénom:</div>
-								<div class="col-sm-7"></div>
-								<div class="col-sm-5 col-xs-6 tital ">Identifiant : <?= $this->nettoyer($login) ?></div>
-								<div class="col-sm-7"></div>
-								<div class="col-sm-5 col-xs-6 tital ">Date de naissance :</div>
-								<div class="col-sm-7"></div>
+								<hr class="HRprofil" style="margin:5px 0 5px 0;">	
+								<div class="col-sm-5 col-xs-6 tital ">Identifiant : <?= $this->nettoyer($login) ?></div>		
 							</div>
 						</div>
 					</div>

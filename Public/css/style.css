@@ -166,7 +166,7 @@ h2 { text-align: center; }
 
 .sidenav {
     height: 1000px;
-    width: 15%;
+    width: 180px;
     position: fixed;
     z-index: 1;
     top: 0;

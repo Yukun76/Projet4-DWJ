@@ -35,7 +35,7 @@ class Vue {
      * @param array $donnees Données nécessaires à la génération de la vue
      */
     public function generer($donnees) {
-        $flash = $donnees['flash'];
+        $flash = $donnees['flash'];        
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // On définit une variable locale accessible par la vue pour la racine Web

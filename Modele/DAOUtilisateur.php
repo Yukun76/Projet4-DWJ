@@ -1,8 +1,9 @@
 <?php
 
 require_once 'Database.php';
+require_once 'Entity/Utilisateur.php';
 
-class Utilisateur extends Database {
+class DAOUtilisateur extends Database {
 
     /**
      * Vérifie qu'un utilisateur existe dans la BD
@@ -13,9 +14,11 @@ class Utilisateur extends Database {
      */
     public function connecter($login, $mdp)
     {
-        $sql = "select util_id from t_utilisateur where util_login=? and util_mdp=?";
+        $sql = "SELECT * FROM t_utilisateur WHERE util_login=? and util_mdp=?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
-        return ($utilisateur->rowCount() == 1);
+        $result = $utilisateur->fetch(); 
+            return new Utilisateur($result['util_id'], $result['util_login'], $result['util_mdp']);
+        $utilisateur->rowCount() == 1;
     }
 
     /**
@@ -28,13 +31,12 @@ class Utilisateur extends Database {
      */
     public function getUtilisateur($login, $mdp)
     {
-        $sql = "select util_id as idUtilisateur, util_login as login, util_mdp as mdp 
-            from t_utilisateur where util_login=? and util_mdp=?";
+        $sql = "SELECT * FROM t_utilisateur WHERE util_login=? and util_mdp=?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
+        $result = $utilisateur->fetch(); 
         if ($utilisateur->rowCount() == 1)
-            return $utilisateur->fetch();  // Accès à la première ligne de résultat
+            return new Utilisateur($result['util_id'], $result['util_login'], $result['util_mdp']);  // Accès à la première ligne de résultat
         else
             throw new Exception("Aucun utilisateur ne correspond aux identifiants fournis");
     }
 }
-

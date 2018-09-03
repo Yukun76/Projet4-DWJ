@@ -1,14 +1,14 @@
-<?php $this->titre = "Mon Blog - " . $this->nettoyer($billet['titre']); ?>
+<?php $this->titre = "Mon Blog - " . $this->nettoyer($billet->getTitre()); ?>
 <header class="Alaska_banner" id="header-perso2"></header>
 <h1 id="Titre_Episode" class="border-bottom"> Billet simple pour l'Alaska </h1>
 <div class="All_billet">
     <article>
         <header>
-            <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
-            <time><?= $this->nettoyer($billet['date']) ?></time><br />            
+            <h1 class="titreBillet"><?= $this->nettoyer($billet->getTitre()) ?></h1>
+            <time><?= $this->nettoyer($billet->getDate()) ?></time><br />            
         </header>
         <br />
-        <p><?= $billet['contenu'] ?></p>
+        <p><?= $billet->getContenu() ?></p>
 
         <?php if (isset($_SESSION['login'])): ?>
             <a class="btn btn-warning back-btn" href="./admin/billet"><i class="fas fa-cog"></i> Panneau d'administration</a>
@@ -18,10 +18,16 @@
     </article>
     <h3 id="titreReponses">Commentaires <i class="fas fa-comment"></i></h3>
     <div class="Chap_com">
+
+        <?php if ($commentaires == null) { ?>
+            <p>Aucun commentaire</p>
+        <?php } else { ?>
+
         <?php foreach ($commentaires as $commentaire): ?>
-        <p><strong><em><?= $this->nettoyer($commentaire['auteur'])  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire['date']) ?> :  <a id="signal_button" href="#" data-toggle="modal" data-target="#myModal" data-com-title="<?=$this->nettoyer($commentaire['auteur']) ?>" data-modal-confirm-url="<?= "commentaire/signaler/" . $this->nettoyer($commentaire['id']) ?>">Signaler !</a><br/></strong>             
-        <?= nl2br(htmlspecialchars($commentaire['contenu'])) ?></p></em>
+        <p><strong><em><?= $this->nettoyer($commentaire->getAuteur())  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire->getDate()) ?> :  <a id="signal_button" href="#" data-toggle="modal" data-target="#myModal" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>" data-modal-confirm-url="<?= "commentaire/signaler/" . $this->nettoyer($commentaire->getId()) ?>">Signaler !</a><br/></strong>             
+        <?= nl2br(htmlspecialchars($commentaire->getContenu())) ?></p></em>
         <?php endforeach; ?>
+    <?php } ?>
     </div>
     <hr />
     <h4>Poster un commentaire</h4>
@@ -31,7 +37,7 @@
         <span id="caracteres">400</span> caractères restants
         <textarea maxlength="400" onkeyup="reste(this.value);" id="txtCommentaire" class= "form-control" name="contenu" rows="4"
         placeholder="Votre commentaire" required></textarea><br />
-        <input type="hidden" name="id" value="<?= $billet['id'] ?>" />
+        <input type="hidden" name="id" value="<?= $billet->getId() ?>" />
         <button class="btn btn-primary">Envoyer</button>
     </form>
 </div><br />

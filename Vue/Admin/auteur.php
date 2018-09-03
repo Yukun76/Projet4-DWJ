@@ -34,14 +34,14 @@
             <tr>
                 <td>
                     <img alt="User Pic"
-                    src="Public/img/<?= $this->nettoyer($auteur['photo']) ?>"
+                    src="Public/img/<?= $this->nettoyer($auteur->getPhoto()) ?>"
                     class="img-thumbnail img-responsive" id="photo_afficher">
                 </td>
                 <td>
-                    <?= $this->nettoyer($auteur['titre']) ?>
+                    <?= $this->nettoyer($auteur->getTitre()) ?>
                 </td>
                 <td>
-                    <?= $auteur['texte'] ?>
+                    <?= $auteur->getTexte() ?>
                 </td>
                 <td><a class="btn btn-primary" href="./admin/auteurEditer/"><i class="fas fa-edit"></i> Editer</a></td>
             </tr>

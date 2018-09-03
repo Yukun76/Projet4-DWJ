@@ -1,0 +1,125 @@
+<?php
+
+class Commentaire  {
+
+    /**
+     * @var string
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $date;
+
+    /**
+     * @var string
+     */
+    private $auteur;
+
+    /**
+     * @var string
+     */
+    private $contenuCom;
+
+    /**
+     * @var string
+     */
+    private $signal;
+
+    /**
+     * @var string
+     */
+    private $bilid;
+
+    /**
+     * @var string
+     */
+    private $biltitre;
+
+
+    private $billet;
+
+
+
+    public function __construct($id=null, $date=null, $auteur, $contenuCom, $signal=null, $bilid, $biltitre=null)
+    {
+        $this->id = $id;
+        $this->date = $date;        
+        $this->auteur = $auteur;
+        $this->contenu = $contenuCom;
+        $this->signal = $signal;
+        $this->bilid = $bilid;
+        $this->biltitre = $biltitre;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    public function setDate($date)
+    {
+        $this->date = $date;
+        return $this;
+    }
+
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur($auteur)
+    {
+        $this->auteur = $auteur;
+        return $this;
+    }
+
+
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    public function setContenu($contenuCom)
+    {
+        $this->contenu = $contenuCom;
+        return $this;
+    }
+
+
+    public function getSignal()
+    {
+        return $this->signal;
+    }
+
+
+    public function getBilId()
+    {
+        return $this->bilid;
+    }
+
+
+    public function getBilTitre()
+    {
+        return $this->biltitre;
+    }
+
+    public function getBillet()
+    {
+        return $this->billet;
+    }
+    
+    public function setBillet($billet)
+    {
+        $this->billet = $billet;
+        return $this;
+    }
+
+
+}

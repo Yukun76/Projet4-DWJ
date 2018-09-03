@@ -1,4 +1,4 @@
-<?php $this->titre = "Mon Blog - Modification " . $billet['titre']?>
+<?php $this->titre = "Mon Blog - Modification " . $billet->getTitre()?>
 <header class="Alaska_banner" id="header-perso2"></header>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="episode_modif">
     <h1 class="page-header"></h1>
@@ -13,25 +13,25 @@
                         <div class="col-xs-4 col-md-4 form-group">
                             <label>Date</label>
                             <input class="form-control" id="dateBillet" name="dateBillet"
-                            placeholder="Entrez la date de ce billet" class= "form-control" type="text" value="<?= $billet['date'] ?>"
+                            placeholder="Entrez la date de ce billet" class= "form-control" type="text" value="<?= $billet->getDate() ?>"
                             required autofocus/>
                         </div>
                         <div class="col-xs-4 col-md-4 form-group">
                             <label>Titre</label>
                             <input class="form-control" id="titreBillet" name="titreBillet"
-                            placeholder="Entrez votre titre" class= "form-control" type="text" value="<?= $billet['titre'] ?>"
+                            placeholder="Entrez votre titre" class= "form-control" type="text" value="<?= $billet->getTitre() ?>"
                             required/>
                         </div>
                         <div class="col-xs-4 col-md-4 form-group">
                             <label>Ordre d'affichage (ex: 1,2..)</label>
                             <input class="form-control" id="ordreBillet" name="ordreBillet"
-                            placeholder="Ordre d'affichage" type="text" value="<?= $billet['ordre'] ?>"
+                            placeholder="Ordre d'affichage" type="text" value="<?= $billet->getOrdre() ?>"
                             required/>
                         </div>
                     </div>
                     <label>Contenu du billet</label>
                     <textarea class="form-control" rows="20" id="tiny" name="contenuBillet" placeholder="Le texte">
-                    <?= $billet['contenu'] ?>
+                    <?= $billet->getContenu() ?>
                     </textarea>
                     <br/>
                     <div class="row">

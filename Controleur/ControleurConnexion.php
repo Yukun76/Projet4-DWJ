@@ -1,7 +1,7 @@
 <?php
 
 require_once 'framework/Controleur.php';
-require_once 'Modele/Utilisateur.php';
+require_once 'Modele/DAOUtilisateur.php';
 
 /**
  * Contrôleur gérant la connexion au site
@@ -11,7 +11,7 @@ class ControleurConnexion extends Controleur {
     private $utilisateur;
 
     public function __construct() {
-        $this->utilisateur = new Utilisateur();
+        $this->utilisateur = new DAOUtilisateur();
     }
 
     public function index() {
@@ -25,9 +25,9 @@ class ControleurConnexion extends Controleur {
             if ($this->utilisateur->connecter($login, $mdp)) {
                 $utilisateur = $this->utilisateur->getUtilisateur($login, $mdp);
                 $this->requete->getSession()->setAttribut("idUtilisateur",
-                        $utilisateur['idUtilisateur']);
+                        $utilisateur->getId());
                 $this->requete->getSession()->setAttribut("login",
-                        $utilisateur['login']);
+                        $utilisateur->getLogin());
                 $this->rediriger("admin");
             }
             else

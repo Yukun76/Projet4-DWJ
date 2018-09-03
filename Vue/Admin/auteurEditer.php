@@ -21,19 +21,19 @@
                         <div class="col-xs-4 col-md-4 form-group">
                             <label>Photo</label>
                             <input class="form-control" id="auteurPhoto" name="auteurPhoto"
-                            placeholder="Editer le nom exacte de la photo" type="text" value="<?= $auteur['photo'] ?>"
+                            placeholder="Editer le nom exacte de la photo" type="text" value="<?= $auteur->getPhoto() ?>"
                             required autofocus/>
                         </div>
                         <div class="col-xs-4 col-md-4 form-group">
                             <label>Titre</label>
                             <input class="form-control" id="auteurTitre" name="auteurTitre"
-                            placeholder="Editer votre titre" type="text" value="<?= $auteur['titre'] ?>"
+                            placeholder="Editer votre titre" type="text" value="<?= $auteur->getTitre() ?>"
                             required/>
                         </div>
                     </div>
                     <label>Edition de l'histoire</label>
                     <textarea class="form-control" rows="20" id="tiny" name="auteurTexte" placeholder="Le texte">
-                    <?= $auteur['texte'] ?>
+                    <?= $auteur->getTexte() ?>
                     </textarea>
                     <br/>
                     <div class="row">

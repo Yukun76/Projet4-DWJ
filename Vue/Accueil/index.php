@@ -16,12 +16,12 @@
             <div class="row">
                 <div class="col-sm-3">
                     <img alt="User Pic"
-                    src="Public/img/<?= $this->nettoyer($auteur['photo']) ?>"
+                    src="Public/img/<?= $this->nettoyer($auteur->getPhoto()) ?>"
                     id="jean" class="img-thumbnail img-responsive"></img>
                 </div>
                 <div class="col-sm-9">
-                    <h3><span><?= $this->nettoyer($auteur['titre']) ?></span></h3>
-                    <p><?= nl2br($auteur['texte']) ?></p>
+                    <h3><span><?= $this->nettoyer($auteur->getTitre()) ?></span></h3>
+                    <p><?= nl2br($auteur->getTexte()) ?></p>
                     <?php if (isset($_SESSION['login'])): ?>
                     <a id="Propos_edit" href="./admin/auteurEditer/"><i class="fas fa-cog"></i>Editer</a>
                     <?php endif; ?>
@@ -37,25 +37,25 @@
         <article>
             <header>
                 <hr>
-                <a href="<?= "billet/detail/" . $this->nettoyer($billet['id']) ?>">
-                    <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
+                <a href="<?= "billet/detail/" . $this->nettoyer($billet->getId()) ?>">
+                    <h1 class="titreBillet"><?= $this->nettoyer($billet->getTitre()) ?></h1>
                 </a>
-                <time><?= $this->nettoyer($billet['date']) ?></time>
+                <time><?= $this->nettoyer($billet->getDate()) ?></time>
             </header>
-            <?php
+
+            <?php  
+            $contenu = $billet->getContenu();
+            if (strlen($contenu)>=33) {                
+                $contenu = substr($contenu,0,108) . "..." ;
+            }   
+
+            echo $contenu;
             
-            if(strlen($billet['contenu'])>=33)
-            {
-            $billet['contenu']=substr($billet['contenu'],0,108) . "..." ;
-            }
-            
-            echo $billet['contenu'];
-            
-            ?>
-            <a href="<?= "billet/detail/" . $this->nettoyer($billet['id']) ?>">Lire la suite</a>
+            ?>   
+
+            <a href="<?= "billet/detail/" . $this->nettoyer($billet->getId()) ?>">Lire la suite</a>
             <hr>
-            <br />
-            
+            <br />            
         </article>
         <?php endforeach; ?>
     </div>

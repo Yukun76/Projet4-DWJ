@@ -9,10 +9,9 @@ class DAOBillet extends Database {
      * 
      * @return PDOStatement La liste des billets
      */
-
-
+    
     public function getBillets() {
-        $sql = 'SELECT * FROM t_billet'
+        $sql = 'SELECT * FROM billet'
         . ' order by bil_num desc LIMIT 2';
         $sth = $this->executerRequete($sql);
         $result = $sth->fetchAll();
@@ -26,7 +25,7 @@ class DAOBillet extends Database {
     }
 
     public function getAllBillet() {
-        $sql = 'SELECT * FROM t_billet'
+        $sql = 'SELECT * FROM billet'
         . ' order by bil_num asc';
         $sth = $this->executerRequete($sql);
         $result = $sth->fetchAll();
@@ -46,7 +45,7 @@ class DAOBillet extends Database {
      * @throws Exception Si l'identifiant du billet est inconnu
      */
     public function getBillet($idBillet) {
-        $sql = 'SELECT * FROM t_billet'
+        $sql = 'SELECT * FROM billet'
                 . ' where bil_id=?';
         $sth = $this->executerRequete($sql, array($idBillet));
         $result = $sth->fetch();        
@@ -62,14 +61,14 @@ class DAOBillet extends Database {
      * @return int Le nombre de billets
      */
     public function getNombreBillets() {
-        $sql = 'SELECT count(*) as nbBillets from t_billet';
+        $sql = 'SELECT count(*) as nbBillets from billet';
         $resultat = $this->executerRequete($sql);
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbBillets'];
     }
 
     public function billetCreer($billet) {
-       $sql = 'INSERT INTO t_billet SET bil_date= :dateBillet, bil_titre= :titreBillet,  bil_num= :ordreBillet, bil_contenu= :contenuBillet';     
+       $sql = 'INSERT INTO billet SET bil_date= :dateBillet, bil_titre= :titreBillet,  bil_num= :ordreBillet, bil_contenu= :contenuBillet';     
        return $this->executerRequete($sql, array(
                'dateBillet' => $billet->getDate(),
                'titreBillet' => $billet->getTitre(),
@@ -80,7 +79,7 @@ class DAOBillet extends Database {
    }
 
     public function billetModifier($billet, $idBillet) {
-        $sql = 'UPDATE t_billet SET bil_date= :dateBillet, bil_titre= :titreBillet, bil_num= :ordreBillet, bil_contenu= :contenuBillet WHERE bil_id=:id';
+        $sql = 'UPDATE billet SET bil_date= :dateBillet, bil_titre= :titreBillet, bil_num= :ordreBillet, bil_contenu= :contenuBillet WHERE bil_id=:id';
         return $this->executerRequete($sql, array(
                 'dateBillet' => $billet->getDate(),
                'titreBillet' => $billet->getTitre(),
@@ -91,7 +90,7 @@ class DAOBillet extends Database {
     }
 
     public function billetSupprimer($idBillet) {
-        $sql = 'DELETE FROM t_billet WHERE bil_id = :numeroBillet';
+        $sql = 'DELETE FROM billet WHERE bil_id = :numeroBillet';
 
         return $this->executerRequete($sql, array(
                 'numeroBillet' => $idBillet,

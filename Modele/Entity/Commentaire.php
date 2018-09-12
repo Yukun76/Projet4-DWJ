@@ -37,12 +37,17 @@ class Commentaire  {
      */
     private $biltitre;
 
+    /**
+     * @var string
+     */
+    private $isRead;
+
 
     private $billet;
 
 
 
-    public function __construct($id=null, $date=null, $auteur, $contenuCom, $signal=null, $bilid, $biltitre=null)
+    public function __construct($id=null, $date=null, $auteur, $contenuCom, $signal=null, $bilid, $biltitre=null, $isRead=null)
     {
         $this->id = $id;
         $this->date = $date;        
@@ -51,6 +56,7 @@ class Commentaire  {
         $this->signal = $signal;
         $this->bilid = $bilid;
         $this->biltitre = $biltitre;
+        $this->isRead = $isRead;
     }
 
     public function getId()
@@ -119,6 +125,17 @@ class Commentaire  {
     {
         $this->billet = $billet;
         return $this;
+    }
+
+    public function setIsRead($isRead)
+    {
+        $this->isRead = $isRead;
+        return $this;
+    }
+
+    public function getIsRead()
+    {
+        return $this->isRead;
     }
 
 

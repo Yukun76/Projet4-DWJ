@@ -20,7 +20,6 @@
         </div>
     </div>
 </div>
-
 <div class="allbody">
     <h1 class="title-id" id="comment_title"><i class="far fa-comment"></i> Administrer les commentaires</h1>
     <table class="table">
@@ -43,7 +42,12 @@
             </tr>
             <?php } else { ?>
             <?php foreach ($commentaires as $commentaire):?>
-            <td>
+            <td>                
+                <?php if ($commentaire->getIsRead() < 1) : ?>
+                <button class ="btn btn-default" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:red;"></i></button>
+                <?php else : ?>
+                <button class ="btn btn-default" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:green;"></i></button>
+                <?php endif; ?>
                 <a href="<?= "billet/detail/" . $this->nettoyer($commentaire->getBillet()->getId()) ?>"><?= $this->nettoyer($commentaire->getBillet()->getTitre()) ?></a>
             </td>
             <td>
@@ -53,21 +57,21 @@
                 <?php
                 $contenu = $commentaire->getContenu();
                 if (strlen($contenu)>=30) {
-                    $contenu = substr($contenu,0,30) . "..." ;
+                $contenu = substr($contenu,0,30) . "..." ;
                 }
-                echo $contenu;                
+                echo $contenu;
                 ?>
             </td>
             <td>
                 <?php if ($commentaire->getSignal() == 0) : ?>
-                    <p> Non </p>
+                <p> Non </p>
                 <?php  else : ?>
-                    <p> Oui </p>
+                <p> Oui </p>
                 <?php endif; ?>
             </td>
             <td>
-                <a class="btn btn-secondary" title ="Voir le commentaire" href="<?="./admin/commentView/" . $this->nettoyer($commentaire->getID()) ?>"><i class="fas fa-eye"></i></a>
-                <a href="#" data-toggle="modal" data-target="#myModal" title ="Supprimer le commentaire" class="btn btn-danger" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>" data-modal-confirm-url="./admin/commentaireSupprimer/<?= $commentaire->getID() ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
+                <a class="btn btn-secondary" title ="Voir le commentaire" href="<?="./admin/commentView/" . $this->nettoyer($commentaire->getId()) ?>"><i class="fas fa-eye"></i></a>
+                <a href="#" data-toggle="modal" data-target="#myModal" title ="Supprimer le commentaire" class="btn btn-danger" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>" data-modal-confirm-url="./admin/commentaireSupprimer/<?= $commentaire->getId() ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
                 <?php if ($commentaire->getSignal() > 0) : ?>
                 <a class="btn btn-secondary" title ="Supprimer le(s) signalement(s)" href="./admin/supprimerSignalement/<?= $commentaire->getID() ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
                 <?php endif; ?>
@@ -99,12 +103,12 @@
 </div>
 <script>
 $(function() {
-$modal = $('.modal');
-$('a.btn-danger').on('click', function(e) {
-e.preventDefault();
-$modal.find('a#btnYes').attr('href', $(this).data('modalConfirmUrl'));
-$modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer le commentaire de " + $(this).data('comTitle'));
-$modal.modal("show");
-})
+    $modal = $('.modal');
+    $('a.btn-danger').on('click', function(e) {
+    e.preventDefault();
+    $modal.find('a#btnYes').attr('href', $(this).data('modalConfirmUrl'));
+    $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer le commentaire de " + $(this).data('comTitle'));
+    $modal.modal("show");
+    })
 });
 </script>

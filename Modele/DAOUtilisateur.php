@@ -14,7 +14,7 @@ class DAOUtilisateur extends Database {
      */
     public function connecter($login, $mdp)
     {
-        $sql = "SELECT * FROM t_utilisateur WHERE util_login=? and util_mdp=?";
+        $sql = "SELECT * FROM utilisateur WHERE util_login=? and util_mdp=?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
         $result = $utilisateur->fetch(); 
             return new Utilisateur($result['util_id'], $result['util_login'], $result['util_mdp']);
@@ -31,7 +31,7 @@ class DAOUtilisateur extends Database {
      */
     public function getUtilisateur($login, $mdp)
     {
-        $sql = "SELECT * FROM t_utilisateur WHERE util_login=? and util_mdp=?";
+        $sql = "SELECT * FROM utilisateur WHERE util_login=? and util_mdp=?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
         $result = $utilisateur->fetch(); 
         if ($utilisateur->rowCount() == 1)

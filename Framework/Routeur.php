@@ -23,7 +23,6 @@ class Routeur {
 
             $controleur = $this->creerControleur($this->requete);
             $action = $this->creerAction($this->requete);
-
             $controleur->executerAction($action);
         }
         catch (Exception $e) {

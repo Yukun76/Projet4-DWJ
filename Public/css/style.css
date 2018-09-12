@@ -247,6 +247,12 @@ background-color: #9994c1;}
     text-align: center;
 }
 
+#put_is_read_ {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
 #btn-success{
     display: block;
     margin-right: auto;

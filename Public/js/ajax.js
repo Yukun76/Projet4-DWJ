@@ -2,7 +2,6 @@ $("[id^='put_is_read_']").click(function(){
 
 	var tabId = $(this).attr('id').split('_');
 	var id = tabId[3];
-	console.log(id);
     //Recuperation de la liste des commentaires
     $.ajax({
        url : 'AjaxCommentaire/put/'+id, // La ressource ciblée
@@ -13,3 +12,16 @@ $("[id^='put_is_read_']").click(function(){
        }
     });   
 });
+
+$('a#btnYes').click(function(){
+
+  var id = $modal.find('#modal-commentaire-id').val();
+    $.ajax({
+       url : 'commentaire/signaler/'+id, // La ressource ciblée
+       type : 'GET', // Le type de la requête HTTP
+      success : function(signal){
+          $("#signal_button_"+id).css("display", "none");
+       }
+    });   
+});
+

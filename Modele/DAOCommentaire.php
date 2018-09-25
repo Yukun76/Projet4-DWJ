@@ -46,22 +46,16 @@ class DAOCommentaire extends Database {
         return $ligne['nbCommentaires'];
     }
 
-    //get l'id du commentaire lors du signalement
+    //get l'id du commentaire
     public function getCommentaire($idCommentaire) {
         $sql = 'SELECT * FROM commentaire'
             . ' where com_id=:id';
         $sth = $this->executerRequete($sql, array('id' => $idCommentaire));
         $result = $sth->fetch(); 
-        return new Commentaire($result['com_id'], $result['com_date'], $result['com_auteur'], $result['com_contenu'], $result['signal_count'], $result['bil_id'], $result['is_read']);   
-    }
-
-    //Affichage commentaire Admin
-    public function commentView($idCommentaire) {
-        $sql = 'SELECT * FROM commentaire'
-            . ' where com_id=:id';
-        $sth = $this->executerRequete($sql, array('id' => $idCommentaire));
-        $result = $sth->fetch();
-        return new Commentaire($result['com_id'], $result['com_date'], $result['com_auteur'], $result['com_contenu'], $result['signal_count'], $result['bil_id'], $result['is_read']);
+        if (!$result) {
+            return null;
+        }
+        return new Commentaire($result['com_id'], $result['com_date'], $result['com_auteur'], $result['com_contenu'], $result['bil_id'], $result['signal_count'], $result['is_read']);   
     }
 
 
@@ -88,7 +82,7 @@ class DAOCommentaire extends Database {
         return [];
        }
         foreach ($result as $value) {
-        $commentaire = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['signal_count'], $value['bil_id'], $value['bil_titre'], $value['is_read']);
+        $commentaire = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['bil_id'], $value['signal_count'], $value['bil_titre'], $value['is_read']);
         $billet = new Billet ($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
         $commentaire->setBillet($billet);
         $commentaires[] = $commentaire;
@@ -97,9 +91,12 @@ class DAOCommentaire extends Database {
     }
 
 
-    public function ajouterUnSignalement($id) {
-        $sql = 'UPDATE commentaire SET signal_count  = signal_count  + 1 WHERE com_id = :id';
-        $this->executerRequete($sql, array('id' => $id));
+    public function ajouterUnSignalement($commentaire) {
+        $sql = 'UPDATE commentaire SET signal_count= :signalCount WHERE com_id = :id';
+        return $this->executerRequete($sql, array(
+            'signalCount' => $commentaire->getSignal(),
+            'id' => $commentaire->getId()
+        ))->rowCount() == 1;
     }
 
 
@@ -118,9 +115,8 @@ class DAOCommentaire extends Database {
     public function updateIsRead($commentaire) {
         $sql = 'UPDATE commentaire SET is_read= :isRead WHERE com_id= :id';
         return $this->executerRequete($sql, array(
-                'isRead' => $commentaire->getIsRead(),
-                'id' => $commentaire->getId()
-            ))->rowCount() == 1;
-
+            'isRead' => $commentaire->getIsRead(),
+            'id' => $commentaire->getId()
+        ))->rowCount() == 1;
     }
 }

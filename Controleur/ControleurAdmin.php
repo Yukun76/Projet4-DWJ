@@ -41,8 +41,16 @@ class ControleurAdmin extends ControleurSecurise  {
 
     public function commentView() {
         $idCommentaire = $this->requete->getParametre('id');
-        $commentaire = $this->commentaire->commentView($idCommentaire);
+        $commentaire = $this->commentaire->getCommentaire($idCommentaire);
         $this->genererVue(array('commentaire' => $commentaire));
+    }
+
+
+    public function commentaireSupprimer() {
+        $id = $this->requete->getParametre('id');
+        $this->commentaire->commentaireSupprimer($id);
+        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
+        $this->rediriger("admin/comment/");
     }
 
     public function Billet() {
@@ -96,14 +104,6 @@ class ControleurAdmin extends ControleurSecurise  {
     }
 
 
-
-    public function commentaireSupprimer() {
-        $id = $this->requete->getParametre('id');
-        $this->commentaire->commentaireSupprimer($id);
-        $this->setFlash(Session::FLASH_TYPE_SUCCESS, "Commentaire supprimé");
-        $this->rediriger("admin/comment/");
-    }
-
     public function supprimerSignalement() {
         $id = $this->requete->getParametre('id');
         $this->commentaire->supprimerSignalement($id);
@@ -130,7 +130,5 @@ class ControleurAdmin extends ControleurSecurise  {
 
         $this->genererVue(array('auteur' => $auteur));
     }
-
-
 }
 

@@ -73,7 +73,7 @@
                 <a class="btn btn-secondary" title ="Voir le commentaire" href="<?="./admin/commentView/" . $this->nettoyer($commentaire->getId()) ?>"><i class="fas fa-eye"></i></a>
                 <a href="#" data-toggle="modal" data-target="#myModal" title ="Supprimer le commentaire" class="btn btn-danger" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>" data-modal-confirm-url="./admin/commentaireSupprimer/<?= $commentaire->getId() ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
                 <?php if ($commentaire->getSignal() > 0) : ?>
-                <a class="btn btn-secondary" title ="Supprimer le(s) signalement(s)" href="./admin/supprimerSignalement/<?= $commentaire->getID() ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
+                <a class="btn btn-secondary" title ="Supprimer le(s) signalement(s)" href="./admin/supprimerSignalement/<?= $commentaire->getId() ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
                 <?php endif; ?>
             </td>
         </tr>

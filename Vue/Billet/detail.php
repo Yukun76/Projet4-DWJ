@@ -24,7 +24,7 @@
         <?php } else { ?>
 
         <?php foreach ($commentaires as $commentaire): ?>
-        <p><strong><em><?= $this->nettoyer($commentaire->getAuteur())  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire->getDate()) ?> :  <a id="signal_button" href="#" data-toggle="modal" data-target="#myModal" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>" data-modal-confirm-url="<?= "commentaire/signaler/" . $this->nettoyer($commentaire->getId()) ?>">Signaler !</a><br/></strong>             
+        <p><strong><em><?= $this->nettoyer($commentaire->getAuteur())  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire->getDate()) ?> :  <a id="signal_button_<?=$this->nettoyer($commentaire->getId()) ?>" href="#" data-toggle="modal" data-target="#myModal" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>"data-commentaire-id="<?=$this->nettoyer($commentaire->getId()) ?>">Signaler !</a><br/></strong>             
         <?= nl2br(htmlspecialchars($commentaire->getContenu())) ?></p></em>
         <?php endforeach; ?>
     <?php } ?>
@@ -53,9 +53,10 @@
             </div>
             <div class="modal-body">
                 <p>Etes-vous sur de vouloir signaler le commentaire concerné ?</p>
+                <input type='hidden' id='modal-commentaire-id'></input>
             </div>
             <div class="modal-footer">
-                <a href="" id="btnYes" class="btn btn-default">Oui</a>
+                <a href="#" data-dismiss="modal" id="btnYes" class="btn btn-default">Oui</a>
                 <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-secondary">Non</a>
             </div>
         </div>
@@ -65,18 +66,13 @@
 <script>
      $(function() {
         $modal = $('.modal');
-        $('a#signal_button').on('click', function(e) {
+        $("[id^='signal_button_']").on('click', function(e) {
             e.preventDefault();
-            $modal.find('a#btnYes').attr('href', $(this).data('modalConfirmUrl'));
             $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir signaler le commentaire de " + $(this).data('comTitle'));
             $modal.modal("show");
+            $modal.find('#modal-commentaire-id').val($(this).data('commentaireId'));
         })
     });
-
- $("a#btnYes").click(function(){
-    $("#signal_button").css("display" , "none");
-});
-
 </script>
 
 <script type="text/javascript">

@@ -25,11 +25,11 @@ class ControleurAjaxCommentaire extends Controleur {
     }
 
     public function put() { 
-    $idCommentaire = $this->requete->getParametre("id");
-    $isRead = $this->requete->getParametre("is_read");
-    $com = $this->commentaire->getCommentaire($idCommentaire);
-    $com->setIsRead($isRead);
-    $this->commentaire->updateIsRead($com);
+        $idCommentaire = $this->requete->getParametre("id");
+        $isRead = $this->requete->getParametre("is_read");
+        $com = $this->commentaire->getCommentaire($idCommentaire);
+        $com->setIsRead($isRead);
+        $this->commentaire->updateIsRead($com);
     }
 }
 

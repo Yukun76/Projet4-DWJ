@@ -47,14 +47,14 @@ class Commentaire  {
 
 
 
-    public function __construct($id=null, $date=null, $auteur, $contenuCom, $signal=null, $bilid, $biltitre=null, $isRead=null)
+    public function __construct($id=null, $date=null, $auteur, $contenuCom, $bilid, $signal=null, $biltitre=null, $isRead=null)
     {
         $this->id = $id;
         $this->date = $date;        
         $this->auteur = $auteur;
         $this->contenu = $contenuCom;
-        $this->signal = $signal;
         $this->bilid = $bilid;
+        $this->signal = $signal;
         $this->biltitre = $biltitre;
         $this->isRead = $isRead;
     }
@@ -99,9 +99,21 @@ class Commentaire  {
     }
 
 
+    public function setSignal($signal)
+    {
+        $this->signal = $signal;
+        return $this;
+    }
+
     public function getSignal()
     {
         return $this->signal;
+    }
+
+    public function addSignal($signal=1)
+    {
+        $this->signal = $this->signal + $signal;
+        return $this;
     }
 
 

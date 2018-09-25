@@ -7,7 +7,6 @@ require_once 'Modele/DAOCommentaire.php';
 /**
  * Contrôleur des actions liées aux billets
  *
- * @author Baptiste Pesquet
  */
 class ControleurCommentaire extends Controleur {
 
@@ -30,8 +29,10 @@ class ControleurCommentaire extends Controleur {
     public function signaler() {
         $idCommentaire = $this->requete->getParametre("id");
         $com = $this->commentaire->getCommentaire($idCommentaire);
-        $this->commentaire->ajouterUnSignalement($idCommentaire);
-        $this->rediriger("billet","detail/" . $com->getBilId());
+        if (!$com) {
+           return;
+        }
+        $com->addSignal();
+        $retour = $this->commentaire->ajouterUnSignalement($com);
     }
 }
-

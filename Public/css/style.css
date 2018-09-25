@@ -165,7 +165,7 @@ hr {
 h2 { text-align: center; }
 
 .sidenav {
-    height: 1000px;
+    height: 100%;
     width: 180px;
     position: fixed;
     z-index: 1;
@@ -232,6 +232,14 @@ background-color: #9994c1;}
     margin-left: auto;
     text-align: center;
     margin-top: 120px;
+}
+
+#comment_subtitle {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    margin-top: 120px;
+    margin-bottom: -50px;
 }
 
 #auteur_title {
@@ -303,7 +311,7 @@ background-color: #9994c1;}
 }
 
 #left_contain {
-    height: 1000px;
+    height: 100%;
     margin-right: auto;
     margin-left: auto;
     padding-top: 100px;

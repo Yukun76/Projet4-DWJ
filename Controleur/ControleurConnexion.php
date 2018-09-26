@@ -1,6 +1,6 @@
 <?php
 
-require_once 'framework/Controleur.php';
+require_once 'Framework/Controleur.php';
 require_once 'Modele/DAOUtilisateur.php';
 
 /**

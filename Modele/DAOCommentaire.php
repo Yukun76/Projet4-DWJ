@@ -14,7 +14,7 @@ class DAOCommentaire extends Database {
         $result = $sth->fetchAll(); 
         if (!$result) {
         return [];
-       }
+        }
         foreach ($result as $value) {
         $commentaires[] = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['signal_count'], $value['bil_id'], $value['is_read']);   
         }   
@@ -73,6 +73,11 @@ class DAOCommentaire extends Database {
             ))->rowCount() == 1;
     }
 
+    public function comPagination() {
+        $sql = "SELECT COUNT(*) as nbCom FROM commentaire"; 
+
+    }
+
     //Champs Commentaires Admin
     public function getComments() {
         $sql = 'SELECT * FROM commentaire, billet WHERE billet.bil_id = commentaire.bil_id order by signal_count DESC';
@@ -80,7 +85,7 @@ class DAOCommentaire extends Database {
         $result = $sth->fetchAll(); 
         if (!$result) {
         return [];
-       }
+        }
         foreach ($result as $value) {
         $commentaire = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['bil_id'], $value['signal_count'], $value['bil_titre'], $value['is_read']);
         $billet = new Billet ($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
@@ -104,6 +109,9 @@ class DAOCommentaire extends Database {
         $sql = 'SELECT count(*) AS nbSignalements FROM commentaire WHERE signal_count  != 0';
         $reponse = $this->executerRequete($sql);
         $ligne = $reponse->fetch();
+        if (!$ligne) {
+        return [];
+        }
         return $ligne['nbSignalements'];
     }
 

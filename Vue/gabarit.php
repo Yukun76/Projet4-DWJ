@@ -33,10 +33,12 @@
                                 <a class="nav-item nav-link" href="accueil"><i class="fas fa-home"></i> Accueil</a>
                                 <a class="nav-item nav-link" href="billet/liste"><i class="fas fa-book"></i> Episodes</a>
                                 <?php
-                                        if (!isset($_SESSION['login'])) {
+                                    if (!isset($_SESSION['login'])) {
                                         echo '<a class="nav-item nav-link custom-link" href="connexion"> <i class="fas fa-sign-in-alt"></i> Connexion</a>';
-                                        } else {
-                                        echo '<a class="nav-item nav-link custom-link" href="admin"><i class="fas fa-cogs"></i> Admin</a>'; } ?>
+                                    } else {
+                                        echo '<a class="nav-item nav-link custom-link" href="admin"><i class="fas fa-cogs"></i> Admin</a>'; 
+                                    }
+                                ?>
                             </div>
                         </div>
                     </nav>

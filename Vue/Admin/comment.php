@@ -44,9 +44,9 @@
             <?php foreach ($commentaires as $commentaire):?>
             <td>                
                 <?php if ($commentaire->getIsRead() < 1) : ?>
-                <button class ="btn btn-default" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:red;"></i></button>
+                <span  class="border" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:red; cursor: pointer;"></i></span>&nbsp;
                 <?php else : ?>
-                <button class ="btn btn-default" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:green;"></i></button>
+                <span  class="border" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:green;"></i></span>&nbsp;
                 <?php endif; ?>
                 <a href="<?= "billet/detail/" . $this->nettoyer($commentaire->getBillet()->getId()) ?>"><?= $this->nettoyer($commentaire->getBillet()->getTitre()) ?></a>
             </td>

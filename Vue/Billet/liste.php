@@ -19,3 +19,16 @@
     <br/>
     <?php endforeach; ?>
 </div>
+
+<div id ="pagination">    
+        <?php
+            for ($i=1;$i<=$nbPage;$i++) {
+                if($i==$cPage) {
+                    echo  " $i / ";
+                }
+                else {
+                    echo "<a href=\"billet/liste?p=$i\"> $i </a>/" ;
+                }
+            }
+        ?>
+</div>

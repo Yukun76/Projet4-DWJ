@@ -196,6 +196,16 @@ h2 { text-align: center; }
     margin-left: auto;
 }
 
+#pagination{
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-family: roboto, sans-serif;
+    font-size: 15px;
+}
+
+
+
 ol,
 ul {
     list-style: none;

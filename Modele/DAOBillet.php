@@ -24,15 +24,9 @@ class DAOBillet extends Database {
         return $billets;
     }
 
-
-    public function getAllBillet($offset=null, $limit=null) {
-        $limitSQL = '';
-        if ($offset !== null & $limit !== null) {
-            $limitSQL = ' LIMIT ' . $offset . ',' . $limit;
-        }
+    public function getAllBillet() {
         $sql = 'SELECT * FROM billet'
-        . ' order by bil_num asc' 
-        . $limitSQL;
+        . ' order by bil_num asc';
         $sth = $this->executerRequete($sql);
         $result = $sth->fetchAll();
         if (!$result) {
@@ -54,10 +48,7 @@ class DAOBillet extends Database {
         $sql = 'SELECT * FROM billet'
                 . ' where bil_id=?';
         $sth = $this->executerRequete($sql, array($idBillet));
-        $result = $sth->fetch(); 
-        if (!$result) {
-            return null;
-        }       
+        $result = $sth->fetch();        
         if ($sth->rowCount() > 0)
             return new Billet($result['bil_id'], $result['bil_date'], $result['bil_titre'], $result['bil_num'], $result['bil_contenu']);
         else

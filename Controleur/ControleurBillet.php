@@ -48,19 +48,7 @@ class ControleurBillet extends Controleur {
     }
 
     public function liste() {
-        $perPage = 3;
-        $nbBillets = $this->billet->getNombreBillets();
-        $nbPage = ceil($nbBillets/$perPage);
-
-        if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage) {
-            $cPage = $_GET['p'];
-        }
-        else {
-            $cPage =1;
-        }
-
-        $offset = (($cPage-1)*$perPage);
-        $billets = $this->billet->getAllBillet($offset, $perPage);
-        $this->genererVue(array('billets' => $billets, 'nbPage' => $nbPage, 'cPage' => $cPage));
+        $billets = $this->billet->getAllBillet();
+        $this->genererVue(array('billets' => $billets));
     }
 }

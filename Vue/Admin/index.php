@@ -14,9 +14,9 @@
 								<div class="sidenav">	
 									<a class="nav-item nav-link" id="retour_acceuil" href="Accueil"><i class="fas fa-home"></i>Accueil</a>
 									<a class="nav-item nav-link" href="admin"><i class="fas fa-bars"></i> Tableau de bord</a>
-									<a class="nav-item nav-link" href="./admin/auteur"><i class="fa fa-address-book"></i> Auteur</a>
-									<a class="nav-item nav-link" href="./admin/Billet"><i class="fas fa-book"></i> Billets</a>
-									<a class="nav-item nav-link" href="./admin/comment"><i class="far fa-comment"></i> Commentaires</a>
+									<a class="nav-item nav-link" href="./admin/auteur/"><i class="fa fa-address-book"></i> Auteur</a>
+									<a class="nav-item nav-link" href="./admin/Billet/"><i class="fas fa-book"></i> Billets</a>
+									<a class="nav-item nav-link" href="./admin/comment/"><i class="far fa-comment"></i> Commentaires</a>
 									<a class="nav-item nav-link" href="connexion/deconnecter"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
 								</div>
 							</div>

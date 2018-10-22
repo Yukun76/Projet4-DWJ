@@ -27,7 +27,7 @@ class DAOCommentaire extends Database {
             $commentaire->setDate(date(DATE_W3C));
         }
         return $this->executerRequete($sql, array(
-           'dateCommentaire' => $commentaire->getDate(),   
+           'dateCommentaire' => $commentaire->getDate(),
            'AuteurCommentaire' => $commentaire->getAuteur(),
            'contenuCommentaire' => $commentaire->getContenu(),
            'id' => $commentaire->getBilId()
@@ -43,9 +43,6 @@ class DAOCommentaire extends Database {
         $sql = 'SELECT count(*) as nbCommentaires from commentaire';
         $resultat = $this->executerRequete($sql);
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
-        if (!$ligne) {
-            return null;
-        }
         return $ligne['nbCommentaires'];
     }
 
@@ -76,25 +73,24 @@ class DAOCommentaire extends Database {
             ))->rowCount() == 1;
     }
 
+    public function comPagination() {
+        $sql = "SELECT COUNT(*) as nbCom FROM commentaire"; 
+
+    }
+
     //Champs Commentaires Admin
-    public function getComments($offset=null, $limit=null) {
-        $limitSQL = '';
-        if ($offset !== null & $limit !== null) {
-            $limitSQL = ' LIMIT ' . $offset . ',' . $limit;
-        }
-        $sql = "SELECT * FROM commentaire, billet WHERE billet.bil_id = commentaire.bil_id order by signal_count DESC" . $limitSQL;
+    public function getComments() {
+        $sql = 'SELECT * FROM commentaire, billet WHERE billet.bil_id = commentaire.bil_id order by signal_count DESC';
         $sth = $this->executerRequete($sql, array());
         $result = $sth->fetchAll(); 
         if (!$result) {
-            return [];
+        return [];
         }
         foreach ($result as $value) {
-            $billet = new Billet ($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
-
-            $commentaire = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['bil_id'], $value['signal_count'], $value['bil_titre'], $value['is_read']);
-            $commentaire->setBillet($billet);
-
-            $commentaires[] = $commentaire;
+        $commentaire = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['bil_id'], $value['signal_count'], $value['bil_titre'], $value['is_read']);
+        $billet = new Billet ($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
+        $commentaire->setBillet($billet);
+        $commentaires[] = $commentaire;
         }   
         return $commentaires;
     }

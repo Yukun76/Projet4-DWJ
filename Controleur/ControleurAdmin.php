@@ -34,20 +34,9 @@ class ControleurAdmin extends ControleurSecurise  {
     }
 
     public function comment() {
-        $perPage = 10;
-        $nbCommentaire = $this->commentaire->getNombreCommentaires();
-        $nbPage = ceil($nbCommentaire/$perPage);
-
-        if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage) {
-            $cPage = $_GET['p'];
-        }
-        else {
-            $cPage =1;
-        }
-
-        $offset = (($cPage-1)*$perPage);
-        $commentaires = $this->commentaire->getComments($offset, $perPage);
-        $this->genererVue(array('commentaires' => $commentaires, 'nbPage' => $nbPage, 'cPage' => $cPage));
+        $billets = $this->billet->getAllBillet();
+        $commentaires = $this->commentaire->getComments();
+        $this->genererVue(array('commentaires' => $commentaires , 'billets' => $billets));
     }
 
     public function commentView() {

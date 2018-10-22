@@ -10,9 +10,9 @@
                     <div class="sidenav">
                         <a class="nav-item nav-link" id="retour_acceuil" href="Accueil"><i class="fas fa-home"></i>Accueil</a>
                         <a class="nav-item nav-link" href="admin"><i class="fas fa-bars"></i> Tableau de bord</a>
-                        <a class="nav-item nav-link" href="./admin/auteur"><i class="fa fa-address-book"></i> Auteur</a>
-                        <a class="nav-item nav-link" href="./admin/billet"><i class="fas fa-book"></i> Billets</a>
-                        <a class="nav-item nav-link" href="./admin/comment"><i class="far fa-comment"></i> Commentaires</a>
+                        <a class="nav-item nav-link" href="./admin/auteur/"><i class="fa fa-address-book"></i> Auteur</a>
+                        <a class="nav-item nav-link" href="./admin/billet/"><i class="fas fa-book"></i> Billets</a>
+                        <a class="nav-item nav-link" href="./admin/comment/"><i class="far fa-comment"></i> Commentaires</a>
                         <a class="nav-item nav-link" href="connexion/deconnecter"><i class="fas fa-sign-in-alt"></i> Déconnexion</a>
                     </div>
                 </div>
@@ -33,9 +33,7 @@
             </tr>
         </thead>
         <tbody>
-
             <?php if ($commentaires == null) { ?>
-            <!-- Aucun commentaire -->
             <tr>
                 <th>-</th>
                 <th>-</th>
@@ -43,13 +41,12 @@
                 <th>-</th>
             </tr>
             <?php } else { ?>
-            <!-- S'il y a au moins un commentaire -->
             <?php foreach ($commentaires as $commentaire):?>
             <td>                
                 <?php if ($commentaire->getIsRead() < 1) : ?>
-                <span  class="border border-dark" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style=" color: #fcfbf9; cursor: pointer;"></i></span>&nbsp;
+                <span  class="border" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:red; cursor: pointer;"></i></span>&nbsp;
                 <?php else : ?>
-                <span  class="border  border-dark" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:green;"></i></span>&nbsp;
+                <span  class="border" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:green;"></i></span>&nbsp;
                 <?php endif; ?>
                 <a href="<?= "billet/detail/" . $this->nettoyer($commentaire->getBillet()->getId()) ?>"><?= $this->nettoyer($commentaire->getBillet()->getTitre()) ?></a>
             </td>
@@ -77,28 +74,14 @@
                 <a href="#" data-toggle="modal" data-target="#myModal" title ="Supprimer le commentaire" class="btn btn-danger" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>" data-modal-confirm-url="./admin/commentaireSupprimer/<?= $commentaire->getId() ?>"><i class="fas fa-trash"></i> <i class="far fa-comment"></i></a>
                 <?php if ($commentaire->getSignal() > 0) : ?>
                 <a class="btn btn-secondary" title ="Supprimer le(s) signalement(s)" href="./admin/supprimerSignalement/<?= $commentaire->getId() ?>"><i class="fas fa-trash"></i> <i class="fa fa-exclamation"></i></a>
-            <?php endif; ?>
+                <?php endif; ?>
             </td>
-            </tr>
-            <?php endforeach; ?>
-            <?php } ?>
-        </tbody>
-    </table>
-    <div id ="pagination">    
-        <?php
-            for ($i=1;$i<=$nbPage;$i++) {
-                if($i==$cPage) {
-                    echo  " $i / ";
-                }
-                else {
-                    echo "<a href=\"admin/comment?p=$i\"> $i </a>/" ;
-                }
-            }
-        ?>
-    </div>
+        </tr>
+        <?php endforeach; ?>
+        <?php } ?>
+    </tbody>
+</table>
 </div>
-
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
 <div class="modal-dialog">

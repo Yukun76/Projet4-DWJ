@@ -22,7 +22,7 @@ class Routeur {
             $this->requete = new Requete(array_merge($_GET, $_POST));
 
             $controleur = $this->creerControleur($this->requete);
-            $action = $this->creerAction($this->requete);
+            $action = $this->getAction($this->requete);
             $controleur->executerAction($action);
         }
         catch (Exception $e) {
@@ -69,7 +69,7 @@ class Routeur {
      * @param Requete $requete Requête reçue
      * @return string Action à exécuter
      */
-    private function creerAction(Requete $requete) {
+    private function getAction(Requete $requete) {
         $action = "index";  // Action par défaut
         if ($requete->existeParametre('action')) {
             $action = $requete->getParametre('action');

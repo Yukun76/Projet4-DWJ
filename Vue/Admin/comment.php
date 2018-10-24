@@ -44,7 +44,7 @@
             <?php foreach ($commentaires as $commentaire):?>
             <td>                
                 <?php if ($commentaire->getIsRead() < 1) : ?>
-                <span  class="border" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:red; cursor: pointer;"></i></span>&nbsp;
+                <span  class="border" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:#fcfbf9; cursor: pointer;"></i></span>&nbsp;
                 <?php else : ?>
                 <span  class="border" id="put_is_read_<?=$commentaire->getId()?>" type="button"><i class="fas fa-check" style="color:green;"></i></span>&nbsp;
                 <?php endif; ?>

@@ -8,12 +8,11 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Crimson+Text|Indie+Flower|Lato|Roboto|Roboto+Slab|Ubuntu" rel="stylesheet">
-    <link rel="shortcut icon" href="vue/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="Public/img/favicon.ico" type="image/x-icon">
     <base href="<?= $racineWeb ?>">
     <link rel="stylesheet" href="Public/css/style.css" />
     <script src='Public/js/tinymce/tinymce.min.js'></script>
     <script src="Public/js/jquery.js"></script>
-    <script src="Public/js/bootstrap.min.js"></script>
     <title>
         <?= $titre ?>
     </title>

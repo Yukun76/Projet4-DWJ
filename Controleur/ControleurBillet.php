@@ -38,8 +38,8 @@ class ControleurBillet extends Controleur {
             null,
             $auteur,
             $contenu,
-            null,
             $billetId,
+            null,            
             null);
         $this->commentaire->create($commentaire);
         

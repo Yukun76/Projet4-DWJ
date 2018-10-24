@@ -80,7 +80,7 @@ class DAOCommentaire extends Database {
 
     //Champs Commentaires Admin
     public function getComments() {
-        $sql = 'SELECT * FROM commentaire, billet WHERE billet.bil_id = commentaire.bil_id order by signal_count DESC';
+        $sql = 'SELECT * FROM commentaire, billet WHERE billet.bil_id = commentaire.bil_id order by signal_count DESC, is_read ASC ';
         $sth = $this->executerRequete($sql, array());
         $result = $sth->fetchAll(); 
         if (!$result) {

@@ -470,10 +470,16 @@ tbody tr {
 @media all and (max-width: 980px) {
 
     .allbody { 
-    height: 100%; 
-    background: #fcfbf9; 
+        height: 100%; 
+        background: #fcfbf9; 
     }
 
+    .fa-check {
+        display: block;
+        height: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
     .sidenav {
         position: relative;
         margin-top: 0px;

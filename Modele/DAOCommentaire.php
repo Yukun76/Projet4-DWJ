@@ -79,21 +79,28 @@ class DAOCommentaire extends Database {
     }
 
     //Champs Commentaires Admin
-    public function getComments() {
-        $sql = 'SELECT * FROM commentaire, billet WHERE billet.bil_id = commentaire.bil_id order by signal_count DESC, is_read ASC ';
+    public function getComments($offset=null, $limit=null) {
+        $limitSQL = '';
+        if ($offset !== null & $limit !== null) {
+            $limitSQL = ' LIMIT ' . $offset . ',' . $limit;
+        }
+        $sql = "SELECT * FROM commentaire, billet WHERE billet.bil_id = commentaire.bil_id order by signal_count DESC, is_read ASC " . $limitSQL;
         $sth = $this->executerRequete($sql, array());
         $result = $sth->fetchAll(); 
         if (!$result) {
-        return [];
+            return [];
         }
         foreach ($result as $value) {
-        $commentaire = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['bil_id'], $value['signal_count'], $value['bil_titre'], $value['is_read']);
-        $billet = new Billet ($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
-        $commentaire->setBillet($billet);
-        $commentaires[] = $commentaire;
+            $billet = new Billet ($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
+
+            $commentaire = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['bil_id'], $value['signal_count'], $value['bil_titre'], $value['is_read']);
+            $commentaire->setBillet($billet);
+
+            $commentaires[] = $commentaire;
         }   
         return $commentaires;
     }
+
 
 
     public function ajouterUnSignalement($commentaire) {

@@ -24,13 +24,18 @@ class DAOBillet extends Database {
         return $billets;
     }
 
-    public function getAllBillet() {
+    public function getAllBillet($offset=null, $limit=null) {
+        $limitSQL = '';
+        if ($offset !== null & $limit !== null) {
+            $limitSQL = ' LIMIT ' . $offset . ',' . $limit;
+        }
         $sql = 'SELECT * FROM billet'
-        . ' order by bil_num asc';
+        . ' order by bil_num asc' 
+        . $limitSQL;
         $sth = $this->executerRequete($sql);
         $result = $sth->fetchAll();
         if (!$result) {
-        return [];
+            return [];
         }
         foreach ($result as $value) {
         $billets[] = new Billet($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);

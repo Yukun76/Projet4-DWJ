@@ -45,7 +45,7 @@
 
             <?php  
             $contenu = $billet->getContenu();
-            if (strlen($contenu)>=33) {                
+            if (strlen($contenu)>=150) {                
                 $contenu = substr($contenu,0,108) . "..." ;
             }   
 

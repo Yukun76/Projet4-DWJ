@@ -81,6 +81,18 @@
         <?php } ?>
     </tbody>
 </table>
+    <div id ="pagination">    
+        <?php
+            for ($i=1;$i<=$nbPage;$i++) {
+                if($i==$cPage) {
+                    echo  " $i / ";
+                }
+                else {
+                    echo "<a href=\"admin/comment?p=$i\"> $i </a>/" ;
+                }
+            }
+        ?>
+    </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">

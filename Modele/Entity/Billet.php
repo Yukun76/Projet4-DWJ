@@ -42,7 +42,6 @@ class Billet  {
     {
        foreach ($params as $name => $value) {
            $setter = 'set' . ucfirst($name);
-                       print_r($setter);
            if (method_exists($this, $setter)) {
                $this->$setter($value);
            }

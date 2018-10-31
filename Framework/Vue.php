@@ -44,7 +44,7 @@ class Vue {
         $racineWeb = Configuration::get("racineWeb", "/");
         // Génération du gabarit commun utilisant la partie spécifique
         $vue = $this->genererFichier('Vue/gabarit.php',
-                array('titre' => $this->titre, 'contenu' => $contenu, 'flash' => $donnees['flash'],  'racineWeb' => $racineWeb));
+            array('titre' => $this->titre, 'contenu' => $contenu, 'flash' => $donnees['flash'],  'racineWeb' => $racineWeb));
         // Renvoi de la vue générée au navigateur
         echo $vue;
     }
@@ -86,5 +86,4 @@ class Vue {
         // Convertit les caractères spéciaux en entités HTML
         return htmlspecialchars($valeur, ENT_QUOTES, 'UTF-8', false);
     }
-
 }

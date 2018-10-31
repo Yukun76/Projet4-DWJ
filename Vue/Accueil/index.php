@@ -44,13 +44,11 @@
             </header>
 
             <?php  
-            $contenu = $billet->getContenu();
-            if (strlen($contenu)>=150) {                
-                $contenu = substr($contenu,0,108) . "..." ;
-            }   
-
-            echo $contenu;
-            
+                $contenu = $billet->getContenu();
+                if (strlen($contenu)>=150) {                
+                    $contenu = substr($contenu,0,108) . "..." ;
+                }   
+                echo $contenu;            
             ?>   
 
             <a href="<?= "billet/detail/" . $this->nettoyer($billet->getId()) ?>">Lire la suite</a>

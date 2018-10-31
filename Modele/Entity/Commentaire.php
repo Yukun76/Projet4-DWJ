@@ -149,6 +149,4 @@ class Commentaire  {
     {
         return $this->isRead;
     }
-
-
 }

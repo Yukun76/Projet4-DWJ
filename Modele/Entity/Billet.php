@@ -37,14 +37,19 @@ class Billet  {
         $this->contenu = $contenuBillet;
     }
 
-
-    public function fromArray(array $params)
+    /**
+     *Methode qui permet d'hydrater les propriétés de la classe en passant par les setter.
+     */
+    public function fromArray(array $params)  
     {
+        // création du nom du setter : ex : setDate
        foreach ($params as $name => $value) {
-           $setter = 'set' . ucfirst($name);
-           if (method_exists($this, $setter)) {
+            // On teste si le setter est dans la classe
+            $setter = 'set' . ucfirst($name);
+            // Si le setter existe, on l'utilise pour hydrater la propriété.
+            if (method_exists($this, $setter)) {
                $this->$setter($value);
-           }
+            }
        }
        return $this;
     }

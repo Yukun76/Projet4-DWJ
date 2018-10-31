@@ -17,7 +17,10 @@ class DAOUtilisateur extends Database {
         $sql = "SELECT * FROM utilisateur WHERE util_login=? and util_mdp=?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
         $result = $utilisateur->fetch(); 
-            return new Utilisateur($result['util_id'], $result['util_login'], $result['util_mdp']);
+        if (!$result) {
+            return [];
+        }
+        return new Utilisateur($result['util_id'], $result['util_login'], $result['util_mdp']);
         $utilisateur->rowCount() == 1;
     }
 
@@ -34,6 +37,9 @@ class DAOUtilisateur extends Database {
         $sql = "SELECT * FROM utilisateur WHERE util_login=? and util_mdp=?";
         $utilisateur = $this->executerRequete($sql, array($login, $mdp));
         $result = $utilisateur->fetch(); 
+        if (!$result) {
+            return [];
+        }
         if ($utilisateur->rowCount() == 1)
             return new Utilisateur($result['util_id'], $result['util_login'], $result['util_mdp']);  // Accès à la première ligne de résultat
         else

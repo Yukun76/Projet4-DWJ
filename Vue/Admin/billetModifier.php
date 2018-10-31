@@ -5,8 +5,7 @@
     <div class="row placeholders">
         <div id="contenu_modif">
             <h1 class="title-id">Modifier un billet existant</h1>
-            <hr>
-            <br />
+            <hr><br />
             <div class="col-sm-12 contact-form">
                 <form id="modifierBillet" method="post" class="form" role="form">
                     <div class="row">
@@ -31,26 +30,25 @@
                     </div>
                     <label>Contenu du billet</label>
                     <textarea class="form-control" rows="20" id="tiny" name="contenuBillet" placeholder="Le texte">
-                    <?= $billet->getContenu() ?>
-                    </textarea>
-                    <br/>
+                        <?= $billet->getContenu() ?>
+                    </textarea><br/>
                     <div class="row">
                         <div class="col-xs-12 col-md-12 form-group">
                             <button class="btn btn-primary pull-right" type="submit">Modifier le billet</button>
                         </div>
-
                     </div>
                     <a href="./admin/billet/" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Retour</a>
                 </form>
-                <script>
-                    tinymce.init({
-                        selector: '#tiny',
-                        language: 'fr_FR',
-                        width : "100%",
-                        extended_valid_elements:"*[*]"
-                    });
-                </script>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    tinymce.init({
+        selector: '#tiny',
+        language: 'fr_FR',
+        width : "100%",
+        extended_valid_elements:"*[*]"
+    });
+</script>

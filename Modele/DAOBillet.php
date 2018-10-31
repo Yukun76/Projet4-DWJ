@@ -16,10 +16,10 @@ class DAOBillet extends Database {
         $sth = $this->executerRequete($sql);
         $result = $sth->fetchAll();
         if (!$result) {
-        return [];
+            return [];
         }
         foreach ($result as $value) {
-        $billets[] = new Billet($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
+            $billets[] = new Billet($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
         }
         return $billets;
     }
@@ -28,7 +28,7 @@ class DAOBillet extends Database {
         $limitSQL = '';
         if ($offset !== null & $limit !== null) {
             $limitSQL = ' LIMIT ' . $offset . ',' . $limit;
-        }
+        }        
         $sql = 'SELECT * FROM billet'
         . ' order by bil_num asc' 
         . $limitSQL;
@@ -38,7 +38,7 @@ class DAOBillet extends Database {
             return [];
         }
         foreach ($result as $value) {
-        $billets[] = new Billet($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
+            $billets[] = new Billet($value['bil_id'], $value['bil_date'], $value['bil_titre'], $value['bil_num'], $value['bil_contenu']);
         }
         return $billets;
     }
@@ -53,7 +53,10 @@ class DAOBillet extends Database {
         $sql = 'SELECT * FROM billet'
                 . ' where bil_id=?';
         $sth = $this->executerRequete($sql, array($idBillet));
-        $result = $sth->fetch();        
+        $result = $sth->fetch(); 
+        if (!$result) {
+            return [];
+        }       
         if ($sth->rowCount() > 0)
             return new Billet($result['bil_id'], $result['bil_date'], $result['bil_titre'], $result['bil_num'], $result['bil_contenu']);
         else
@@ -69,37 +72,40 @@ class DAOBillet extends Database {
         $sql = 'SELECT count(*) as nbBillets from billet';
         $resultat = $this->executerRequete($sql);
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
+        if (!$ligne) {
+            return [];
+        }  
         return $ligne['nbBillets'];
     }
 
     public function billetCreer($billet) {
        $sql = 'INSERT INTO billet SET bil_date= :dateBillet, bil_titre= :titreBillet,  bil_num= :ordreBillet, bil_contenu= :contenuBillet';     
        return $this->executerRequete($sql, array(
-               'dateBillet' => $billet->getDate(),
-               'titreBillet' => $billet->getTitre(),
-               'ordreBillet' => $billet->getOrdre(),
-               'contenuBillet' => $billet->getContenu()
+            'dateBillet' => $billet->getDate(),
+            'titreBillet' => $billet->getTitre(),
+            'ordreBillet' => $billet->getOrdre(),
+            'contenuBillet' => $billet->getContenu()
 
-           ))->rowCount() == 1;
+        ))->rowCount() == 1;
    }
 
     public function billetModifier($billet, $idBillet) {
         $sql = 'UPDATE billet SET bil_date= :dateBillet, bil_titre= :titreBillet, bil_num= :ordreBillet, bil_contenu= :contenuBillet WHERE bil_id=:id';
         return $this->executerRequete($sql, array(
-                'dateBillet' => $billet->getDate(),
-               'titreBillet' => $billet->getTitre(),
-               'ordreBillet' => $billet->getOrdre(),
-               'contenuBillet' => $billet->getContenu(),
-                'id' => $idBillet
-            ))->rowCount() == 1;
+            'dateBillet' => $billet->getDate(),
+            'titreBillet' => $billet->getTitre(),
+            'ordreBillet' => $billet->getOrdre(),
+            'contenuBillet' => $billet->getContenu(),
+            'id' => $idBillet
+        ))->rowCount() == 1;
     }
 
     public function billetSupprimer($idBillet) {
         $sql = 'DELETE FROM billet WHERE bil_id = :numeroBillet';
 
         return $this->executerRequete($sql, array(
-                'numeroBillet' => $idBillet,
-            ))->rowCount() == 1;
+            'numeroBillet' => $idBillet,
+        ))->rowCount() == 1;
     }
 }
 

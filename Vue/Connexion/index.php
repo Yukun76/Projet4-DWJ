@@ -18,7 +18,7 @@
         <button class="btn btn-primary">Se connecter</button>
     </form>
 </div>
-<?php if (isset($msgErreur)): ?>
-<p><?= $msgErreur ?></p>
 
+<?php if (isset($msgErreur)): ?>
+    <p><?= $msgErreur ?></p>
 <?php endif; ?>

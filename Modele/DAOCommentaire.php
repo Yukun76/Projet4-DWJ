@@ -13,10 +13,10 @@ class DAOCommentaire extends Database {
         $sth = $this->executerRequete($sql, array($idBillet));
         $result = $sth->fetchAll(); 
         if (!$result) {
-        return [];
+            return [];
         }
         foreach ($result as $value) {
-        $commentaires[] = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['signal_count'], $value['bil_id'], $value['is_read']);   
+            $commentaires[] = new Commentaire($value['com_id'], $value['com_date'], $value['com_auteur'], $value['com_contenu'], $value['signal_count'], $value['bil_id'], $value['is_read']);   
         }   
         return $commentaires;
     }
@@ -31,7 +31,7 @@ class DAOCommentaire extends Database {
            'AuteurCommentaire' => $commentaire->getAuteur(),
            'contenuCommentaire' => $commentaire->getContenu(),
            'id' => $commentaire->getBilId()
-       ));           
+        ));           
     }
     
     /**
@@ -43,6 +43,9 @@ class DAOCommentaire extends Database {
         $sql = 'SELECT count(*) as nbCommentaires from commentaire';
         $resultat = $this->executerRequete($sql);
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
+        if (!$ligne) {
+            return [];
+        }  
         return $ligne['nbCommentaires'];
     }
 
@@ -55,7 +58,7 @@ class DAOCommentaire extends Database {
         if (!$result) {
             return null;
         }
-        return new Commentaire($result['com_id'], $result['com_date'], $result['com_auteur'], $result['com_contenu'], $result['bil_id'], $result['signal_count'], $result['is_read']);   
+        return new Commentaire($result['com_id'], $result['com_date'], $result['com_auteur'], $result['com_contenu'], $result['bil_id'], $result['signal_count'], $result['is_read']);  
     }
 
 
@@ -69,14 +72,15 @@ class DAOCommentaire extends Database {
         $sql = 'DELETE FROM commentaire WHERE com_id = :idCommentaire';
 
         return $this->executerRequete($sql, array(
-                'idCommentaire' => $idCommentaire,
-            ))->rowCount() == 1;
+            'idCommentaire' => $idCommentaire,
+        ))->rowCount() == 1;
     }
+
 
     public function comPagination() {
         $sql = "SELECT COUNT(*) as nbCom FROM commentaire"; 
-
     }
+    
 
     //Champs Commentaires Admin
     public function getComments($offset=null, $limit=null) {
@@ -117,7 +121,7 @@ class DAOCommentaire extends Database {
         $reponse = $this->executerRequete($sql);
         $ligne = $reponse->fetch();
         if (!$ligne) {
-        return [];
+            return [];
         }
         return $ligne['nbSignalements'];
     }

@@ -12,7 +12,7 @@
 
         <?php if (isset($_SESSION['login'])): ?>
             <a class="btn btn-warning back-btn" href="./admin/billet"><i class="fas fa-cog"></i> Panneau d'administration</a>
-         <?php endif; ?>
+        <?php endif; ?>
 
         <hr />
     </article>
@@ -22,12 +22,11 @@
         <?php if ($commentaires == null) { ?>
             <p>Aucun commentaire</p>
         <?php } else { ?>
-
-        <?php foreach ($commentaires as $commentaire): ?>
-        <p><strong><em><?= $this->nettoyer($commentaire->getAuteur())  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire->getDate()) ?> :  <a id="signal_button_<?=$this->nettoyer($commentaire->getId()) ?>" href="#" data-toggle="modal" data-target="#myModal" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>"data-commentaire-id="<?=$this->nettoyer($commentaire->getId()) ?>">Signaler !</a><br/></strong>             
-        <?= nl2br(htmlspecialchars($commentaire->getContenu())) ?></p></em>
-        <?php endforeach; ?>
-    <?php } ?>
+            <?php foreach ($commentaires as $commentaire): ?>
+                <p><strong><em><?= $this->nettoyer($commentaire->getAuteur())  ?> <i class="fas fa-user"></i> - <?= $this->nettoyer($commentaire->getDate()) ?> :  <a id="signal_button_<?=$this->nettoyer($commentaire->getId()) ?>" href="#" data-toggle="modal" data-target="#myModal" data-com-title="<?=$this->nettoyer($commentaire->getAuteur()) ?>"data-commentaire-id="<?=$this->nettoyer($commentaire->getId()) ?>">Signaler !</a><br/></strong>             
+                <?= nl2br(htmlspecialchars($commentaire->getContenu())) ?></p></em>
+            <?php endforeach; ?>
+        <?php } ?>
     </div>
     <hr />
     <h4>Poster un commentaire</h4>
@@ -64,7 +63,7 @@
 </div>
 
 <script>
-     $(function() {
+    $(function() {
         $modal = $('.modal');
         $("[id^='signal_button_']").on('click', function(e) {
             e.preventDefault();
@@ -76,9 +75,8 @@
 </script>
 
 <script type="text/javascript">
-function reste(texte)
-{
-    var restants=400-texte.length;
-    document.getElementById('caracteres').innerHTML=restants;
-}
+    function reste(texte) {
+        var restants=400-texte.length;
+        document.getElementById('caracteres').innerHTML=restants;
+    }
 </script>

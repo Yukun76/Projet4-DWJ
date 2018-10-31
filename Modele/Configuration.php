@@ -50,7 +50,6 @@ class Configuration
         }
         return self::$parametres;
     }
-
 }
 
 

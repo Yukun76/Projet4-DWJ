@@ -15,5 +15,4 @@ class ControleurAuteur extends Controleur
         $auteur = $this->auteur->getAuteur();
         $this->genererVue(array('auteur' => $auteur));
     }
-
 }

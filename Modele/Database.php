@@ -3,15 +3,13 @@
 require_once 'Configuration.php';
 
 /**
- * Classe abstraite modèle.
- * Centralise les services d'accès à une base de données.
+ * Permet de créer une instance de connexion à la bdd (singleton).
+ * Permet aussi d'exécuter des requêtes.
  * Utilise l'API PDO de PHP.
  */
 abstract class Database
 {
-    /** Objet PDO d'accès à la BD 
-      Statique donc partagé par toutes les instances des classes dérivées */
-    private static $bdd;
+    private $bdd;
 
     /**
      * Exécute une requête SQL
@@ -23,10 +21,10 @@ abstract class Database
     protected function executerRequete($sql, $params = null)
     {
         if ($params == null) {
-            $resultat = self::getBdd()->query($sql);   // exécution directe
+            $resultat = $this->getBdd()->query($sql);   // exécution directe
         }
         else {
-            $resultat = self::getBdd()->prepare($sql); // requête préparée
+            $resultat = $this->getBdd()->prepare($sql); // requête préparée
             $resultat->execute($params);
         }
         return $resultat;
@@ -37,18 +35,18 @@ abstract class Database
      * 
      * @return PDO Objet PDO de connexion à la BDD
      */
-    private static function getBdd()
+    private function getBdd()
     {
-        if (self::$bdd === null) {
+        if ($this->bdd === null) {
             // Récupération des paramètres de configuration BD
             $dsn = Configuration::get("dsn");
             $login = Configuration::get("login");
             $mdp = Configuration::get("mdp");
             // Création de la connexion
-            self::$bdd = new PDO($dsn, $login, $mdp,
-                    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->bdd = new PDO($dsn, $login, $mdp,
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }
-        return self::$bdd;
+        return $this->bdd;
     }
 
 }

@@ -49,12 +49,24 @@ class Routeur {
         }
         // Création du nom du fichier du contrôleur
         // La convention de nommage des fichiers controleurs est : Controleur/Controleur<$controleur>.php
-        $classeControleur = "Controleur" . $controleur;
+
+        // créer nom du controleur
+        $classeControleur = "Controleur" . $controleur; 
+
+        // créer le chemin du fichier controleur
         $fichierControleur = "Controleur/" . $classeControleur . ".php";
-        if (file_exists($fichierControleur)) {
+
+        // test si le fichier existe
+        if (file_exists($fichierControleur)) { 
             // Instanciation du contrôleur adapté à la requête
-            require($fichierControleur);
+
+            // on inclut le fichier
+            require($fichierControleur); 
+
+            // on créer une instance du controleur : ex : new controleurAdmin
             $controleur = new $classeControleur();
+
+            // On lui passe l'objet requete.
             $controleur->setRequete($requete);
             return $controleur;
         }
@@ -87,5 +99,4 @@ class Routeur {
         $donnees = ['msgErreur' => $exception->getMessage(), 'flash' => $this->requete->getSession()->getMessageFlash()];
         $vue->generer($donnees);
     }
-
 }

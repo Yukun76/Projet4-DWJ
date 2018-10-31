@@ -77,5 +77,4 @@ abstract class Controleur {
         // Redirection vers l'URL /racine_site/controleur/action
         header("Location:" . $racineWeb . $controleur . "/" . $action);
     }
-
 }

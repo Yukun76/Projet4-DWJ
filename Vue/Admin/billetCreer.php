@@ -13,8 +13,7 @@
     <div class="row placeholders">
         <div id="contenu_form">
             <h1 class="title-id">Création d'un nouveau billet</h1>
-            <hr>
-            <br />
+            <hr><br />
             <form method="post" class="crud-box">
                 <div class="row">
                     <div class="col-xs-4 col-md-4 form-group">
@@ -37,15 +36,15 @@
                 </div>
                 <button class="btn btn-success" id="btn_newbillet"type="submit">Ajouter le nouveau billet</button><br/><br/>
                 <a href="./admin/billet/" id="btn_newbillet" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Retour</a>
-            </div>
-        </form>
-        <script>
-        tinymce.init({
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    tinymce.init({
         selector: '#tiny',
         language: 'fr_FR',
         extended_valid_elements:"*[*]"
-        });
-        </script>
-    </div>
-</div>
-</div>
+    });
+</script>

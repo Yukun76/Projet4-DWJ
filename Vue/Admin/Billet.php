@@ -41,28 +41,27 @@
                 <th>-</th>
             </tr>
             <?php } else { ?>
-            <?php foreach ($billets as $billet):?>
-            <tr>
-                <td>
-                    <?= $this->nettoyer($billet->getTitre()) ?>
-                </td>
-                <td>
-            <?php  
-            $contenu = $billet->getContenu();
-            if (strlen($contenu)>=33) {                
-                $contenu = substr($contenu,0,49) . "..." ;
-            }
-
-            echo $contenu;            
-            ?>   
-                </td>
-                <td>
-                    <a class="btn btn-secondary" href="<?= "billet/detail/" . $this->nettoyer($billet->getId()) ?>"><i class="fas fa-eye"></i>  Afficher</a>
-                    <a class="btn btn-primary" href="./admin/billetModifier/<?= $billet->getId() ?>"><i class="fas fa-edit"></i> Editer</a>
-                    <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="<?= $this->nettoyer($billet->getTitre()) ?>" data-modal-confirm-url="./admin/billetSupprimer/<?= $billet->getId() ?>"><i class="fas fa-trash"></i> Supprimer</a>
-                </td>
-            </tr>
-            <?php endforeach; ?>
+                <?php foreach ($billets as $billet):?>
+                <tr>
+                    <td>
+                        <?= $this->nettoyer($billet->getTitre()) ?>
+                    </td>
+                    <td>
+                        <?php  
+                            $contenu = $billet->getContenu();
+                            if (strlen($contenu)>=33) {                
+                                $contenu = substr($contenu,0,49) . "..." ;
+                            }
+                            echo $contenu;            
+                        ?>   
+                    </td>
+                    <td>
+                        <a class="btn btn-secondary" href="<?= "billet/detail/" . $this->nettoyer($billet->getId()) ?>"><i class="fas fa-eye"></i>  Afficher</a>
+                        <a class="btn btn-primary" href="./admin/billetModifier/<?= $billet->getId() ?>"><i class="fas fa-edit"></i> Editer</a>
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-danger" id="del-billet" data-billet-title="<?= $this->nettoyer($billet->getTitre()) ?>" data-modal-confirm-url="./admin/billetSupprimer/<?= $billet->getId() ?>"><i class="fas fa-trash"></i> Supprimer</a>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
             <?php } ?>
         </tbody>
     </table>
@@ -86,19 +85,21 @@
         </div>
     </div>
 </div>
+
 <script>
-$(function(){
-$modal = $('.modal');
-$('a.btn-danger').on('click',function(e){
-e.preventDefault();
-$modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
-$modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer l\'" + $(this).data('billetTitle'));
-$modal.modal("show");
-})
-});
-$(document).ready(function(){
-$('a#btnYes').click(function(){
-$('.alert').show()
-})
-});
+    $(function(){
+        $modal = $('.modal');
+        $('a.btn-danger').on('click',function(e){
+            e.preventDefault();
+            $modal.find('a#btnYes').attr('href',$(this).data('modalConfirmUrl'));
+            $modal.find('.modal-body p').text("Êtes-vous sûr de vouloir supprimer l\'" + $(this).data('billetTitle'));
+            $modal.modal("show");
+        })
+    });
+    
+    $(document).ready(function(){
+        $('a#btnYes').click(function(){
+            $('.alert').show()
+        })
+    });
 </script>

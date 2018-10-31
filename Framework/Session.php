@@ -89,5 +89,4 @@ class Session {
         }
         return $attr;
     }
-
 }

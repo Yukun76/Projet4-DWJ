@@ -21,6 +21,5 @@ class ControleurAccueil extends Controleur {
         $auteur = $this->auteur->getAuteur();
         $this->genererVue(array('billets' => $billets, 'auteur' => $auteur));
     }
-
 }
 

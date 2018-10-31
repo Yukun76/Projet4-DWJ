@@ -13,8 +13,7 @@
     <div class="row placeholders">
         <div id="contenu_histoire">
             <h1 class="title-id">Editer la section "A propos"</h1>
-            <hr>
-            <br />
+            <hr><br />
             <div class="col-sm-12 contact-form">
                 <form id="histoireEditer" method="post" class="form" role="form">
                     <div class="row">
@@ -33,22 +32,21 @@
                     </div>
                     <label>Edition de l'histoire</label>
                     <textarea class="form-control" rows="20" id="tiny" name="auteurTexte" placeholder="Le texte">
-                    <?= $auteur->getTexte() ?>
-                    </textarea>
-                    <br/>
+                        <?= $auteur->getTexte() ?>
+                    </textarea><br/>
                     <div class="row">
                         <div class="col-xs-12 col-md-12 form-group">
                             <button class="btn btn-primary pull-right" type="submit">Modifier l'histoire</button>
                         </div>
                     </div>
                     <a href="./admin/auteur/" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Retour</a>
-                </form>
+                </form>                
                 <script>
-                tinymce.init({
-                selector: '#tiny',
-                language: 'fr_FR',
-                width : "100%"
-                });
+                    tinymce.init({
+                        selector: '#tiny',
+                        language: 'fr_FR',
+                        width : "100%"
+                    });
                 </script>
             </div>
         </div>

@@ -18,6 +18,5 @@ abstract class ControleurSecurise extends Controleur {
             $this->rediriger("connexion");
         }
     }
-
 }
 
